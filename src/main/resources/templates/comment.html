@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>{?$_17mb_sitename?}手机站-用户意见</title>
+    <meta name="generator" content="{?$_17mb_sitename?}手机站" />
+    <meta id="ctl00_metaKeywords" name="keywords" content="{?$_17mb_sitename?}手机站,玄幻奇幻,武侠仙侠,都市职业,历史军事,游戏竞技,同人美文,言情小说"/>
+    <meta id="ctl00_metaDescription" name="description" content="{?$_17mb_sitename?}手机站唯一官方网站。提供玄幻、武侠、原创、网游、都市、言情、科幻、恐怖、官场、穿越、重生等小说，首发小说最新章节免费，精彩尽在{?$_17mb_sitename?}手机站。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <script src="/js/wap.js"></script>
+    <style type="text/css">
+    .bannerLink .ajax_html, .list .ajax_html{height:auto; overflow:hidden; line-height:normal;}
+	.ajax_html{text-align:center; width:320px; margin:0 auto;}
+	.tabArea4 .ajax_html{width:25%; margin:0;}
+	.ajax_html img{padding:20px 0;}
+	.ajax_html b{display:none;}
+ </style>
+</head>
+<body>
+<header class="Index_Header">
+		<img src="/images/logo.png" class="logo" title="{?$_17mb_sitename?}" alt="{?$_17mb_sitename?}"/>
+	 {?if $uid == ''?}<a href="/login.php" id="login" class="login">登录</a>{?else?}<span id="username" class="username"><a href="/user.php"><b>{?$uname?}</b><img src="/images/icon-login-uname.gif" /></a></span>
+{?/if?}
+		    </header> 
+    <nav class="smallNav">
+		<a href="/xclass/0/1.html">分类</a>
+		<a href="/ph/week.html">排行</a>
+		<a href="/quanben.html">全本</a>
+                <a href="/newcase.html" style="width:32%">阅读记录</a>
+                <a href="/mybook.php">书架</a>
+	</nav>
+    <form name="articlesearch" class="searchForm" method="post" action="/s.php">  
+        <input type="text" name="keyword" class="searchForm_input searchForm_input2" value="输入书名•作者" />
+        <input type="hidden" name="t" value="1" />
+        <input type="submit" class="searchForm_btn" value="搜索" />
+    </form>
+	<div class="tabArea tabArea4 bannerLink div">
+        <div class="tab-nav tab-nav4 clearfix">
+            <h2 id="H2_2"><a class="tab-nav-cur">列表</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4">
+                <div class="slide-item index_sort1">
+				<ul>
+					{?section name=i loop=$list?}<li>{?$list[i].title?}<br>---->{?$list[i].content?}</li>{?/section?}
+			    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/common.js"></script>
+<script language="javascript" type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function(){
+	    $("img.lazy").lazyload();
+    });
+</script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+</body>
+</html>

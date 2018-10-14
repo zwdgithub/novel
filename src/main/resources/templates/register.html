@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>会员注册-{?$_17mb_sitename?}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+</head>
+<body style="background-color:white;overflow-y:hidden;">
+<div class="bg"></div>
+<header class="channelHeader channelHeader2">
+	<a href="javascript:history.go(-1);" class="iconback"><img src="/images/header-back.gif" alt="返回"/></a>
+    <span class="title">{?$_17mb_sitename?}会员注册</span>
+    <a href="/" class="iconhome"><img src="/images/header-backhome.gif" alt="首页"/></a>
+</header>
+
+<div class="login_box">
+	<form name="form_reg" action="/register_go.php" method="post">
+	<div class="login_name"><span class="person_bg"></span>
+	<input type="text" class="name register_nm" name="uname" value="账号名，5~16位字符"></div>
+	<p class="tips_text">账号名为5-16位字符，由英文、数字组成，不能全数字</p>
+
+	<div class="login_name"><span class="psw_bg"></span>
+	<input type="text" class="name register_psw" name="upass" value="账号密码"></div>
+	<p class="tips_text">请输入密码</p>
+	
+	<div class="login_name"><span class="psw_bg"></span>
+	<input type="text" class="name register_repsw" name="repassword" value="再次输入密码"></div>
+	<p class="tips_text">请再次输入密码</p>
+	<div class="submit_btn"><input type="button" class="reg_bto login_in register_in" value="确认注册"> </div>
+	</form>
+
+	<p class="text_register text_font">已有账号？<a href="/login.php">立即登录</a><br />
+	</p>
+
+</div>
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+ <script language="javascript" type="text/javascript" src="/js/login.js"></script>
+ 
+{?include file="17mb/templates/foot.html"?}
+</html>

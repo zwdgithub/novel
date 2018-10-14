@@ -1,0 +1,171 @@
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title th:text="${article.articlename} + '最新章节(' + ${article.author} + ')_' + ${article.articlename} + '全文阅读_' + '爱好小说'"></title>
+    <meta name="generator" content="{?$_17mb_sitename?}" />
+    <meta id="ctl00_metaKeywords" name="keywords" content="{?$articlename?},{?$articlename?}最新章节"/>
+    <meta id="ctl00_metaDescription" name="description" content="{?$articlename?}最新章节由网友提供，《{?$articlename?}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的{?$sortname?}，{?$_17mb_sitename?}免费提供{?$articlename?}最新清爽干净的文字章节在线阅读。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="Cache-Control" content="max-age=0" />
+    <meta http-equiv="Cache-Control" content="no-transform " />
+    <meta property="og:type" content="novel"/>
+    <meta property="og:title" content="{?$articlename?}"/>
+    <meta property="og:description" content="{?$intro?}"/>
+    <meta property="og:image" content="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg"/>
+    <meta property="og:novel:category" content="{?$sortname?}"/>
+    <meta property="og:novel:author" content="{?$author?}"/>
+    <meta property="og:novel:book_name" content="{?$articlename?}"/>
+    <meta property="og:novel:read_url" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/"/>
+    <meta property="og:url" id="metaurl" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/"/>
+    <meta property="og:novel:status" content="{?$fullflag?}"/>
+    <meta property="og:novel:update_time" content="{?$lastupdate|date_format:'Y-m-d H:i:s'?}"/>
+    <meta property="og:novel:latest_chapter_name" content="{?$chapter[0].chaptername?}"/>
+    <meta property="og:novel:latest_chapter_url" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/{?$chapter[0].chapterid?}.html"/>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/bookinfo.css" />
+    {?if $adFlag == 1 ?}
+    <script type="text/javascript">
+       setInterval(function() {
+    	$('a').each(function(index, value) {
+        _0 = $(this).attr('style');
+        value_type = typeof(_0);
+        if (value_type == "string") {
+            //console.log(_0)
+            if (_0.indexOf('pos') > -1) {
+                $(this).remove()
+            }
+        }
+    })
+}, 1000)
+    </script>
+    {?/if?}
+  <script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
+  <script type="application/ld+json">
+        {
+            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
+            "@id": "https://m.2hxs.com/{?$shortid?}_{?$articleid?}/",
+            "appid": "1578540365240191",
+            "title": "{?$articlename?}最新章节({?$author?})_{?$articlename?}全文阅读_{?$_17mb_sitename?}",
+            "images": [
+                "{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg",
+            ],
+            "description": "{?$intro?}",
+            "pubDate": "{?$lastupdate|date_format:'Y-m-d'?}T{?$lastupdate|date_format:'H:i:s'?}"
+        }
+    </script>
+</head>
+<body>
+    <div class="bg">
+    </div>
+    <header class="channelHeader channelHeader2">
+<a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a>
+<span class="title">{?$articlename?}</span>
+<a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a>
+</header>
+    <p class="synopsisAd" style="color: red;"></p>
+    <div class="synopsisArea">
+        <div class="synopsisArea_detail">
+            <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" onerror="this.src='/images/defaultimg.png'" />
+            <a href="/{?$shortid?}_{?$articleid?}/">
+                <p class="author">作者：{?$author?}</p>
+            </a>
+            <p class="sort">
+                类别：{?$sortname?}</p>
+            <p class="">
+                状态：{?$fullflag?}</p>
+            <p class="">
+                更新：{?$lastupdate|date_format:'Y-m-d H:i:s'?}</p>
+        </div>
+        <p class="btn">
+			<a href="/{?$shortid?}_{?$articleid?}/all.html">完整目录</a><a href="javascript:addBookMarkByManual(0,{?$articleid?});" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架{?$adFlags?}</a></p>
+    <!--<script>_17mb_top()</script> -->
+        <p class="review">
+        	{?$intro?}
+        </p>
+    </div>
+    <div  class="recommend">
+        <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;更新：{?$lastupdate|date_format:"Y-m-d"?}</a> &nbsp;&nbsp;&nbsp; <a href="#remind" style="color:#F00;text-shadow:none">更新报错</a></h2>
+	<div class="directoryArea">
+		{?section name=i loop=$chapter?}
+            <p><a href="/{?$shortid?}_{?$articleid?}/{?$chapter[i].chapterid?}.html">{?$chapter[i].chaptername?}</a></p>
+        {?/section?}
+	</div>
+ 	 <h2><a href="/{?$shortid?}_{?$articleid?}/all.html">查看完整目录</a></h2>
+    </div>
+	<form name="articlesearch" class="searchForm" method="post" action="">
+		<input type="text" id="remindContent"  placeholder="请输入要提醒的内容" value="" style="border: 1px #c0deea solid;
+			font-size: 14px;
+			background: #f8fdff;
+			padding: 0 5px;
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			color: #cbcfd1;" />
+		<input type="button" class="searchForm_btn" style="
+		width: 35%;
+		background: none;
+		padding-left: 0px;
+		color: red;" value="提醒管理员更新出错" id="remind" />
+	</form>
+    <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/common.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/index.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/lazyload.js"></script>
+  <script language="javascript" type="text/javascript">
+$(function(){
+    //ReverseChapterList()
+	$("img.lazy").lazyload();
+});
+
+$('.nav a').click(function(){
+	$(this).addClass('sel');
+	$(this).siblings().removeClass('sel');
+	
+	$obj = $('.'+ $(this).attr('id'));
+	
+	$obj.siblings().hide();
+	$obj.show();
+	$('.bomtype').text($obj.data('type'));
+	$('.bomtypeclass').text($(this).attr('id'));
+});	
+
+$(function(){
+	$('.btn_to2014').click(function(){
+		$('.bom_synopsis').show();
+		$('.bg').show();
+	});
+	
+	$('.bomhide').click(function(){
+		$('.bombox').hide();
+		$('.bg').hide();	
+	});
+	$("#remind").click(function(){
+           var text = $('#remindContent').val();
+           if(text!=''){
+		$.ajax({
+			type:'post',
+			url:'/remind.php',
+			data:{aid:$('.title').text()+"--->"+text},
+			error: function(){alert("出错了，请稍候")},
+			success: function(data){
+						alert("问题提交成功，我们会尽快处理！");
+					}
+		});
+             }else{
+                  alert('请输入要反馈的内容...'); 
+             }
+	})
+})
+    </script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+<script>
+</script>
+<script src="/click.php?aid={?$articleid?}"></script>
+<script>cambrian.render('tail')</script>
+<script src="/js/wap.js"></script>
+</body>
+</html>

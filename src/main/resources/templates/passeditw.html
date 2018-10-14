@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>修改密码-{?$_17mb_sitename?}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/pcstyle.css" />
+</head>
+<body>
+<header class="channelHeader">
+<a href="javascript:history.go(-1);" class="iconback"><img src="/images/header-back.gif" alt="返回"/></a>
+<span class="title">修改密码</span>
+<a href="/" class="iconhome"><img src="/images/header-backhome.gif" alt="首页"/></a>
+</header>
+
+<form action="passeditw.php" method="post" onsubmit="return checkPass();">
+<div class="edit editpwd">
+<p>新密码：<input type="password" class="newpwd" id="upass1" name="upass1" placeholder="请输入新密码"/></p>
+
+<p>重复新密码：<input type="password" class="newpwd2" id="upass2" name="upass2" placeholder="再次输入新密码"/></p>
+
+<p><input class="btn submit" type="submit" value="确定提交"/></p>
+</div>
+</form>
+<div style="margin:10px;">{?$tips?}</div>
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+{?include file="17mb/templates/foot.html"?}
+<script>
+	function checkPass(){
+		var upass1 = document.getElementById('upass1').value;
+		var upass2 = document.getElementById('upass2').value;
+		var re = new RegExp('/^(a-zA-Z0-9*)$/');
+		if(upass1 != upass2){
+			alert('两次输入的密码不一致！');
+			return false;
+		}
+		if(6 > upass1.length || upass1.length > 16){
+			alert('密码小于6位或者大于16位！');return false;
+		}
+		if(re.test(upass1)){
+			return true;
+		}
+		else{
+			alert('密码格式不正确，只能是数字和字母！');
+			return false;
+		}
+	}
+</script>
+</body>
+</html>
+
+
+

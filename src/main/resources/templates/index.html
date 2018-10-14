@@ -1,0 +1,165 @@
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>天下第九(鹅是老五)_爱好小说手机站</title>
+    <meta name="generator" content="爱好小说-手机站" />
+    <meta id="ctl00_metaKeywords" name="keywords" content="天下第九,天下第九鹅是老五"/>
+    <meta id="ctl00_metaDescription" name="description" content="天下第九，天下第九小说阅读。仙侠小说天下第九由作家鹅是老五创作，爱好小说提供天下第九首发最新章节及章节列表，天下第九最新更新尽在爱好小说" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="shenma-site-verification" content="abffcdf27a3d7b33a47314dcb1cebc56_1537110023" /> 
+    <link rel="stylesheet" href="/css/index.css" />
+    <style type="text/css">
+    .bannerLink .ajax_html, .list .ajax_html{height:auto; overflow:hidden; line-height:normal;}
+	.ajax_html{text-align:center; width:320px; margin:0 auto;}
+	.tabArea4 .ajax_html{width:25%; margin:0;}
+	.ajax_html img{padding:20px 0;}
+	.ajax_html b{display:none;}
+ </style>
+  <script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
+</head>
+<body>
+<header class="Index_Header">
+<span style="color:#000;font-size: 21px; float: left;margin-left: 25px;">爱好小说</span>
+<a href="/user/login" id="login" class="login" th:if="${session.user == null}">登录</a>
+<span id="username" class="username" th:if="${session.user != null}"><a href="/user.php"><b th:text="${session.user.uname}"></b><img src="/images/icon-login-uname.gif" /></a></span>
+</header>
+<div style="width: 100%;">
+</div>
+ 
+    <nav class="smallNav">
+		<a href="/xclass/0/1.html">分类</a>
+		<a href="/ph/week.html">排行</a>
+		<a href="/quanben.html">全本</a>
+                <a href="/newcase.html" style="width:32%">阅读记录</a>
+                <a href="/mybook.php">书架</a>
+	</nav>
+    <form name="articlesearch" class="searchForm" method="post" action="/s.php">  
+        <input type="text" name="keyword" class="searchForm_input searchForm_input2" value="" />
+        <input type="hidden" name="t" value="1" />
+        <input type="submit" class="searchForm_btn" value="搜索" />
+    </form>
+    <script>_17mb_top();</script>
+    <div class="tabArea tabArea4 hot">
+        <div class="tab-nav clearfix">
+            <h2><a class="tab-nav-cur">强推</a></h2>
+            <h2><a style="display: none;">热门</a></h2>
+            <h2><a style="display: none;">全本</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4 div">
+                <div class="slide-item index_hot1">
+                    <div class="hot_sale" th:each="item:${top}">
+                    <a th:href="'/' + ${item.sortid} + '_' + ${item.articleid} + '/' ">
+	                   <img class="lazy" style="width:89px;height:119px;" th:src="${pcurl} + '/files/article/image/' + ${item.articleid/1000} + '/' + ${item.articleid} + '/' + ${item.articleid} + 's.jpg'" onerror="this.src='images/nopic.gif'" />
+	                   <p class="title" th:text="${item.articlename}"></p>
+	                   <p class="author" th:text="'作者：'+ ${item.author}"></p>
+	                   <p class="review" th:text="'简介：'+ ${#strings.substring(item.intro, 0, 70)} + '...'"></p>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabArea tabArea4 bannerLink div">
+        <div class="tab-nav tab-nav4 clearfix">
+            <h2><a class="tab-nav-cur">玄幻小说</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4">
+                <div class="slide-item index_sort1">
+					<ul>
+                    <li th:each="item:${categorys[1]}">
+						<a th:href="'/' + ${item.sortid} + '_' + ${item.articleid} + '/'">
+						<p><span class="sort">[玄幻小说]</span><span class="title" th:text="${item.articlename}"></span></p>
+						</a>
+					</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabArea tabArea4 bannerLink div">
+        <div class="tab-nav tab-nav4 clearfix">
+            <h2 id="H2_1"><a class="tab-nav-cur">仙侠修真</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4">
+                <div class="slide-item index_sort1">
+					<ul>
+						<li th:each="item:${categorys[2]}">
+						<a th:href="'/' + ${item.sortid} + '_' + ${item.articleid} + '/'">
+						<p><span class="sort">[仙侠修真]</span><span class="title" th:text="${item.articlename}"></span></p>
+						</a>
+					</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>_17mb_middle();</script>
+    <div class="tabArea tabArea4 bannerLink div">
+        <div class="tab-nav tab-nav4 clearfix">
+            <h2 id="H2_2"><a class="tab-nav-cur">都市小说</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4">
+                <div class="slide-item index_sort1">
+					<ul>
+					<li th:each="item:${categorys[3]}">
+						<a th:href="'/' + ${item.sortid} + '_' + ${item.articleid} + '/'">
+						<p><span class="sort">[都市小说]</span><span class="title" th:text="${item.articlename}"></span></p>
+						</a>
+					</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabArea tabArea4 bannerLink div">
+        <div class="tab-nav tab-nav4 clearfix">
+            <h2 id="H2_3"><a class="tab-nav-cur">历史军事</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+            <h2><a style="display: none;">&nbsp;</a></h2>
+        </div>
+        <div class="slide">
+            <div class="slide-con4">
+                <div class="slide-item index_sort1">
+					<ul><li th:each="item:${categorys[4]}">
+						<a th:href="'/' + ${item.sortid} + '_' + ${item.articleid} + '/'">
+						<p><span class="sort">[历史军事]</span><span class="title" th:text="${item.articlename}"></span></p>
+						</a>
+					</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/common.js"></script>
+<script language="javascript" type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript" language="javascript">
+    $(function(){
+	    $("img.lazy").lazyload();
+    });
+</script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+<script>cambrian.render('head')</script>
+
+<script src="/js/wap.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.JieqiArticleBookcaseMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.JieqiArticleBookcase">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="caseid" jdbcType="INTEGER" property="caseid" />
+    <result column="articleid" jdbcType="INTEGER" property="articleid" />
+    <result column="articlename" jdbcType="VARCHAR" property="articlename" />
+    <result column="classid" jdbcType="SMALLINT" property="classid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="chapterid" jdbcType="INTEGER" property="chapterid" />
+    <result column="chaptername" jdbcType="VARCHAR" property="chaptername" />
+    <result column="chapterorder" jdbcType="SMALLINT" property="chapterorder" />
+    <result column="joindate" jdbcType="INTEGER" property="joindate" />
+    <result column="lastvisit" jdbcType="INTEGER" property="lastvisit" />
+    <result column="flag" jdbcType="BIT" property="flag" />
+  </resultMap>
+</mapper>

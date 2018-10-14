@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.JieqiArticleChapterMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.JieqiArticleChapter">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="chapterid" jdbcType="INTEGER" property="chapterid" />
+    <result column="siteid" jdbcType="SMALLINT" property="siteid" />
+    <result column="articleid" jdbcType="INTEGER" property="articleid" />
+    <result column="articlename" jdbcType="VARCHAR" property="articlename" />
+    <result column="volumeid" jdbcType="INTEGER" property="volumeid" />
+    <result column="posterid" jdbcType="INTEGER" property="posterid" />
+    <result column="poster" jdbcType="VARCHAR" property="poster" />
+    <result column="postdate" jdbcType="INTEGER" property="postdate" />
+    <result column="lastupdate" jdbcType="INTEGER" property="lastupdate" />
+    <result column="chaptername" jdbcType="VARCHAR" property="chaptername" />
+    <result column="chapterorder" jdbcType="SMALLINT" property="chapterorder" />
+    <result column="size" jdbcType="INTEGER" property="size" />
+    <result column="saleprice" jdbcType="INTEGER" property="saleprice" />
+    <result column="salenum" jdbcType="INTEGER" property="salenum" />
+    <result column="totalcost" jdbcType="INTEGER" property="totalcost" />
+    <result column="isvip" jdbcType="BIT" property="isvip" />
+    <result column="chaptertype" jdbcType="BIT" property="chaptertype" />
+    <result column="power" jdbcType="BIT" property="power" />
+    <result column="display" jdbcType="BIT" property="display" />
+    <result column="attachment" jdbcType="LONGVARCHAR" property="attachment" />
+  </resultMap>
+</mapper>

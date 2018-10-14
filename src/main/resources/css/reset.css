@@ -1,0 +1,61 @@
+﻿.searchForm{text-align:center; margin:10px; position:relative; clear:both;}
+.searchForm_input{border:1px #c0deea solid; font-size:14px; background:#f8fdff; padding:0 5px; width:100%; height:30px; line-height:30px; color:#cbcfd1;}
+.searchForm_btn{position:absolute; right:0; top:0; padding:0; height:30px; width:60px; color:#C0DEEA; padding-left:25px; line-height:30px; border:none; background:url(../images/icon-search.gif) no-repeat 15% 50%; background-size:18px; border-left:1px #C0DEEA solid;}
+*{margin:0; padding:0;/* background-attachment:fixed;*/}
+
+.synopsisArea .btn{line-height:28px; text-align:center; padding-top:8px;}
+.synopsisArea .btn{line-height:28px; height:40px; text-align:center; padding-top:8px;}
+.synopsisArea .btn a{margin:5px 3px; padding:5px 10px 5px 10px; background-size:20px; background:#eb2650; color:#fff; text-align:center; font-size:15px; border-radius:1px; box-shadow: 0 2px 1px #d32248 inset;}
+.synopsisArea .btn .btn_toBookShelf{background:#f0962a; box-shadow: 0 2px 1px #d88726 inset;}
+.synopsisArea .btn .btn_toMyBook{background:#658fbd; box-shadow: 0 2px 1px #5b80aa inset;}
+.synopsisArea .btn .btn_download{background:#6abd65; box-shadow: 0 2px 1px #6abd65 inset;}
+
+div,p{wrap-work: break-word; word-break: break-all; word-wrap:break-word; word-break:normal; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; box-sizing:border-box; -ms-box-sizing:border-box;}
+
+li{list-style:none;}
+em{font-style:normal;}
+body{color:#4c6978; font:14px 'microsoft yahei',Arial,Helvetica,sans-serif;}
+input,textarea{font:12px '宋体',Arial,Helvetica,sans-serif; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; -box-sizing:border-box;}
+img{border:none;}
+a{color:#4c6978; text-decoration:none; border:none; cursor:pointer;}
+a:hover{text-decoration:none;}
+.clearfix:after {clear: both; content: "."; display: block; height: 0; visibility: hidden;}
+.clearfix {display: inline-block;}
+*html .clearfix {height: 1%;}
+.clearfix {display: block;}
+h1,h2,h3,h4,h5,h6{font-size:16px; font-weight:normal;}
+
+footer{height:100px; padding:15px 10px; text-align:center; line-height:33px; position:relative; font-size:14px; background:#000}
+footer .version a{margin:0 10px; color:#c5d7df;}
+footer .version .sel{color:#fff; font-size:16px;}
+footer .link a{margin:0 10px; color:#accad6; font-size:14px;}
+footer img{position:absolute; right:25px; top:15px; cursor:pointer; width:31px;}
+
+footer .channel a{margin:0 5px; color:#fff;}
+/*.iconback{background:url(../images/icon-back.png); float:left;}
+.iconhome{background:url(../images/icon-backhome.gif); float:right;}
+.iconback, .iconhome{width:35px; height:45px; background-size:19px 19px; background-size:20px; background-repeat:no-repeat; background-position:50% 50%;}*/
+/*.channelHeader{height:45px; line-height:45px; text-align:center; font-size:16px; color:#fff; text-shadow:1px 1px #2680aa; background:url(../images/headerbg.jpg) 50% 0 no-repeat; background-size:136px 45px; background-color:#68aac2; border-top:1px #8ec5d9 solid;}*/
+/*.channelHeader{height:45px; line-height:45px; text-align:center; font-size:16px; color:#fff; text-shadow:1px 1px #2680aa; background-size:136px 45px; background-color:#68aac2; border-top:1px #8ec5d9 solid;}*/
+.channelHeader{height:45px; line-height:45px; text-align:center; font-size:16px; color:#000; text-shadow:0px 0px #000; background-size:136px
+    45px; border-bottom:1px #d6d6d6 solid;}
+.channelHeader2 .title{display:block; text-align:center; height:45px; overflow:hidden; margin-right:32px;}
+/*.channelHeader2 .iconhome{margin-top:-45px;}*/
+.recommend .label, .tabArea .label{padding:0 5px; width:320px; margin:0 auto; margin-bottom:5px; margin-top:5px;}
+
+.showmore{height:40px; line-height:40px; text-align:center;}
+.showmore img{width:15px; height:15px; margin-left:5px; margin-bottom:-3px;}
+.hidearea{display:none;}
+
+/*1-14 update*/
+.channelHeader{overflow:hidden; padding:0;}
+.iconback{float:left;}
+.iconhome{float:right;}
+.iconback, .iconhome{margin-top:3px; font-size:12px; text-align:center; color:#fff; line-height:40px; width:40px; height:40px;}
+.channelHeader2 .iconhome{margin-top:-44px;}
+.iconback img, .iconhome img{width:40px; height:40px; font-size:12px; text-align:center; line-height:40px;}
+
+/*站长统计隐藏*/
+/*cnzz_stat_icon_1260332367{display:none;}*/
+
+

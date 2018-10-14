@@ -1,0 +1,126 @@
+﻿.login_box{ padding:10px;}
+.login_name {
+    background: none repeat scroll 0 0 #F8FDFF;
+    border: 1px solid #C0DEEA;
+    color: #CBCFD1;
+    font-size: 14px;
+    height: 40px;
+  
+    width:100%;
+	margin-bottom:10px;
+}
+.login_name .name{ background:none; border:0; color: #CBCFD1;
+    font-size: 14px;
+    height:38px;
+   
+	 width: 86%;}
+.person_bg{ background: url(../images/name.png) no-repeat center; display:block; float:left; width:40px; height:40px; background-size:50% 50%;}
+.psw_bg{ background: url(../images/psw.png) no-repeat center; display:block; float:left; width:40px; height:40px; background-size:50% 50%; }
+.mobile_bg{ background: url(../images/moblie_bg.png) no-repeat center; display:block; float:left; width:40px; height:40px; background-size:50% 50%; }
+
+.login_in{ display:block;margin:10px 0; background:#000; height:40px; line-height:40px; text-align:center; border:0; color:#fff; width:100%; border-radius:3px; font-size:16px; font-family: "hiragino Sans GB W3";}
+.text_login a{ color:#373738; float:left; width:50%;}
+.text_login a.fr{ text-align:right; color:#eb5758;}
+.text_login{ padding-bottom:10px; font-size:12px; overflow:hidden;}
+.login_qs{overflow:hidden; height:100%; }
+.login_qs p{ font-size:14px; color:#011921; padding:10px 0}
+
+.login_qs a{ font-size:12px; float:left; width:50%;line-height:24px; color:#011921;}
+.login_qs .sina{ float:left; background: url(../images/sina.png) no-repeat center; background-size:100% 100%; display:block; width:30px; height:24px; }
+.login_qs .qq{float:left; background: url(../images/qq.png) no-repeat center; background-size:100% 100%; display:block; width:30px; height:24px; }
+
+.tip_box {
+    border: 1px solid #C0DEEA;
+    border-radius: 5px;
+    color: #7D7B7B;
+    font-size: 12px;
+    line-height: 25px;
+    margin: 30px 0px 10px 0px;
+    padding: 10px;
+    position: relative;
+}
+.tip_box h2 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #60A1BB;
+    font-size: 16px;
+    padding: 0 5px;
+    position: absolute;
+    top: -16px;
+}
+.tab-nav {
+    height: 40px;
+    overflow: hidden;
+}.tabArea4 .tab-nav h2 {
+    width: 25%;
+}
+.tab-nav h2 {
+    background: none repeat scroll 0 0 #68AAC2;
+    cursor: pointer;
+    float: left;
+    font-size: 16px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width:50%;position:relative;
+}
+.tab-nav h2 .tab-nav-cur {
+    border-bottom: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    padding-bottom: 5px;
+}
+.tab-nav h2 a {
+    color: #D2E4EB;
+    text-shadow: 1px 1px #3C84A6;
+}
+
+/*.register_in{ margin-left:20%;}*/
+.text_register { text-align:center; padding:0; color:#373738; font-size:12px;}
+.text_register a{ color:#68aac2;}
+.text_register a.jion{ color:#ce5200;}
+.text_font{ font-size:14px; line-height:25px; text-align:left; padding-top:20px;}
+
+.text_font span{ font-size:12px; color:#7d8f96;}
+.login_tip{ color:#373738; line-height:25px; padding-bottom:10px;}
+.login_tip span{ color:#68aac2;}
+.messege{ line-height:30px; font-size:16px; color:#373738; padding-bottom:10px;}
+.messege span{ color:#68aac2}
+.pre {
+    color: #444444;
+    font-size: 14px;
+    line-height: 29px;
+}
+.tips_text { color:#fe5c54; padding-bottom:10px; line-height:20px;display:none;}
+.kefu{ padding-top:20px;}
+
+.number_moble{ padding:10px; overflow:hidden; line-height:40px; font-size:16px;}
+.number_moble .login_in{ float:right; width:40%; margin:0;}
+
+.modifiy p{ margin-bottom:10px;}
+.modifiy p span{ width:30%; text-align:right; float:left; line-height:40px;}
+.modifiy p input {
+    background: none repeat scroll 0 0 #F8FDFF;
+    border: 1px solid #C0DEEA;
+    color: #68AAC2;
+    font-size: 14px;
+    height: 40px;
+    line-height: 14px;
+    padding:0 8px;
+    width:70%;
+}
+.moblie_input{background: none repeat scroll 0 0 #F8FDFF;
+    border: 1px solid #C0DEEA;
+    color: #CBCFD1;
+    font-size: 14px;
+    height: 40px;
+	padding:0 10px;
+    width:100%;
+	margin-bottom:10px;}
+	.synopsisAd {
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom:10px;
+}
+.newArea_codenum,.psw_moblie{ display:none;}
+
+
+.song{ position:absolute;right:24%; display:block; background:#fe5c54; color:#fff; border-radius:30px; width:20px; height:20px; line-height:20px; font-size:14px;}

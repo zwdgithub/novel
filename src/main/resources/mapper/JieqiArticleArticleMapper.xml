@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.JieqiArticleArticleMapper">
+	<resultMap id="BaseResultMap" type="com.company.project.model.JieqiArticleArticle">
+		<!-- WARNING - @mbg.generated -->
+		<id column="articleid" jdbcType="INTEGER" property="articleid" />
+		<result column="siteid" jdbcType="SMALLINT" property="siteid" />
+		<result column="postdate" jdbcType="INTEGER" property="postdate" />
+		<result column="lastupdate" jdbcType="INTEGER" property="lastupdate" />
+		<result column="articlename" jdbcType="VARCHAR" property="articlename" />
+		<result column="keywords" jdbcType="VARCHAR" property="keywords" />
+		<result column="initial" jdbcType="CHAR" property="initial" />
+		<result column="authorid" jdbcType="INTEGER" property="authorid" />
+		<result column="author" jdbcType="VARCHAR" property="author" />
+		<result column="posterid" jdbcType="INTEGER" property="posterid" />
+		<result column="poster" jdbcType="VARCHAR" property="poster" />
+		<result column="agentid" jdbcType="INTEGER" property="agentid" />
+		<result column="agent" jdbcType="VARCHAR" property="agent" />
+		<result column="sortid" jdbcType="SMALLINT" property="sortid" />
+		<result column="typeid" jdbcType="SMALLINT" property="typeid" />
+		<result column="lastvolumeid" jdbcType="INTEGER" property="lastvolumeid" />
+		<result column="lastvolume" jdbcType="VARCHAR" property="lastvolume" />
+		<result column="lastchapterid" jdbcType="INTEGER" property="lastchapterid" />
+		<result column="lastchapter" jdbcType="VARCHAR" property="lastchapter" />
+		<result column="chapters" jdbcType="SMALLINT" property="chapters" />
+		<result column="size" jdbcType="INTEGER" property="size" />
+		<result column="lastvisit" jdbcType="INTEGER" property="lastvisit" />
+		<result column="dayvisit" jdbcType="INTEGER" property="dayvisit" />
+		<result column="weekvisit" jdbcType="INTEGER" property="weekvisit" />
+		<result column="monthvisit" jdbcType="INTEGER" property="monthvisit" />
+		<result column="allvisit" jdbcType="INTEGER" property="allvisit" />
+		<result column="lastvote" jdbcType="INTEGER" property="lastvote" />
+		<result column="dayvote" jdbcType="INTEGER" property="dayvote" />
+		<result column="weekvote" jdbcType="INTEGER" property="weekvote" />
+		<result column="monthvote" jdbcType="INTEGER" property="monthvote" />
+		<result column="allvote" jdbcType="INTEGER" property="allvote" />
+		<result column="vipvotetime" jdbcType="INTEGER" property="vipvotetime" />
+		<result column="vipvotenow" jdbcType="INTEGER" property="vipvotenow" />
+		<result column="vipvotepreview" jdbcType="INTEGER" property="vipvotepreview" />
+		<result column="goodnum" jdbcType="INTEGER" property="goodnum" />
+		<result column="badnum" jdbcType="INTEGER" property="badnum" />
+		<result column="toptime" jdbcType="INTEGER" property="toptime" />
+		<result column="saleprice" jdbcType="INTEGER" property="saleprice" />
+		<result column="salenum" jdbcType="INTEGER" property="salenum" />
+		<result column="totalcost" jdbcType="INTEGER" property="totalcost" />
+		<result column="articletype" jdbcType="BIT" property="articletype" />
+		<result column="permission" jdbcType="BIT" property="permission" />
+		<result column="firstflag" jdbcType="BIT" property="firstflag" />
+		<result column="fullflag" jdbcType="BIT" property="fullflag" />
+		<result column="imgflag" jdbcType="BIT" property="imgflag" />
+		<result column="power" jdbcType="BIT" property="power" />
+		<result column="display" jdbcType="BIT" property="display" />
+		<result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+		<result column="notice" jdbcType="LONGVARCHAR" property="notice" />
+		<result column="setting" jdbcType="LONGVARCHAR" property="setting" />
+	</resultMap>
+
+	<select id="TopList" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article WHERE articleid IN (35073)
+	</select>
+
+
+	<select id="CategoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article WHERE sortid = #{0} ORDER BY allvisit DESC limit 5
+	</select>
+</mapper>

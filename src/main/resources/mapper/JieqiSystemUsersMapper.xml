@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.JieqiSystemUsersMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.JieqiSystemUsers">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="siteid" jdbcType="SMALLINT" property="siteid" />
+    <result column="uname" jdbcType="VARCHAR" property="uname" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pass" jdbcType="VARCHAR" property="pass" />
+    <result column="groupid" jdbcType="TINYINT" property="groupid" />
+    <result column="regdate" jdbcType="INTEGER" property="regdate" />
+    <result column="initial" jdbcType="CHAR" property="initial" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="avatar" jdbcType="INTEGER" property="avatar" />
+    <result column="workid" jdbcType="TINYINT" property="workid" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="icq" jdbcType="VARCHAR" property="icq" />
+    <result column="msn" jdbcType="VARCHAR" property="msn" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="lastlogin" jdbcType="INTEGER" property="lastlogin" />
+    <result column="showsign" jdbcType="BIT" property="showsign" />
+    <result column="viewemail" jdbcType="BIT" property="viewemail" />
+    <result column="notifymode" jdbcType="BIT" property="notifymode" />
+    <result column="adminemail" jdbcType="BIT" property="adminemail" />
+    <result column="monthscore" jdbcType="INTEGER" property="monthscore" />
+    <result column="weekscore" jdbcType="INTEGER" property="weekscore" />
+    <result column="dayscore" jdbcType="INTEGER" property="dayscore" />
+    <result column="lastscore" jdbcType="INTEGER" property="lastscore" />
+    <result column="experience" jdbcType="INTEGER" property="experience" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="egold" jdbcType="INTEGER" property="egold" />
+    <result column="esilver" jdbcType="INTEGER" property="esilver" />
+    <result column="credit" jdbcType="INTEGER" property="credit" />
+    <result column="goodnum" jdbcType="INTEGER" property="goodnum" />
+    <result column="badnum" jdbcType="INTEGER" property="badnum" />
+    <result column="isvip" jdbcType="BIT" property="isvip" />
+    <result column="overtime" jdbcType="INTEGER" property="overtime" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="sign" jdbcType="LONGVARCHAR" property="sign" />
+    <result column="intro" jdbcType="LONGVARCHAR" property="intro" />
+    <result column="setting" jdbcType="LONGVARCHAR" property="setting" />
+    <result column="badges" jdbcType="LONGVARCHAR" property="badges" />
+  </resultMap>
+</mapper>

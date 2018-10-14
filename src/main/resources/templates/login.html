@@ -1,0 +1,65 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>会员登录-{?$_17mb_sitename?}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+</head>
+<body style="background-color:white;overflow-y:hidden;">
+<div class="bg"></div>
+<header class="channelHeader channelHeader2">
+	<a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a>
+    <span class="title">{?$_17mb_sitename?}会员登录</span>
+    <a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a>
+</header>
+
+<div class="login_box">
+	<form name="form_login" action="/login_go.php" method="post">
+		<div class="login_name"><span class="person_bg"></span>
+			<input type="text" class="name login_nm" name="username" value="用户名">
+		</div>
+		<p class="tips_text">请输入用户名</p>
+
+		<div class="login_name"><span class="psw_bg"></span>
+			<input type="text" class="name login_psw" name="password" value="你的账号密码">
+		</div>
+		<p class="tips_text">请输入密码</p>
+
+		<div class="submit_btn">
+			<label style="padding-bottom:5px; padding-top:5px; display:block;"><input type="checkbox" name="login_hold" value="1" checked="checked">30天内免登录</label>
+			<input type="button" class="login_bto login_in" value="登录" />
+		</div>
+	</form>
+	<p class="text_login"> 
+		<input type="button" class="login_bto login_in" onclick="javascript:location.href='/register.php'" value="免费注册" />
+	</p>
+	
+	<div class="tip_box">
+		<h2>温馨提示：</h2>
+		<p>
+         1、登录成功后，可使用永久书架，保存的书永不丢失；<br />
+         2、手机站与PC站共用一个帐号，可实现书架同步。
+		</p>
+	</div>
+
+</div>
+<script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/zepto.cookie.min.js"></script>
+<script language="javascript" type="text/javascript" src="/js/login.js"></script>
+ 
+{?include file="17mb/templates/foot.html"?}
+</body>
+</html>

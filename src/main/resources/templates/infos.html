@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>{?$articlename?},{?$author?},{?$articlename?}最新章节_{?$articlename?}在线阅读_{?$_17mb_sitename?}手机站</title>
+    <meta name="generator" content="{?$_17mb_sitename?}手机站" />
+    <meta id="ctl00_metaKeywords" name="keywords" content="{?$_17mb_sitename?}手机站,{?$articlename?}最新目录,{?$articlename?}最全目录,全本订阅,免费阅读,{?$author?}作品,{?$sortname?}"/>
+    <meta id="ctl00_metaDescription" name="description" content="{?$_17mb_sitename?}手机站唯一官方网站。{?$_17mb_sitename?}手机站提供玄幻、武侠、原创、网游、都市、言情、历史、军事、科幻、恐怖、官场、穿越、重生等小说，首发小说最新章节免费，精彩尽在{?$_17mb_sitename?}手机站。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/bookinfo.css" />
+    <script src="/js/wap.js"></script>
+</head>
+<body>
+    <div class="bg">
+    </div>
+    <header class="channelHeader channelHeader2">
+<a href="javascript:history.go(-1);" class="iconback"><img src="/images/header-back.gif" alt="返回"/></a>
+<span class="title">{?$articlename?}</span>
+<a href="/" class="iconhome"><img src="/images/header-backhome.gif" alt="首页"/></a>
+</header>
+    <p class="synopsisAd" style="color: red;"></p>
+    <div class="synopsisArea">
+        <div class="synopsisArea_detail">
+            <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" onerror="this.src='/images/defaultimg.png'" />
+            <a href="/{?$shortid?}_{?$articleid?}/">
+                <p class="author">作者：{?$author?}</p>
+            </a>
+            <p class="sort">
+                类别：{?$sortname?}</p>
+            <p class="">
+                状态：{?$fullflag?}</p>
+            <p class="">
+                更新：{?$lastupdate|date_format:"Y-m-d"?}</p>
+        </div>
+        <p class="btn">
+			<a href="/{?$shortid?}_{?$articleid?}/all.html">开始阅读</a><a href="javascript:addBookMarkByManual(0,{?$articleid?});" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架</a>	</p>
+    <script>_17mb_top()</script>
+        <p class="review">
+        	{?$intro?}
+        </p>
+    </div>
+    <div  class="recommend">
+        <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;更新：{?$lastupdate|date_format:"Y-m-d"?}</a></h2>
+	<div class="directoryArea">
+		{?section name=i loop=$chapter?}
+            <p><a href="/{?$shortid?}_{?$articleid?}/{?$chapter[i].chapterid?}.html">{?$chapter[i].chaptername?}</a></p>
+        {?/section?}
+	</div>
+ 	 <h2><a href="/{?$shortid?}_{?$articleid?}/all.html">查看完整目录</a></h2>
+    </div>
+	<form name="articlesearch" class="searchForm" method="post" action="">
+		<input type="text" id="remindContent"  placeholder="请输入要提醒的内容" value="" style="border: 1px #c0deea solid;
+			font-size: 14px;
+			background: #f8fdff;
+			padding: 0 5px;
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			color: #cbcfd1;">
+		<input type="button" class="searchForm_btn" style="
+		width: 30%;
+		background: none;
+		padding-left: 0px;
+		color: red;" value="提醒管理员更新出错" id="remind">
+	</form>
+    <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/common.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/index.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/lazyload.js"></script>
+  <script language="javascript" type="text/javascript">
+$(function(){
+    ReverseChapterList()
+	$("img.lazy").lazyload();
+});
+
+$('.nav a').click(function(){
+	$(this).addClass('sel');
+	$(this).siblings().removeClass('sel');
+	
+	$obj = $('.'+ $(this).attr('id'));
+	
+	$obj.siblings().hide();
+	$obj.show();
+	$('.bomtype').text($obj.data('type'));
+	$('.bomtypeclass').text($(this).attr('id'));
+});	
+
+$(function(){
+	$('.btn_to2014').click(function(){
+		$('.bom_synopsis').show();
+		$('.bg').show();
+	});
+	
+	$('.bomhide').click(function(){
+		$('.bombox').hide();
+		$('.bg').hide();	
+	});
+	$("#remind").click(function(){
+		$.ajax({
+			type:'post',
+			url:'/remind.php',
+			data:{aid:$('#remindContent').val()},
+			error: function(){alert("出错了，请稍候")},
+			success: function(data){
+						alert("问题提交成功，我们会尽快处理！");
+					}
+		});
+	})
+})
+    </script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+{?include file="foot.html"?}
+<script src="/click.php?aid={?$articleid?}"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>注册_{?$_17mb_sitename?}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/reset.css" />
+</head>
+<body style="background-color:white;overflow-y:hidden;">
+<div class="bg"></div>
+<header class="channelHeader channelHeader2">
+	<a href="javascript:history.go(-1);" class="iconback"><img src="/images/header-back.gif" alt="返回"/></a>
+    <span class="title">注册</span>
+    <a href="/" class="iconhome"><img src="/images/header-backhome.gif" alt="首页"/></a>
+</header>
+<div id="loginSucess" class="login_box">
+	<p class="login_tip">
+    {?$register_tips?}<br />
+    </p>
+<div class="submit_btn">
+{?if $register_status == '1'?}
+<a href="/" class="login_in register_in">继续登录前的操作</a>
+<a href="/user.php" class="login_in register_in">进入个人中心</a><br />
+{?else?}
+<a href="/register.php" class="login_in register_in">返回重试</a>
+{?/if?}
+</div>
+</div>
+{?include file="17mb/templates/foot.html"?}
+</body>
+</html>

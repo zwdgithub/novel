@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>全本小说_{?$_17mb_sitename?}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/css/sort.css" />
+    <script src="/js/wap.js"></script>
+</head>
+<body>
+     <header class="channelHeader">
+<a href="javascript:history.go(-1);" class="iconback"><img alt="返回" src="/images/back.png"></a>
+全本小说
+<a href="/" class="iconhome"><img alt="首页" src="/images/home.png"></a>
+</header>
+    
+    <nav class="sortChannel_nav">
+     <a href="/quanben.html"{?if $sortid == ''?} class="on"{?/if?}>全部</a>
+        
+        {?section name=i loop=$sort?}
+        	<a href="/quanben{?$sort[i].sortid?}.html"{?if $sort[i].sortid == $sortid?} class="on"{?/if?}>{?$sort[i].sortname?}</a>
+        {?/section?} 
+            
+</nav>
+    <div class="recommend">
+        <div id="main">
+                    {?section name=i loop=$articlerows?}
+                    <div class="hot_sale">
+                        <a href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/">
+                            <img class="lazy" data-original="{?$_17mb_pcurl?}/files/article/image/{?$articlerows[i].shortid?}/{?$articlerows[i].articleid?}/{?$articlerows[i].articleid?}s.jpg" src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'">
+                            <p class="title">
+                                {?$articlerows[i].articlename?}
+                            </p>
+                            <p class="author">
+                                作者：{?$articlerows[i].author?}</p>
+                        </a>
+                        <p class="review">
+                            <span class="longview"></span>简介：{?$articlerows[i].intro?}</p>
+                    </div>
+{?/section?}   
+        </div>
+                        <p class="page">
+							{?$jumppage?}
+                        </p>
+<br />
+                </div>
+    <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/sort.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/lazyload.js"></script>
+    <script type="text/javascript" language="javascript">
+    $(function(){
+	    $("img.lazy").lazyload();
+    });
+    </script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+{?include file="17mb/templates/foot.html"?}
+
+</body>
+</html>

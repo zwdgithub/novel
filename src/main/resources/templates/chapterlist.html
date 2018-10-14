@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
+    <title>{?$articlename?}章节目录_{?$_17mb_sitename?}</title>
+    <meta name="generator" content="{?$_17mb_sitename?}" />
+    <meta id="ctl00_metaKeywords" name="keywords" content="{?$articlename?}章节目录"/>
+    <meta id="ctl00_metaDescription" name="description" content="{?$articlename?}章节目录, 《{?$articlename?}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的作品，{?$_17mb_sitename?}免费提供{?$articlename?}最新清爽干净的文字章节在线阅读>
+。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+     <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+</head>
+<body>
+  <header id="top" class="channelHeader channelHeader2"><a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a>
+  <span class="title">{?$articlename?}</span><a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a></header>
+  
+<div id="chapterlist" class="directoryArea">
+<script>_17mb_top()</script>
+<p><a href="#bottom" style="color:Red;">↓直达页面底部</a></p>
+{?section name=i loop=$chapter?}
+    {?if $smarty.section.i.index>0 &&  $smarty.section.i.index % 5 == 0?}
+     <p><a href='/{?$shortid?}_{?$articleid?}/{?$chapter[i].chapterid?}.html'>{?$chapter[i].chaptername?}</a></p>
+    {?else?}
+    <p><a href='/{?$shortid?}_{?$articleid?}/{?$chapter[i].chapterid?}.html'>{?$chapter[i].chaptername?}</a></p>
+    {?/if?}
+{?/section?}
+</div>
+
+<p class="Readpage" id="bottom"></p><p class="note"></p>
+    <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/js/common.js"></script>
+<script>_17mb_bottom();_17mb_xuanfu();</script>
+{?include file="17mb/templates/foot.html"?}
+
+</body>
+<script src="/js/wap.js"></script>
+</html>

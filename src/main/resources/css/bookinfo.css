@@ -1,0 +1,28 @@
+﻿.synopsisAd{font-size:14px; line-height:30px; padding:0 10px; font-weight:bold;}
+.synopsisArea {font-size:14px; overflow:auto;}
+.synopsisArea .title{line-height:40px; text-align:center; background:#d4eaf2; height:40px; color:#375868; font-size:16px;}
+.synopsisArea_detail{position:relative; line-height:28px; padding:6px 0 6px 120px; height:145px;}
+.synopsisArea_detail img{position:absolute; left:10px; top:15px; border:1px #b4dae8 solid; width:90px; height:120px;}
+
+.synopsisArea .review{padding:10px; line-height:23px;}
+.synopsisArea .updateChapter, .synopsisArea .updateDate{padding:0 10px; line-height:35px; background:#f6fcff;}
+.synopsisArea .updateChapter{color:#d25151;}
+.synopsisArea .chapterCount{padding:0 10px; line-height:40px; text-align:center;}
+.synopsisArea .hidearea2, .synopsisArea .hidearea3, .review_hide{display:none;}
+.synopsisArea .showmore2, .synopsisArea .showmore3{float:right; font-size:14px; font-weight:bold;}
+.synopsisArea .showmore2 img, .synopsisArea .showmore3 img{width:13px; margin-bottom:-2px; margin-left:1px;}
+.bg{background:#000; opacity:0.5; height:100%; width:100%; position:fixed; z-index:10001; display:none;}
+.synopsisArea a .author, .synopsisArea a .sort{font-weight:bold;}
+.synopsisArea .btn .btn_to2014{background:url(../images/icon-2014.gif) no-repeat 26% 55%; background-size:20px; background-color:#68c26e; color:#fff; text-shadow:none; border-bottom:2px #2e963d solid;display:block; padding:0; height:30px; margin:0 10px;}
+.synopsisArea .btn .btn_to2014:hover{border-top:2px #2e963d solid;}
+.recommend{width:100%; clear:both;}
+.recommend h2{font-size:16px; height:40px; line-height:40px; padding:0 10px; background:#CCCCCC}
+.recommend h2 a{color:#fff}
+.recommend .more{float:right; margin-top:-40px;}
+.directoryArea p, .directoryLink, .directoryLink a{height:40px; line-height:40px; font-size:16px;}
+.directoryArea p{height:auto;}
+.directoryArea p{padding:0 10px;}
+.directoryArea .em{background:#f6fcff;}
+.directoryArea img{margin-left:8px;}
+
+
