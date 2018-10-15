@@ -20,6 +20,7 @@ import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.JieqiArticleArticle;
 import com.company.project.service.JieqiArticleArticleService;
+import com.company.project.utils.ConfigProperties;
 
 /**
  * Created by CodeGenerator on 2018/09/10.
@@ -65,6 +66,7 @@ public class JieqiArticleArticleController {
 		model.addAttribute("top", top);
 		model.addAttribute("pcurl", pcurl);
 		model.addAttribute("categorys", categorys);
+		System.out.println("----------" + ConfigProperties.TXT_PATH);
 		return "index";
 	}
 
