@@ -1,5 +1,6 @@
 package com.company.project.web;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -7,20 +8,16 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.company.project.core.Result;
-import com.company.project.core.ResultGenerator;
 import com.company.project.model.JieqiArticleArticle;
 import com.company.project.service.JieqiArticleArticleService;
-import com.company.project.utils.ConfigProperties;
+import com.company.project.service.JieqiArticleChapterService;
+import com.company.project.utils.Common;
 
 /**
  * Created by CodeGenerator on 2018/09/10.
@@ -30,32 +27,27 @@ import com.company.project.utils.ConfigProperties;
 public class JieqiArticleArticleController {
 	@Resource
 	private JieqiArticleArticleService service;
+	@Resource
+	private JieqiArticleChapterService chapterService;
 	@Value("${project.pcurl}")
 	private String pcurl;
 
-	@PostMapping("/add")
-	public Result add(JieqiArticleArticle jieqiArticleArticle) {
-		service.save(jieqiArticleArticle);
-		return ResultGenerator.genSuccessResult();
-	}
-
-	@PostMapping("/delete")
-	public Result delete(@RequestParam Integer id) {
-		service.deleteById(id);
-		return ResultGenerator.genSuccessResult();
-	}
-
-	@PostMapping("/update")
-	public Result update(JieqiArticleArticle jieqiArticleArticle) {
-		service.update(jieqiArticleArticle);
-		return ResultGenerator.genSuccessResult();
-	}
-
-	@PostMapping("/detail")
-	public Result detail(@RequestParam Integer id) {
-		JieqiArticleArticle jieqiArticleArticle = service.findById(id);
-		return ResultGenerator.genSuccessResult(jieqiArticleArticle);
-	}
+	/*
+	 * @PostMapping("/add") public Result add(JieqiArticleArticle
+	 * jieqiArticleArticle) { service.save(jieqiArticleArticle); return
+	 * ResultGenerator.genSuccessResult(); }
+	 * 
+	 * @PostMapping("/delete") public Result delete(@RequestParam Integer id) {
+	 * service.deleteById(id); return ResultGenerator.genSuccessResult(); }
+	 * 
+	 * @PostMapping("/update") public Result update(JieqiArticleArticle
+	 * jieqiArticleArticle) { service.update(jieqiArticleArticle); return
+	 * ResultGenerator.genSuccessResult(); }
+	 * 
+	 * @PostMapping("/detail") public Result detail(@RequestParam Integer id) {
+	 * JieqiArticleArticle jieqiArticleArticle = service.findById(id); return
+	 * ResultGenerator.genSuccessResult(jieqiArticleArticle); }
+	 */
 
 	@RequestMapping("/index")
 	public String list(HttpServletRequest request, Model model) {
@@ -66,15 +58,27 @@ public class JieqiArticleArticleController {
 		model.addAttribute("top", top);
 		model.addAttribute("pcurl", pcurl);
 		model.addAttribute("categorys", categorys);
-		System.out.println("----------" + ConfigProperties.TXT_PATH);
 		return "index";
 	}
 
 	@RequestMapping("/info/{shortid}_{articleid}/")
-	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid) {
+	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid)
+			throws IOException {
 		JieqiArticleArticle article = service.findById(articleid);
+		List<Map<String, String>> chapterList = Common.chpaterList(articleid, 20, 1);
+		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		return "info";
+	}
+
+	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}")
+	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
+			@PathVariable("chapterid") Integer chapterid) throws IOException {
+		String content = Common.chapterContent(articleid, chapterid);
+		content = content.replaceAll("\\r\\n\\r\\n", "<br />");
+		content = content.replaceAll("\\r\\n", "<br />");
+		model.addAttribute("content", content);
+		return "chapter";
 	}
 
 }

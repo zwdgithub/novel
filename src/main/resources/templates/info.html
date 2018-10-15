@@ -69,16 +69,13 @@
     <p class="synopsisAd" style="color: red;"></p>
     <div class="synopsisArea">
         <div class="synopsisArea_detail">
-            <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" onerror="this.src='/images/defaultimg.png'" />
+            <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" />
             <a href="/{?$shortid?}_{?$articleid?}/">
-                <p class="author">作者：{?$author?}</p>
+                <p class="author" th:text="'作者：' + ${article.author}"></p>
             </a>
-            <p class="sort">
-                类别：{?$sortname?}</p>
-            <p class="">
-                状态：{?$fullflag?}</p>
-            <p class="">
-                更新：{?$lastupdate|date_format:'Y-m-d H:i:s'?}</p>
+            <p class="sort" th:text="'类别：' + ${article.sortid}"></p>
+            <p class="" th:text="'状态：' + ${article.fullflag}"></p>
+            <p class="" th:text="'更新：' + ${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}"></p>
         </div>
         <p class="btn">
 			<a href="/{?$shortid?}_{?$articleid?}/all.html">完整目录</a><a href="javascript:addBookMarkByManual(0,{?$articleid?});" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架{?$adFlags?}</a></p>
@@ -88,11 +85,9 @@
         </p>
     </div>
     <div  class="recommend">
-        <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;更新：{?$lastupdate|date_format:"Y-m-d"?}</a> &nbsp;&nbsp;&nbsp; <a href="#remind" style="color:#F00;text-shadow:none">更新报错</a></h2>
+        <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;</a> &nbsp;&nbsp;&nbsp; <a href="#remind" style="color:#F00;text-shadow:none">更新报错</a></h2>
 	<div class="directoryArea">
-		{?section name=i loop=$chapter?}
-            <p><a href="/{?$shortid?}_{?$articleid?}/{?$chapter[i].chapterid?}.html">{?$chapter[i].chaptername?}</a></p>
-        {?/section?}
+		<p th:each="item:${chapterList}"><a th:href="'/' + ${article.articleid / 1000} + '_' + ${article.articleid} + '/' + ${item.chapterId} + '.html'" th:text="${item.chapterName}"></a></p>
 	</div>
  	 <h2><a href="/{?$shortid?}_{?$articleid?}/all.html">查看完整目录</a></h2>
     </div>
@@ -118,7 +113,7 @@
   <script language="javascript" type="text/javascript">
 $(function(){
     //ReverseChapterList()
-	$("img.lazy").lazyload();
+	//$("img.lazy").lazyload();
 });
 
 $('.nav a').click(function(){
