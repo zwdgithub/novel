@@ -27,7 +27,7 @@ public class JieqiArticleChapterServiceImpl extends AbstractService<JieqiArticle
 	public String chpater(String id) throws IOException {
 		String fileName = "";
 		String content = FileUtils.readFileToString(new File(fileName), "GBK");
-		
+
 		return content;
 	}
 
