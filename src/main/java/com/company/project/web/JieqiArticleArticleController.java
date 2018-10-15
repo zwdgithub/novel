@@ -1,6 +1,7 @@
 package com.company.project.web;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -61,11 +62,11 @@ public class JieqiArticleArticleController {
 		return "index";
 	}
 
-	@RequestMapping("/info/{shortid}_{articleid}/")
+	@RequestMapping("/info/{shortid}_{articleid}")
 	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid)
 			throws IOException {
 		JieqiArticleArticle article = service.findById(articleid);
-		List<Map<String, String>> chapterList = Common.chpaterList(articleid, 20, 1);
+		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false);
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		return "info";

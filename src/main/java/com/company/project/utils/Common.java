@@ -3,7 +3,9 @@ package com.company.project.utils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,45 +26,31 @@ public class Common {
 		return document;
 	}
 
-	public static List<Map<String, String>> parseChapterList(String content, Integer length, Integer start) {
+	public static Document opfDocumnet(String content) {
 		content = content.replaceAll("<dc:", "<").replaceAll("</dc:", "</");
-		Document document = Common.load(content);
+		return Common.load(content);
+	}
+
+	public static LinkedHashMap<String, String> parseChapterList(String content, Integer length, Boolean start) {
+		Document document = opfDocumnet(content);
+		LinkedHashMap<String, String> map = new LinkedHashMap<>();
 		List<Node> nodes = document.selectNodes("/package/manifest/item");
-		List<Map<String, String>> list = new ArrayList<>();
-		if (start == 0) {
-			for (int i = 0; i < nodes.size(); i++) {
-				Node node = nodes.get(i);
-				String contentType = node.selectNodes("@content-type").get(0).getText();
-				if (contentType.equals("chapter")) {
-					Map<String, String> map = new HashMap<>();
-					String chapterName = node.selectNodes("@id").get(0).getText();
-					String chapterId = node.selectNodes("@href").get(0).getText().replaceAll(".txt", "");
-					map.put("chapterId", chapterId);
-					map.put("chapterName", chapterName);
-					list.add(map);
-					if (list.size() == length) {
-						break;
-					}
-				}
-			}
-		} else {
-			for (int i = nodes.size()-1; i > 0; i--) {
-				Node node = nodes.get(i);
-				String contentType = node.selectNodes("@content-type").get(0).getText();
-				if (contentType.equals("chapter")) {
-					Map<String, String> map = new HashMap<>();
-					String chapterName = node.selectNodes("@id").get(0).getText();
-					String chapterId = node.selectNodes("@href").get(0).getText().replaceAll(".txt", "");
-					map.put("chapterId", chapterId);
-					map.put("chapterName", chapterName);
-					list.add(map);
-					if (list.size() == length) {
-						break;
-					}
+		if (!start) {
+			Collections.reverse(nodes);
+		}
+		for (int i = 0; i < nodes.size(); i++) {
+			Node node = nodes.get(i);
+			String contentType = node.selectNodes("@content-type").get(0).getText();
+			if (contentType.equals("chapter")) {
+				String chapterName = node.selectNodes("@id").get(0).getText();
+				String chapterId = node.selectNodes("@href").get(0).getText().replaceAll(".txt", "");
+				map.put(chapterId, chapterName);
+				if (map.size() == length) {
+					break;
 				}
 			}
 		}
-		return list;
+		return map;
 	}
 
 	public static String articleTxtFileFullPath(Integer articleId, Integer chapterId) {
@@ -80,7 +68,7 @@ public class Common {
 		return FileUtils.readFileToString(new File(txtFile), "GBK");
 	}
 
-	public static List<Map<String, String>> chpaterList(Integer articleId, Integer chpaterNum, Integer start)
+	public static LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start)
 			throws IOException {
 		String opfFile = articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
