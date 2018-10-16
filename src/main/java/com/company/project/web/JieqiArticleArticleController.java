@@ -1,5 +1,6 @@
 package com.company.project.web;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -66,7 +68,9 @@ public class JieqiArticleArticleController {
 	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid)
 			throws IOException {
 		JieqiArticleArticle article = service.findById(articleid);
-		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false);
+		String opfFile = Common.articleOpfFileFullPath(articleid);
+		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
+		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false, Common.load(content));
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		return "info";

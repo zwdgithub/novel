@@ -28,8 +28,8 @@ public class Common {
 		return Common.load(content);
 	}
 
-	public static LinkedHashMap<String, String> parseChapterList(String content, Integer length, Boolean start) {
-		Document document = opfDocumnet(content);
+	public static LinkedHashMap<String, String> parseChapterList(Integer length, Boolean start, Document document) {
+		// Document document = opfDocumnet(content);
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();
 		List<Node> nodes = document.selectNodes("/package/manifest/item");
 		if (!start) {
@@ -50,6 +50,10 @@ public class Common {
 		return map;
 	}
 
+	public static void parseArticleInfo(Document document) {
+		List<Node> nodes = document.selectNodes("/package/metadata/dc-metadata");
+	}
+
 	public static String articleTxtFileFullPath(Integer articleId, Integer chapterId) {
 		Integer shortId = articleId / 1000;
 		return ConfigProperties.TXT_PATH + shortId + File.separator + articleId + File.separator + chapterId + ".txt";
@@ -65,10 +69,8 @@ public class Common {
 		return FileUtils.readFileToString(new File(txtFile), "GBK");
 	}
 
-	public static LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start)
-			throws IOException {
-		String opfFile = articleOpfFileFullPath(articleId);
-		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		return parseChapterList(content, chpaterNum, start);
+	public static LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
+			Document document) throws IOException {
+		return parseChapterList(chpaterNum, start, document);
 	}
 }

@@ -2,7 +2,10 @@ package com.conpany.project;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +43,32 @@ public class TestCase extends Tester {
 			}
 		}
 		System.out.println(list.size());
+	}
+
+	@Test
+	public void parseArticle() throws IOException, ParseException {
+		HashMap<String, Object> map = new HashMap<>();
+		String content = FileUtils.readFileToString(new File("d:/index.opf"), "GBK");
+		Document document = Common.opfDocumnet(content);
+		Node node = document.selectNodes("/package/metadata/dc-metadata").get(0);
+		String articleName = node.selectSingleNode("./Title").getStringValue();
+		String author = node.selectSingleNode("./Creator").getStringValue();
+		String intro = node.selectSingleNode("./Description").getStringValue();
+		String sortid = node.selectSingleNode("./Sortid").getStringValue();
+		String updateTime = node.selectSingleNode("./Date").getStringValue();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = dateFormat.parse(updateTime);
+		map.put("articlename", articleName);
+		map.put("author", author);
+		map.put("intro", intro);
+		map.put("sortid", sortid);
+		map.put("updateTime", dateFormat2.format(date));
+
+		for (Map.Entry<String, Object> entry : map.entrySet()) {
+			System.out.println(entry.getKey() + ":" + entry.getValue());
+		}
+
 	}
 
 }
