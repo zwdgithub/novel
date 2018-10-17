@@ -21,7 +21,7 @@ public class TestCase extends Tester {
 
 	@Test
 	public void test() throws IOException {
-		String content = FileUtils.readFileToString(new File("e:/index.opf"), "gbk");
+		String content = FileUtils.readFileToString(new File("C:\\Users\\uper\\Desktop\\index.opf"), "gbk");
 		content = content.replaceAll("<dc:", "<").replaceAll("</dc:", "</");
 		Document document = Common.load(content);
 		List<Node> nodes = document.selectNodes("/package/manifest/item");
@@ -41,6 +41,9 @@ public class TestCase extends Tester {
 					break;
 				}
 			}
+		}
+		for (Map<String, String> map : list) {
+			System.out.println(map.get("chapterId"));
 		}
 		System.out.println(list.size());
 	}

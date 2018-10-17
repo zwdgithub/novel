@@ -70,7 +70,7 @@ public class JieqiArticleArticleController {
 		JieqiArticleArticle article = service.findById(articleid);
 		String opfFile = Common.articleOpfFileFullPath(articleid);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false, Common.load(content));
+		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false, Common.opfDocumnet(content));
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		return "info";
