@@ -55,13 +55,13 @@
 		<result column="setting" jdbcType="LONGVARCHAR" property="setting" />
 	</resultMap>
 
-	<select id="TopList" resultType="com.company.project.model.JieqiArticleArticle">
+	<select id="topList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
 		jieqi_article_article WHERE articleid IN (35073)
 	</select>
 
 
-	<select id="CategoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
+	<select id="categoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
 		jieqi_article_article WHERE sortid = #{0} ORDER BY allvisit DESC limit 5
 	</select>

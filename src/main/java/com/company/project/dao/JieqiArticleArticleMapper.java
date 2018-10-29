@@ -7,7 +7,7 @@ import com.company.project.model.JieqiArticleArticle;
 
 public interface JieqiArticleArticleMapper extends Mapper<JieqiArticleArticle> {
 
-	public List<JieqiArticleArticle> TopList();
+	public List<JieqiArticleArticle> topList();
 
-	public List<JieqiArticleArticle> CategoryTopList(Integer sortId);
+	public List<JieqiArticleArticle> categoryTopList(Integer sortId);
 }

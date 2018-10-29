@@ -46,4 +46,8 @@
     <result column="setting" jdbcType="LONGVARCHAR" property="setting" />
     <result column="badges" jdbcType="LONGVARCHAR" property="badges" />
   </resultMap>
+  
+  <select id="findByAccountAndPassword" resultType="com.company.project.model.JieqiSystemUsers">
+		SELECT * FROM jieqi_system_users WHERE uname = #{0} AND pass = #{1}
+	</select>
 </mapper>
