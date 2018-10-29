@@ -1,14 +1,14 @@
 package com.company.project.service.impl;
 
-import com.company.project.dao.JieqiSystemUsersMapper;
-import com.company.project.model.JieqiSystemUsers;
-import com.company.project.service.JieqiSystemUsersService;
-import com.company.project.core.AbstractService;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-
+import com.company.project.core.AbstractService;
+import com.company.project.dao.JieqiSystemUsersMapper;
+import com.company.project.model.JieqiSystemUsers;
+import com.company.project.service.JieqiSystemUsersService;
 
 /**
  * Created by CodeGenerator on 2018/09/10.
@@ -16,7 +16,13 @@ import javax.annotation.Resource;
 @Service
 @Transactional
 public class JieqiSystemUsersServiceImpl extends AbstractService<JieqiSystemUsers> implements JieqiSystemUsersService {
-    @Resource
-    private JieqiSystemUsersMapper jieqiSystemUsersMapper;
+	@Resource
+	private JieqiSystemUsersMapper jieqiSystemUsersMapper;
+
+	@Override
+	public JieqiSystemUsers findByAccountAndPass(String account, String password) {
+		JieqiSystemUsers user = jieqiSystemUsersMapper.findByAccountAndPassword(account, password);
+		return user;
+	}
 
 }
