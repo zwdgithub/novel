@@ -76,7 +76,7 @@ public class JieqiArticleArticleController {
 		return "info";
 	}
 
-	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}/")
+	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}")
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
 			@PathVariable("chapterid") Integer chapterid) throws IOException {
 		String content = Common.chapterContent(articleid, chapterid);

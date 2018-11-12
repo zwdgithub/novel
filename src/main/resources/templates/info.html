@@ -27,24 +27,8 @@
     <meta property="og:novel:latest_chapter_url" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/{?$chapter[0].chapterid?}.html"/>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/bookinfo.css" />
-    {?if $adFlag == 1 ?}
-    <script type="text/javascript">
-       setInterval(function() {
-    	$('a').each(function(index, value) {
-        _0 = $(this).attr('style');
-        value_type = typeof(_0);
-        if (value_type == "string") {
-            //console.log(_0)
-            if (_0.indexOf('pos') > -1) {
-                $(this).remove()
-            }
-        }
-    })
-}, 1000)
-    </script>
-    {?/if?}
-  <script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
-  <script type="application/ld+json">
+  	<script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
+  	<script type="application/ld+json">
         {
             "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
             "@id": "https://m.2hxs.com/{?$shortid?}_{?$articleid?}/",
