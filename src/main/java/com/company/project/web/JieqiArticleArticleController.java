@@ -70,7 +70,8 @@ public class JieqiArticleArticleController {
 		JieqiArticleArticle article = service.findById(articleid);
 		String opfFile = Common.articleOpfFileFullPath(articleid);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false, Common.opfDocumnet(content));
+		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false,
+				Common.opfDocumnet(content));
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		return "info";
@@ -84,6 +85,16 @@ public class JieqiArticleArticleController {
 		content = content.replaceAll("\\r\\n", "<br />");
 		model.addAttribute("content", content);
 		return "chapter";
+	}
+
+	@RequestMapping("/category/{sortid}")
+	public String list(HttpServletRequest request, Model model, @PathVariable("sortid") Integer classNum) {
+		Integer limit = 10;
+		Integer pageNo = Integer.valueOf(request.getParameter("pageNo"));
+		List<JieqiArticleArticle> list = service.classList(classNum, pageNo - 1, limit);
+		model.addAttribute("list", list);
+		model.addAttribute("pcurl", pcurl);
+		return "sort";
 	}
 
 }

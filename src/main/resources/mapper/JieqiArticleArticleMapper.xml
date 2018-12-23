@@ -65,4 +65,13 @@
 		SELECT * FROM
 		jieqi_article_article WHERE sortid = #{0} ORDER BY allvisit DESC limit 5
 	</select>
+	
+	<select id="classList" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article 
+		<if test="arg0 != 0">
+		 WHERE sortid = #{arg0}
+		</if>
+		limit #{arg1}, #{arg2}
+	</select>
 </mapper>

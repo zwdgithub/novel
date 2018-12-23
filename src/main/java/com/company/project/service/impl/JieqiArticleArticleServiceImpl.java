@@ -43,4 +43,9 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		return map;
 	}
 
+	@Override
+	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit) {
+		return jieqiArticleArticleMapper.classList(sortid, start, limit);
+	}
+
 }

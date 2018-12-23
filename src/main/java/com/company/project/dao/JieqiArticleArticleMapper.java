@@ -10,4 +10,6 @@ public interface JieqiArticleArticleMapper extends Mapper<JieqiArticleArticle> {
 	public List<JieqiArticleArticle> topList();
 
 	public List<JieqiArticleArticle> categoryTopList(Integer sortId);
+	
+	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit);
 }

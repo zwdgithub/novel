@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
     <title>{?$sortname?}_{?$_17mb_sitename?}</title>
@@ -15,38 +15,30 @@
 </head>
 <body>
     <header class="channelHeader">
-<a href="javascript:history.go(-1);" class="iconback"><img alt="返回" src="/images/back.png"></a>
+<a href="javascript:history.go(-1);" class="iconback"><img alt="返回" src="/images/back.png"></img></a>
 分类
-<a href="/" class="iconhome"><img alt="首页" src="/images/home.png"></a>
+<a href="/" class="iconhome"><img alt="首页" src="/images/home.png"></img></a>
 </header>
 
     <nav class="sortChannel_nav">
-    <a {?if $sortid == 0?}class="on"{?/if?} href="/xclass/0/1.html">全部</a>{?section name=i loop=$sort?}<a {?if $sortid == $sort[i].sortid?}class="on"{?/if?} href="/xclass/{?$sort[i].sortid?}/1.html">{?$sort[i].sortname?}</a>{?/section?}
+    <!-- <a {?if $sortid == 0?}class="on"{?/if?} href="/xclass/0/1.html">全部</a>{?section name=i loop=$sort?}<a {?if $sortid == $sort[i].sortid?}class="on"{?/if?} href="/xclass/{?$sort[i].sortid?}/1.html">{?$sort[i].sortname?}</a>{?/section?}  -->
 </nav>
     <div class="recommend">
         <div id="main"> 
-            {?section name=i loop=$articlerows?}	
-                    <div class="hot_sale">
-                        <a href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/">
-                            <img class="lazy"  data-original="{?$_17mb_pcurl?}/files/article/image/{?$articlerows[i].shortid?}/{?$articlerows[i].articleid?}/{?$articlerows[i].articleid?}s.jpg"
-                                src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'">
-                            <p class="title">
-                                {?$articlerows[i].articlename?}
-                            </p>
-                            <p class="author">
-                                作者：{?$articlerows[i].author?}</p>
+        <div class="hot_sale" th:each="item:${list}">
+        <a th:href="'/' + ${item.articleid/1000} + '_' + ${item.articleid} + '/' ">
+                            <img class="lazy"  th:attr="data-original=${pcurl} + '/files/article/image/' + ${item.articleid/1000} + '/' + ${item.articleid} + '/' + ${item.articleid} + 's.jpg'"
+                                src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'"></img>
+                            <p class="title" th:text="${item.articlename}"></p>
+                            <p class="author" th:text="'作者：' + ${item.author}"></p>
                         </a>
-                        <p class="review">
-                            <span class="longview"></span>简介：{?$articlerows[i].intro?}各位书友要是觉得《{?$articlerows[i].articlename?}》还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！</p>
-                    </div>
-			{?/section?}                
-                
+                        <p class="review" th:utext="'简介：' + ${item.intro} + '各位书友要是觉得《' + ${item.articlename} + '还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！' "></p>
         </div>
-        
         <p class="page">
 		{?$jumppage?}
         </p>
 	<br />
+    </div>
     </div>
     <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
     <script language="javascript" type="text/javascript" src="/js/sort.js"></script>

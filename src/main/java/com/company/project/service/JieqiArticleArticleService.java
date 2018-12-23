@@ -15,4 +15,6 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 
 	public Map<Integer, List<JieqiArticleArticle>> CategoryTopList();
 
+	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit);
+
 }
