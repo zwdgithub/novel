@@ -35,23 +35,6 @@ public class JieqiArticleArticleController {
 	@Value("${project.pcurl}")
 	private String pcurl;
 
-	/*
-	 * @PostMapping("/add") public Result add(JieqiArticleArticle
-	 * jieqiArticleArticle) { service.save(jieqiArticleArticle); return
-	 * ResultGenerator.genSuccessResult(); }
-	 * 
-	 * @PostMapping("/delete") public Result delete(@RequestParam Integer id) {
-	 * service.deleteById(id); return ResultGenerator.genSuccessResult(); }
-	 * 
-	 * @PostMapping("/update") public Result update(JieqiArticleArticle
-	 * jieqiArticleArticle) { service.update(jieqiArticleArticle); return
-	 * ResultGenerator.genSuccessResult(); }
-	 * 
-	 * @PostMapping("/detail") public Result detail(@RequestParam Integer id) {
-	 * JieqiArticleArticle jieqiArticleArticle = service.findById(id); return
-	 * ResultGenerator.genSuccessResult(jieqiArticleArticle); }
-	 */
-
 	@RequestMapping("/index")
 	public String list(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

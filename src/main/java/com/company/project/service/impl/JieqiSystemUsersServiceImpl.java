@@ -2,6 +2,7 @@ package com.company.project.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +22,7 @@ public class JieqiSystemUsersServiceImpl extends AbstractService<JieqiSystemUser
 
 	@Override
 	public JieqiSystemUsers findByAccountAndPass(String account, String password) {
-		JieqiSystemUsers user = jieqiSystemUsersMapper.findByAccountAndPassword(account, password);
+		JieqiSystemUsers user = jieqiSystemUsersMapper.findByAccountAndPassword(account, DigestUtils.md5Hex(password));
 		return user;
 	}
 

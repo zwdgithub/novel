@@ -1,23 +1,24 @@
 package com.company.project.configurer;
 
-import com.github.pagehelper.PageHelper;
+import static com.company.project.core.ProjectConstant.MAPPER_INTERFACE_REFERENCE;
+import static com.company.project.core.ProjectConstant.MAPPER_PACKAGE;
+import static com.company.project.core.ProjectConstant.MODEL_PACKAGE;
+
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+
+import com.github.pagehelper.PageHelper;
+
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
-
-import javax.annotation.Resource;
-import javax.sql.DataSource;
-import java.util.Properties;
-
-import static com.company.project.core.ProjectConstant.*;
 
 /**
  * Mybatis & Mapper & PageHelper 配置

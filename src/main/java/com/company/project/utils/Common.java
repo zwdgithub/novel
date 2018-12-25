@@ -52,6 +52,7 @@ public class Common {
 
 	public static void parseArticleInfo(Document document) {
 		List<Node> nodes = document.selectNodes("/package/metadata/dc-metadata");
+		System.out.println(nodes);
 	}
 
 	public static String articleTxtFileFullPath(Integer articleId, Integer chapterId) {
