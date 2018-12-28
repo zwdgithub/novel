@@ -29,8 +29,9 @@ public class GuavaCacheConfig {
 			maximumSize = 1024;
 		}
 		if (duration <= 0) {
-			duration = 1800;
+			duration = 60;
 		}
+		System.out.println(String.format("duration:%s, maximumSize: %s", duration, maximumSize));
 		return CacheBuilder.newBuilder().maximumSize(maximumSize).expireAfterAccess(duration, TimeUnit.SECONDS);
 	}
 

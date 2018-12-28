@@ -53,7 +53,7 @@ public class JieqiArticleArticleController {
 		JieqiArticleArticle article = service.findById(articleid);
 		String opfFile = Common.articleOpfFileFullPath(articleid);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		LinkedHashMap<String, String> chapterList = Common.chpaterList(articleid, 20, false,
+		LinkedHashMap<String, String> chapterList = service.chpaterList(articleid, 20, false,
 				Common.opfDocumnet(content));
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
@@ -63,7 +63,7 @@ public class JieqiArticleArticleController {
 	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}")
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
 			@PathVariable("chapterid") Integer chapterid) throws IOException {
-		String content = Common.chapterContent(articleid, chapterid);
+		String content = service.chapterContent(articleid, chapterid);
 		content = content.replaceAll("\\r\\n\\r\\n", "<br />");
 		content = content.replaceAll("\\r\\n", "<br />");
 		model.addAttribute("content", content);

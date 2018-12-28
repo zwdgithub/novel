@@ -10,9 +10,17 @@ import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Component;
 
+import com.company.project.configurer.WebMvcConfigurer;
+
+@Component
 public class Common {
+
+	private static Logger logger = LoggerFactory.getLogger(WebMvcConfigurer.class);
 
 	public static Document load(String text) {
 		Document document = null;
@@ -31,6 +39,7 @@ public class Common {
 
 	public static LinkedHashMap<String, String> parseChapterList(Integer length, Boolean start, Document document) {
 		// Document document = opfDocumnet(content);
+		logger.info("parseChapterList >>>>>>>>>>>>>>>>>>>>>>>>>>> 执行");
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();
 		List<Node> nodes = document.selectNodes("/package/manifest/item");
 		if (!start) {
@@ -66,15 +75,4 @@ public class Common {
 		return ConfigProperties.TXT_PATH + shortId + File.separator + +articleId + File.separator + "index.opf";
 	}
 
-	@Cacheable(key = "#chapterId", value = "chapterContent")
-	public static String chapterContent(Integer articleId, Integer chapterId) throws IOException {
-		String txtFile = articleTxtFileFullPath(articleId, chapterId);
-		return FileUtils.readFileToString(new File(txtFile), "GBK");
-	}
-
-	@Cacheable(key = "#articleId", value = "chapterContent")
-	public static LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
-			Document document) throws IOException {
-		return parseChapterList(chpaterNum, start, document);
-	}
 }

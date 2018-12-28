@@ -27,19 +27,19 @@
 </header>
 
 <div class="login_box">
-	<form name="form_login" action="/login_go.php" method="post">
+	<form name="form_login" action="/users/login" method="post">
 		<div class="login_name"><span class="person_bg"></span>
-			<input type="text" class="name login_nm" name="username" value="用户名">
+			<input type="text" class="name login_nm" name="account" value="用户名" />
 		</div>
 		<p class="tips_text">请输入用户名</p>
 
 		<div class="login_name"><span class="psw_bg"></span>
-			<input type="text" class="name login_psw" name="password" value="你的账号密码">
+			<input type="password" class="name login_psw" name="password" value="你的账号密码" />
 		</div>
 		<p class="tips_text">请输入密码</p>
 
 		<div class="submit_btn">
-			<label style="padding-bottom:5px; padding-top:5px; display:block;"><input type="checkbox" name="login_hold" value="1" checked="checked">30天内免登录</label>
+			<label style="padding-bottom:5px; padding-top:5px; display:block;"><input type="checkbox" name="login_hold" value="1" checked="checked" />30天内免登录</label>
 			<input type="button" class="login_bto login_in" value="登录" />
 		</div>
 	</form>

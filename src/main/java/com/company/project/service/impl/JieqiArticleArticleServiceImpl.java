@@ -1,11 +1,16 @@
 package com.company.project.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.io.FileUtils;
+import org.dom4j.Document;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +19,7 @@ import com.company.project.core.AbstractService;
 import com.company.project.dao.JieqiArticleArticleMapper;
 import com.company.project.model.JieqiArticleArticle;
 import com.company.project.service.JieqiArticleArticleService;
+import com.company.project.utils.Common;
 
 /**
  * Created by CodeGenerator on 2018/09/10.
@@ -48,4 +54,15 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		return jieqiArticleArticleMapper.classList(sortid, start, limit);
 	}
 
+	@Cacheable(key = "#chapterId", value = "chapterContent")
+	public String chapterContent(Integer articleId, Integer chapterId) throws IOException {
+		String txtFile = Common.articleTxtFileFullPath(articleId, chapterId);
+		return FileUtils.readFileToString(new File(txtFile), "GBK");
+	}
+
+	@Cacheable(key = "#articleId", value = "chpaterList")
+	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
+			Document document) throws IOException {
+		return Common.parseChapterList(chpaterNum, start, document);
+	}
 }
