@@ -10,6 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
+import org.springframework.cache.annotation.Cacheable;
 
 public class Common {
 
@@ -65,11 +66,13 @@ public class Common {
 		return ConfigProperties.TXT_PATH + shortId + File.separator + +articleId + File.separator + "index.opf";
 	}
 
+	@Cacheable(key = "#chapterId", value = "chapterContent")
 	public static String chapterContent(Integer articleId, Integer chapterId) throws IOException {
 		String txtFile = articleTxtFileFullPath(articleId, chapterId);
 		return FileUtils.readFileToString(new File(txtFile), "GBK");
 	}
 
+	@Cacheable(key = "#articleId", value = "chapterContent")
 	public static LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
 			Document document) throws IOException {
 		return parseChapterList(chpaterNum, start, document);
