@@ -57,7 +57,10 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	@Cacheable(key = "#chapterId", value = "chapterContent")
 	public String chapterContent(Integer articleId, Integer chapterId) throws IOException {
 		String txtFile = Common.articleTxtFileFullPath(articleId, chapterId);
-		return FileUtils.readFileToString(new File(txtFile), "GBK");
+		String content = FileUtils.readFileToString(new File(txtFile), "GBK");
+		content = content.replaceAll("\\r\\n\\r\\n", "<br />");
+		content = content.replaceAll("\\r\\n", "<br />");
+		return content;
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterList")

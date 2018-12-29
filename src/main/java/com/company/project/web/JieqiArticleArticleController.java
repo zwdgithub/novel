@@ -64,8 +64,6 @@ public class JieqiArticleArticleController {
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
 			@PathVariable("chapterid") Integer chapterid) throws IOException {
 		String content = service.chapterContent(articleid, chapterid);
-		content = content.replaceAll("\\r\\n\\r\\n", "<br />");
-		content = content.replaceAll("\\r\\n", "<br />");
 		model.addAttribute("content", content);
 		return "chapter";
 	}

@@ -1,18 +1,15 @@
 package com.company.project.utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.company.project.configurer.WebMvcConfigurer;
@@ -60,10 +57,10 @@ public class Common {
 		return map;
 	}
 
-	public static void parseArticleInfo(Document document) {
-		List<Node> nodes = document.selectNodes("/package/metadata/dc-metadata");
-		System.out.println(nodes);
-	}
+	// public static void parseArticleInfo(Document document) {
+	// List<Node> nodes = document.selectNodes("/package/metadata/dc-metadata");
+	// System.out.println(nodes);
+	// }
 
 	public static String articleTxtFileFullPath(Integer articleId, Integer chapterId) {
 		Integer shortId = articleId / 1000;
