@@ -24,7 +24,7 @@
 <body>
 <header class="Index_Header">
 <span style="color:#000;font-size: 21px; float: left;margin-left: 25px;">爱好小说</span>
-<a href="/user/login" id="login" class="login" th:if="${session.user == null}">登录</a>
+<a href="/users/login" id="login" class="login" th:if="${session.user == null}">登录</a>
 <span id="username" class="username" th:if="${session.user != null}"><a href="/user.php"><b th:text="${session.user.uname}"></b><img src="/images/icon-login-uname.gif" /></a></span>
 </header>
 <div style="width: 100%;">
@@ -54,11 +54,11 @@
             <div class="slide-con4 div">
                 <div class="slide-item index_hot1">
                     <div class="hot_sale" th:each="item:${top}">
-                    <a th:href="'/' + ${item.articleid/1000} + '_' + ${item.articleid} + '/' ">
-	                   <img class="lazy" style="width:89px;height:119px;" th:src="${pcurl} + '/files/article/image/' + ${item.articleid/1000} + '/' + ${item.articleid} + '/' + ${item.articleid} + 's.jpg'" onerror="this.src='images/nopic.gif'" />
+                    <a th:href="|/${item.articleid/1000}_${item.articleid}/|">
+	                   <img class="lazy" style="width:89px;height:119px;" th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|" onerror="this.src='images/nopic.gif'" />
 	                   <p class="title" th:text="${item.articlename}"></p>
-	                   <p class="author" th:text="'作者：'+ ${item.author}"></p>
-	                   <p class="review" th:text="'简介：'+ ${#strings.substring(item.intro, 0, 70)} + '...'"></p>
+	                   <p class="author" th:text="|作者：${item.author}|"></p>
+	                   <p class="review" th:text="|简介：${#strings.substring(item.intro, 0, 70)}...|"></p>
                     </a>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="slide-item index_sort1">
 					<ul>
                     <li th:each="item:${categorys[1]}">
-						<a th:href="'/' + ${item.articleid / 1000} + '_' + ${item.articleid} + '/'">
+						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|">
 						<p><span class="sort">[玄幻小说]</span><span class="title" th:text="${item.articlename}"></span></p>
 						</a>
 					</li>
@@ -98,7 +98,7 @@
                 <div class="slide-item index_sort1">
 					<ul>
 						<li th:each="item:${categorys[2]}">
-						<a th:href="'/' + ${item.articleid / 1000} + '_' + ${item.articleid} + '/'">
+						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|">
 						<p><span class="sort">[仙侠修真]</span><span class="title" th:text="${item.articlename}"></span></p>
 						</a>
 					</li>
@@ -120,7 +120,7 @@
                 <div class="slide-item index_sort1">
 					<ul>
 					<li th:each="item:${categorys[3]}">
-						<a th:href="'/' + ${item.articleid / 1000} + '_' + ${item.articleid} + '/'">
+						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|">
 						<p><span class="sort">[都市小说]</span><span class="title" th:text="${item.articlename}"></span></p>
 						</a>
 					</li>
@@ -140,7 +140,7 @@
             <div class="slide-con4">
                 <div class="slide-item index_sort1">
 					<ul><li th:each="item:${categorys[4]}">
-						<a th:href="'/' + ${item.articleid / 1000} + '_' + ${item.articleid} + '/'">
+						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|'">
 						<p><span class="sort">[历史军事]</span><span class="title" th:text="${item.articlename}"></span></p>
 						</a>
 					</li>

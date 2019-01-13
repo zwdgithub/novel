@@ -2,6 +2,7 @@ package com.company.project.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,13 +51,12 @@ public class JieqiArticleArticleController {
 	@RequestMapping("/info/{shortid}_{articleid}")
 	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid)
 			throws IOException {
-		JieqiArticleArticle article = service.findById(articleid);
-		String opfFile = Common.articleOpfFileFullPath(articleid);
-		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		LinkedHashMap<String, String> chapterList = service.chpaterList(articleid, 20, false,
-				Common.opfDocumnet(content));
+		JieqiArticleArticle article = service.info(articleid);
+		LinkedHashMap<String, String> chapterList = service.chpaterList(articleid, 20, false);
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
+		Map<String, String> categorys = new HashMap<String, String>();
+		model.addAttribute("categorys", categorys);
 		return "info";
 	}
 

@@ -10,7 +10,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.io.FileUtils;
-import org.dom4j.Document;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,8 +63,15 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterList")
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
-			Document document) throws IOException {
-		return Common.parseChapterList(chpaterNum, start, document);
+	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start) throws IOException {
+		String opfFile = Common.articleOpfFileFullPath(articleId);
+		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
+		return Common.parseChapterList(chpaterNum, start,Common.opfDocumnet(content));
+	}
+
+	@Override
+	@Cacheable(key = "#articleId", value = "info")
+	public JieqiArticleArticle info(Integer articleId) {
+		return findById(articleId);
 	}
 }

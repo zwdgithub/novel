@@ -23,7 +23,8 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 
 	public String chapterContent(Integer articleId, Integer chapterId) throws IOException;
 
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start,
-			Document document) throws IOException;
+	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start) throws IOException;
+
+	public JieqiArticleArticle info(Integer articleId);
 
 }

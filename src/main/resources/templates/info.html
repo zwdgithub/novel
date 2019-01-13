@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title th:text="${article.articlename} + '最新章节(' + ${article.author} + ')_' + ${article.articlename} + '全文阅读_' + '爱好小说'"></title>
-    <meta name="generator" content="{?$_17mb_sitename?}" />
-    <meta id="ctl00_metaKeywords" name="keywords" content="{?$articlename?},{?$articlename?}最新章节"/>
-    <meta id="ctl00_metaDescription" name="description" content="{?$articlename?}最新章节由网友提供，《{?$articlename?}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的{?$sortname?}，{?$_17mb_sitename?}免费提供{?$articlename?}最新清爽干净的文字章节在线阅读。" />
+    <title th:text="|${article.articlename}最新章节(${article.author})_${article.articlename}全文阅读_爱好小说|"></title>
+    <meta id="ctl00_metaKeywords" name="keywords" th:content="|${article.articlename},${article.articlename}最新章节|"/>
+    <meta id="ctl00_metaDescription" name="description" th:content="|${article.articlename}最新章节由网友提供，《${article.articlename}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的${categorys[article.sortid]}，爱好小说免费提供${article.articlename}最新清爽干净的文字章节在线阅读。|" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -55,18 +54,16 @@
         <div class="synopsisArea_detail">
             <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" />
             <a href="/{?$shortid?}_{?$articleid?}/">
-                <p class="author" th:text="'作者：' + ${article.author}"></p>
+                <p class="author" th:text="|作者：${article.author}|"></p>
             </a>
-            <p class="sort" th:text="'类别：' + ${article.sortid}"></p>
-            <p class="" th:text="'状态：' + ${article.fullflag}"></p>
-            <p class="" th:text="'更新：' + ${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}"></p>
+            <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
+            <p class="" th:text="|状态：${article.fullflag}|"></p>
+            <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">
 			<a href="/{?$shortid?}_{?$articleid?}/all.html">完整目录</a><a href="javascript:addBookMarkByManual(0,{?$articleid?});" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架{?$adFlags?}</a></p>
     <!--<script>_17mb_top()</script> -->
-        <p class="review">
-        	{?$intro?}
-        </p>
+        <p class="review" th:text="${article.intro}"></p>
     </div>
     <div  class="recommend">
         <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;</a> &nbsp;&nbsp;&nbsp; <a href="#remind" style="color:#F00;text-shadow:none">更新报错</a></h2>
