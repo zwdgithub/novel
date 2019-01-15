@@ -54,19 +54,34 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	}
 
 	@Cacheable(key = "#chapterId", value = "chapterContent")
-	public String chapterContent(Integer articleId, Integer chapterId) throws IOException {
+	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId) throws IOException {
 		String txtFile = Common.articleTxtFileFullPath(articleId, chapterId);
 		String content = FileUtils.readFileToString(new File(txtFile), "GBK");
-		content = content.replaceAll("\\r\\n\\r\\n", "<br />");
-		content = content.replaceAll("\\r\\n", "<br />");
-		return content;
+		content = content.replaceAll("\\r\\n\\r\\n", "<br/><br/>");
+		content = content.replaceAll("\\r\\n", "<br/><br/>    ");
+		content = content.replaceAll("<br />", "<br/>");
+		content = content.replaceAll(" ", "&nbsp;");
+		LinkedHashMap<String, String> chapters = this.chpaterList(articleId, chapterId, true);
+		Map<String, Object> chapter = new HashMap<>();
+		chapter.put("content", content);
+		chapter.put("chapterId", chapterId);
+		chapter.put("chapterName", chapters.get(Integer.toString(chapterId)));
+		return chapter;
+	}
+
+	@Cacheable(key = "#articleId", value = "chpaterListTopN")
+	public LinkedHashMap<String, String> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException {
+		String opfFile = Common.articleOpfFileFullPath(articleId);
+		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
+		return Common.parseChapterList(chpaterNum, false, Common.opfDocumnet(content));
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterList")
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start) throws IOException {
+	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start)
+			throws IOException {
 		String opfFile = Common.articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
-		return Common.parseChapterList(chpaterNum, start,Common.opfDocumnet(content));
+		return Common.parseChapterList(1000000, start, Common.opfDocumnet(content));
 	}
 
 	@Override

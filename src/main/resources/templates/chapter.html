@@ -32,9 +32,10 @@
 
 </p>
 <script>_17mb_top()</script>
-<div id="chaptercontent" class="Readarea ReadAjax_content" th:utext="${content}">
-<p style="width:100%;text-alight:center;"><a href="javascript:addBookMarkByManual({?$chapterid?},{?$articleid?});" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
+<div id="chaptercontent" class="Readarea ReadAjax_content" th:utext="${chapter.content}">
+
 </div>
+<p style="width:100%;text-alight:center;"><a th:href="|javascript:addBookMarkByManual(${article.articleid},${chapter.chapterId});|" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
 <script language="javascript">getset()</script>
 <script language="javascript">getset1()</script>
 <p class="synopsisAd ReadAd ReadAd2"></p>
@@ -44,11 +45,15 @@
 <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
 <script language="javascript" type="text/javascript" src="/js/common.js"></script>
 <script language="javascript" type="text/javascript" src="/js/index.js"></script>
+<script th:inline="javascript">
+/*<![CDATA[*/
+    var message = [[${message}]];
+    var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', [[${article.articlename}]], [[${chapter.chapterName}]], [[${article.author}]]);
+/*]]>*/
+</script>
 
 <script type="text/javascript">
-var lastread=new LastRead();lastread.set('{?$articleid?}', '{?$chapterid?}', '{?$articlename?}', '{?$chaptername?}');
 </script>
-<script src="/js/chapter.js"></script>
 <script>_17mb_bottom();_17mb_xuanfu();</script>
 {?include file="foot.html"?}
 </body>

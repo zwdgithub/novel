@@ -49,7 +49,7 @@ public class JieqiArticleArticleController {
 	public String info(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid)
 			throws IOException {
 		JieqiArticleArticle article = service.info(articleid);
-		LinkedHashMap<String, String> chapterList = service.chpaterList(articleid, 20, false);
+		LinkedHashMap<String, String> chapterList = service.chpaterListTopN(articleid, 20);
 		model.addAttribute("chapterList", chapterList);
 		model.addAttribute("article", article);
 		Map<String, String> categorys = new HashMap<String, String>();
@@ -61,8 +61,8 @@ public class JieqiArticleArticleController {
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
 			@PathVariable("chapterid") Integer chapterid) throws IOException {
 		JieqiArticleArticle article = service.info(articleid);
-		String content = service.chapterContent(articleid, chapterid);
-		model.addAttribute("content", content);
+		Map<String, Object> chapter = service.chapterContent(articleid, chapterid);
+		model.addAttribute("chapter", chapter);
 		model.addAttribute("article", article);
 		return "chapter";
 	}

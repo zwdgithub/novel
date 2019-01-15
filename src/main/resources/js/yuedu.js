@@ -3,9 +3,9 @@ function LastRead(){
 	this.bookList="bookList"
 	}
 LastRead.prototype={	
-	set:function(bid,tid,title,texttitle){
+	set:function(bid,tid,title,texttitle,author){
 		if(!(bid&&tid&&title&&texttitle))return;
-		var v=bid+'#'+tid+'#'+title+'#'+texttitle;
+		var v=bid+'#'+tid+'#'+title+'#'+texttitle+'#'+author;
 		this.setItem(bid,v);
 		this.setBook(bid)		
 		},
@@ -140,19 +140,18 @@ function showbook(){
 			var articlename = books[i][2];
 			var lastchapter = books[i][3];
 			var lastchapterid = books[i][1];
+			var author = books[i][4];
 			var c = '';
 			if((k % 2) == 0){
 				c = 'hot_saleEm';
 			}
 			bookhtml+='<div class="hot_sale'+' '+c+'"><span class="num num'+k+'">'+k+'</span>';
             bookhtml+='<a href="/'+shortid+'_'+articleid+'/"><p class="title">'+articlename+'</p>';
-            bookhtml+='<p class="author">作者：<span id="'+articleid+'newcase_author"></span></p>';
-            bookhtml+='</a><p class="author"><span id="'+articleid+'newcase_fullflag"></span> | 最近更新：<span id="'+articleid+'newcase_lastchapter"></span></p>';
+            bookhtml+='<p class="author">作者：<span id="'+articleid+'newcase_author">'+author+'</span></p>';
             bookhtml+='<p class="author">上次阅读：<a style="color: Red;" href="/'+shortid+'_'+articleid+'/'+lastchapterid+'.html" target="_blank">'+lastchapter+'</a></p>';
             bookhtml+='<p class="author"><a href="javascript:removebook('+articleid+')"><font color="#ff0000">从书架删除</font></a></p>';
             bookhtml+='</div>';
 			k++;
-			artinfo(articleid)
 		}
 		showbook.innerHTML = bookhtml;
 	}

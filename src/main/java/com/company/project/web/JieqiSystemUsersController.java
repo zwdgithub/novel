@@ -1,15 +1,23 @@
 package com.company.project.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.company.project.core.Result;
+import com.company.project.core.ResultGenerator;
 import com.company.project.model.JieqiSystemUsers;
 import com.company.project.service.JieqiSystemUsersService;
 
@@ -56,5 +64,21 @@ public class JieqiSystemUsersController {
 			session.removeAttribute("user");
 		}
 		return "redirect:/";
+	}
+
+	@GetMapping("/read-record")
+	public String readRecord(HttpServletRequest request, Model model) {
+		return "newcase";
+	}
+
+	@PostMapping("/add-bookmark")
+	@ResponseBody
+	public Result<Map<String, Object>> addBookMark(HttpServletRequest request, @RequestParam("articleId")String articleId, 
+			@RequestParam("chapterId")String chapterId, Model model) {
+		System.out.println(articleId);
+		System.out.println(chapterId);
+		Map<String, Object> map = new HashMap<>();
+		map.put("success", true);
+		return ResultGenerator.genSuccessResult(map);
 	}
 }

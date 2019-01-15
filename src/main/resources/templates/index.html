@@ -34,7 +34,7 @@
 		<a href="/xclass/0/1.html">分类</a>
 		<a href="/ph/week.html">排行</a>
 		<a href="/quanben.html">全本</a>
-                <a href="/newcase.html" style="width:32%">阅读记录</a>
+                <a href="/users/read-record" style="width:32%">阅读记录</a>
                 <a href="/mybook.php">书架</a>
 	</nav>
     <form name="articlesearch" class="searchForm" method="post" action="/s.php">  
@@ -140,7 +140,7 @@
             <div class="slide-con4">
                 <div class="slide-item index_sort1">
 					<ul><li th:each="item:${categorys[4]}">
-						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|'">
+						<a th:href="|/${item.articleid / 1000}_${item.articleid}/|">
 						<p><span class="sort">[历史军事]</span><span class="title" th:text="${item.articlename}"></span></p>
 						</a>
 					</li>

@@ -27,6 +27,7 @@ function delCookie(name){
 }
 
 function isLogin(){
+	return true;
     if(getCookie("_17mb_username").length>0){
         return true;
     }
@@ -40,11 +41,10 @@ function addBookMarkByManual(chapterid,bookid){
 	    $.ajax({
 		    async:false,
 		    type:'POST',
-		    url:'/ajax.php',
-		    data:"ac=addbookmark&aid="+bookid+"&cid="+chapterid,
-		    //dataType:'json',
-		    success:function(rs) {
-		        if(rs.replace(/\s/g,'') == 'ok') {
+		    url:'/users/add-bookmark',
+		    data:{"articleId": bookid, "chapterId": chapterid},
+		    success:function(data) {
+		        if(data.data.success) {
 			        alert('添加成功');
 			    } else {
 				    alert("将小说添加到书架失败！请尝试登录！");
