@@ -75,8 +75,6 @@ public class JieqiSystemUsersController {
 	@ResponseBody
 	public Result<Map<String, Object>> addBookMark(HttpServletRequest request, @RequestParam("articleId")String articleId, 
 			@RequestParam("chapterId")String chapterId, Model model) {
-		System.out.println(articleId);
-		System.out.println(chapterId);
 		Map<String, Object> map = new HashMap<>();
 		map.put("success", true);
 		return ResultGenerator.genSuccessResult(map);
