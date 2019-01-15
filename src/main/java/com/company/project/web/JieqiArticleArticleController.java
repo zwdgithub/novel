@@ -1,6 +1,5 @@
 package com.company.project.web;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,7 +10,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.company.project.model.JieqiArticleArticle;
 import com.company.project.service.JieqiArticleArticleService;
 import com.company.project.service.JieqiArticleChapterService;
-import com.company.project.utils.Common;
 
 /**
  * Created by CodeGenerator on 2018/09/10.
@@ -63,8 +60,10 @@ public class JieqiArticleArticleController {
 	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}")
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
 			@PathVariable("chapterid") Integer chapterid) throws IOException {
+		JieqiArticleArticle article = service.info(articleid);
 		String content = service.chapterContent(articleid, chapterid);
 		model.addAttribute("content", content);
+		model.addAttribute("article", article);
 		return "chapter";
 	}
 
