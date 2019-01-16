@@ -1,16 +1,12 @@
-<!--<form name="articlesearch" class="searchForm" method="post" action="/s.php" style="">  
-    <input type="text" name="keyword" class="searchForm_input searchForm_input2" value="输入书名•作者"  />
-    <input type="hidden" name="t" value="1" />
-    <input type="submit" class="searchForm_btn" value="搜索" />
-</form>-->
-
-<p class="note">
-</p>
-<footer>
-    <a href="#top"><img src="/images/icon-backtop.gif" title="↑" alt="↑"/></a>
-    <p class="version channel">
-    <a href="/">首页</a>
-    <a href="/mybook.php" >我的书架</a>
-    <a href="/newcase.html" >阅读记录</a>
-    </p>
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
+<p class="note" th:fragment="footNote"></p>
+<footer th:fragment="foot">
+	<a href="#top"><img src="/images/icon-backtop.gif" title="↑"
+		alt="↑" /></a>
+	<p class="version channel">
+		<a href="/">首页</a> <a href="/users/mybook">我的书架</a> <a
+			href="/users/read-record">阅读记录</a>
+	</p>
 </footer>
+</html>

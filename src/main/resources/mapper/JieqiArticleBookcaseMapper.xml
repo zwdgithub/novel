@@ -25,4 +25,15 @@
 		WHERE userid = #{arg0}
 		AND articleid = #{arg1}
 	</select>
+	
+	<select id="userBookCase" resultType="com.company.project.model.JieqiArticleBookcase">
+		SELECT * FROM
+		jieqi_article_bookcase
+		WHERE userid = #{arg0}
+	</select>
+	
+	<delete id="delBookcase">
+		DELETE FROM jieqi_article_bookcase WHERE userid = #{arg0} AND articleid = #{arg1}
+	</delete>
+	
 </mapper>

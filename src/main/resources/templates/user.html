@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
     <title>个人中心-{?$_17mb_sitename?}</title>
@@ -24,12 +24,9 @@
 
 <div class="edit">
 <p class="info">
-用户名：<em>{?$_17mb_uname?}</em><br/>
-书架容量：<em>30</em>
+用户名：<em th:text="${session.user.uname}"></em><br/>
+我的书架:<a href="/users/mybook" class="login_in register_in">点击进入</a><br />
 </p>
-{?include file="17mb/templates/usertop.html"?}
 </div>
-
-{?include file="17mb/templates/foot.html"?}
 </body>
 </html>

@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
     <title>我的书架_{?$_17mb_sitename?}</title>
@@ -34,7 +34,7 @@ header a{margin:0;}
                         <a class="iconback" href="/"><img src="images/header-backhome.gif" alt="首页"/></a>
                     </h2>
                     <h2 style="width:90%">
-                        <a style="color:White;height:50px;line-height:50px;">我的书架(最多保存30本书，目前有书<span style="color:Red;">{?$num?}</span>本)</a>
+                        <a style="height:50px;line-height:50px;">我的书架</a>
                     </h2>
                 </div>
                  </div>
@@ -42,33 +42,19 @@ header a{margin:0;}
         <div class="tabArea  list rankingList rankingList_3">
             <div class="slide-con slide-con2">
                 <div class="slide-item list1">
-                {?if $17mb_tips?}<div class="bookcasetip">{?$17mb_tips?}</div>{?/if?}
-                {?section name=i loop=$articlerows?}    
-                            <div class="hot_sale">
+                            <div class="hot_sale" th:each="item:${list}">
                                 <span class="num num1">
-                                    {?$articlerows[i].kk?}
+                                    1
                                 </span>
-                                <a href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/">
-                                    <p class="title">
-                                        {?$articlerows[i].articlename?}
-                                    </p>
-                               
-                                    <p class="author">
-                                        作者：{?$articlerows[i].author?}</p>
+                                <a th:href="|/${item.articleid / 1000}_${item.articleid}/|">
+                                    <p class="title" th:text="${item.articlename}"></p>
                                 </a>
-                                    <p class="author">
-                                        {?$articlerows[i].fullflag?} | 最近更新：<a style="color: Red;" href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/{?$articlerows[i].lastchapterid?}.html" target="_blank">
-                                            {?$articlerows[i].lastchapter?}
-                                        </a></p>
-                               
-                                 <p class="author">
-                                    书签：{?if $articlerows[i].bookmarkid !=""?}<a href='/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/{?$articlerows[i].bookmarkid?}.html'>{?$articlerows[i].bookmark?}</a>{?else?}无书签{?/if?}
-                                </p>
+                                 <p class="author" th:if="${item.chapterid == 0}">书签：无书签</p>
+                                 <p class="author" th:if="${item.chapterid != 0}">书签：<a th:href='|/${item.articleid / 1000}_${item.articleid}/${item.chapterid}.html|' th:text="${item.chaptername}"></a></p>
                                 <p class="author">
-                                    <a href="/delbookcase.php?aid={?$articlerows[i].articleid?}"><font color="#ff0000">从书架删除</font></a>
+                                    <a th:href="|/users/del-bookcase?articleid=${item.articleid}|"><font color="#ff0000">从书架删除</font></a>
                                 </p>
                             </div>
-                {?/section?}                               
                 </div>
             </div>
         </div>

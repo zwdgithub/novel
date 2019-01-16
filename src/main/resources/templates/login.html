@@ -1,8 +1,5 @@
-
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
     <title>会员登录-{?$_17mb_sitename?}</title>
@@ -28,6 +25,7 @@
 
 <div class="login_box">
 	<form name="form_login" action="/users/login" method="post">
+		<div class="login_name" th:text="${msg}"></div>
 		<div class="login_name"><span class="person_bg"></span>
 			<input type="text" class="name login_nm" name="account" value="用户名" />
 		</div>

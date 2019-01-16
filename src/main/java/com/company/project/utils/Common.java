@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
@@ -13,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.company.project.configurer.WebMvcConfigurer;
+import com.company.project.model.JieqiSystemUsers;
 
 @Component
 public class Common {
@@ -72,4 +76,11 @@ public class Common {
 		return ConfigProperties.TXT_PATH + shortId + File.separator + +articleId + File.separator + "index.opf";
 	}
 
+	public static JieqiSystemUsers currentUser(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		// JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
+		JieqiSystemUsers user = new JieqiSystemUsers();
+		user.setUid(0);
+		return user;
+	}
 }
