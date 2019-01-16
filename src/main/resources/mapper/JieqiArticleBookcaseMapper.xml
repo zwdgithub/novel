@@ -18,4 +18,11 @@
     <result column="lastvisit" jdbcType="INTEGER" property="lastvisit" />
     <result column="flag" jdbcType="BIT" property="flag" />
   </resultMap>
+  
+  <select id="bookCaseByUseridAndArticleid" resultType="com.company.project.model.JieqiArticleBookcase">
+		SELECT * FROM
+		jieqi_article_bookcase
+		WHERE userid = #{arg0}
+		AND articleid = #{arg1}
+	</select>
 </mapper>

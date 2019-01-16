@@ -50,7 +50,7 @@ public class JieqiSystemUsersController {
 		JieqiSystemUsers user = jieqiSystemUsersService.findByAccountAndPass(account, password);
 		if (user != null) {
 			session.setAttribute("user", user);
-			return "forward:/article/index";
+			return "forward:/users/login";
 		}
 		model.addAttribute("msg", "用户名或密码错误");
 		return "login";
