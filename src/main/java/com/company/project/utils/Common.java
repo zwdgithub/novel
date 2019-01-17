@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -77,7 +76,7 @@ public class Common {
 	}
 
 	public static JieqiSystemUsers currentUser(HttpServletRequest request) {
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		// JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
 		JieqiSystemUsers user = new JieqiSystemUsers();
 		user.setUid(0);
