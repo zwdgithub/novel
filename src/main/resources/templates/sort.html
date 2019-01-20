@@ -21,21 +21,22 @@
 </header>
 
     <nav class="sortChannel_nav">
-    <!-- <a {?if $sortid == 0?}class="on"{?/if?} href="/xclass/0/1.html">全部</a>{?section name=i loop=$sort?}<a {?if $sortid == $sort[i].sortid?}class="on"{?/if?} href="/xclass/{?$sort[i].sortid?}/1.html">{?$sort[i].sortname?}</a>{?/section?}  -->
-</nav>
+        <a class="on" href="/xclass/0/1.html">全部</a><a  href="/xclass/1/1.html">玄幻小说</a><a  href="/xclass/2/1.html">仙侠小说</a><a  href="/xclass/3/1.html">都市小说</a><a  href="/xclass/4/1.html">军史小说</a><a  href="/xclass/5/1.html">网游小说</a><a  href="/xclass/6/1.html">科幻小说</a><a  href="/xclass/7/1.html">其他小说</a><a  href="/xclass/8/1.html">言情小说</a>
+	</nav>
     <div class="recommend">
         <div id="main"> 
         <div class="hot_sale" th:each="item:${list}">
-        <a th:href="'/' + ${item.articleid/1000} + '_' + ${item.articleid} + '/' ">
-                            <img class="lazy"  th:attr="data-original=${pcurl} + '/files/article/image/' + ${item.articleid/1000} + '/' + ${item.articleid} + '/' + ${item.articleid} + 's.jpg'"
+        <a th:href="|/${item.articleid/1000}_${item.articleid}/|">
+                            <img class="lazy"  th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|"
                                 src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'"></img>
                             <p class="title" th:text="${item.articlename}"></p>
-                            <p class="author" th:text="'作者：' + ${item.author}"></p>
+                            <p class="author" th:text="|作者：${item.author}|"></p>
                         </a>
-                        <p class="review" th:utext="'简介：' + ${item.intro} + '各位书友要是觉得《' + ${item.articlename} + '还不错的话请不要忘记向您QQ群和微博里的朋友推荐哦！' "></p>
+                        <p class="review" th:utext="|简介：${item.intro}|"></p>
         </div>
         <p class="page">
-		{?$jumppage?}
+        <a th:if="${pageNo>1}" th:href="|/xclass/${classNum}/${pageNo-1}.html|">上页</a>
+		<a id="nextPage" th:href="|/xclass/${classNum}/${pageNo+1}.html|">下页</a>
         </p>
 	<br />
     </div>

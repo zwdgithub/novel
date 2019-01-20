@@ -72,6 +72,26 @@
 		<if test="arg0 != 0">
 		 WHERE sortid = #{arg0}
 		</if>
+		ORDER BY lastupdate DESC
+		limit #{arg1}, #{arg2}
+	</select>
+	<select id="topClassList" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article 
+		<if test="arg0 != 0">
+		 WHERE sortid = #{arg0}
+		</if>
+		ORDER BY #{arg3} DESC
+		limit #{arg1}, #{arg2}
+	</select>
+	<select id="finishClassList" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article
+		WHERE fullfalg = 1 
+		<if test="arg0 != 0">
+		 AND sortid = #{arg0}
+		</if>
+		ORDER BY lastupdate DESC
 		limit #{arg1}, #{arg2}
 	</select>
 </mapper>

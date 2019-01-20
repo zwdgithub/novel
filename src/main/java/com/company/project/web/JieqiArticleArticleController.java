@@ -71,9 +71,46 @@ public class JieqiArticleArticleController {
 	public String list(HttpServletRequest request, Model model, @PathVariable("sortid") Integer classNum) {
 		Integer limit = 10;
 		Integer pageNo = Integer.valueOf(request.getParameter("pageNo"));
-		List<JieqiArticleArticle> list = service.classList(classNum, pageNo - 1, limit);
+		List<JieqiArticleArticle> list = service.classList(classNum, (pageNo - 1) * limit, limit);
 		model.addAttribute("list", list);
 		model.addAttribute("pcurl", pcurl);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("classNum", classNum);
+		return "sort";
+	}
+
+	@RequestMapping("/top{order}/{sortid}")
+	public String top(HttpServletRequest request, Model model, @PathVariable("sortid") Integer classNum,
+			@PathVariable("order") String order) {
+		Integer limit = 10;
+		Integer pageNo = Integer.valueOf(request.getParameter("pageNo"));
+		switch (order) {
+		case "week":
+			order = "weekvisit";
+		case "month":
+			order = "monthvisit";
+		case "all":
+			order = "allvisit";
+		default:
+			order = "weekvisit";
+		}
+		List<JieqiArticleArticle> list = service.topClassList(classNum, (pageNo - 1) * limit, limit, order);
+		model.addAttribute("list", list);
+		model.addAttribute("pcurl", pcurl);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("classNum", classNum);
+		return "sort";
+	}
+
+	@RequestMapping("/finish/{sortid}")
+	public String finish(HttpServletRequest request, Model model, @PathVariable("sortid") Integer classNum) {
+		Integer limit = 10;
+		Integer pageNo = Integer.valueOf(request.getParameter("pageNo"));
+		List<JieqiArticleArticle> list = service.finishClassList(classNum, (pageNo - 1) * limit, limit);
+		model.addAttribute("list", list);
+		model.addAttribute("pcurl", pcurl);
+		model.addAttribute("pageNo", pageNo);
+		model.addAttribute("classNum", classNum);
 		return "sort";
 	}
 

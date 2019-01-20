@@ -12,4 +12,8 @@ public interface JieqiArticleArticleMapper extends Mapper<JieqiArticleArticle> {
 	public List<JieqiArticleArticle> categoryTopList(Integer sortId);
 	
 	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit);
+	
+	public List<JieqiArticleArticle> topClassList(Integer sortid, Integer start, Integer limit, String orderColumn);
+	
+	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit);
 }

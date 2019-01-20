@@ -18,6 +18,10 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 	public Map<Integer, List<JieqiArticleArticle>> CategoryTopList();
 
 	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit);
+	
+	public List<JieqiArticleArticle> topClassList(Integer sortid, Integer start, Integer limit, String order);
+	
+	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit);
 
 	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId) throws IOException;
 

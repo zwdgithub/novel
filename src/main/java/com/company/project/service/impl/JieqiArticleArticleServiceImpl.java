@@ -89,4 +89,14 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	public JieqiArticleArticle info(Integer articleId) {
 		return findById(articleId);
 	}
+
+	@Override
+	public List<JieqiArticleArticle> topClassList(Integer sortid, Integer start, Integer limit, String order) {
+		return jieqiArticleArticleMapper.topClassList(sortid, start, limit, order);
+	}
+
+	@Override
+	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit) {
+		return jieqiArticleArticleMapper.finishClassList(sortid, start, limit);
+	}
 }
