@@ -87,7 +87,7 @@
 	<select id="finishClassList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
 		jieqi_article_article
-		WHERE fullfalg = 1 
+		WHERE fullflag = 1 
 		<if test="arg0 != 0">
 		 AND sortid = #{arg0}
 		</if>
