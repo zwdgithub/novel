@@ -2,8 +2,10 @@ package com.company.project.utils;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,6 +23,29 @@ import com.company.project.model.JieqiSystemUsers;
 public class Common {
 
 	private static Logger logger = LoggerFactory.getLogger(WebMvcConfigurer.class);
+
+	public static Map<Integer, String> CATEGORYS = new HashMap<>();
+
+	static {
+		/**
+		 * project.conf.categorys[class1]=玄幻小说
+			project.conf.categorys[class2]=仙侠小说
+			project.conf.categorys[class3]=都市小说
+			project.conf.categorys[class4]=军史小说
+			project.conf.categorys[class5]=网游小说
+			project.conf.categorys[class6]=科幻小说
+			project.conf.categorys[class7]=其他小说
+			project.conf.categorys[class8]=言情小说
+		 */
+		CATEGORYS.put(1, "玄幻小说");
+		CATEGORYS.put(2, "仙侠小说");
+		CATEGORYS.put(3, "都市小说");
+		CATEGORYS.put(4, "军史小说");
+		CATEGORYS.put(5, "网游小说");
+		CATEGORYS.put(6, "科幻小说");
+		CATEGORYS.put(7, "其他小说");
+		CATEGORYS.put(8, "言情小说");
+	}
 
 	public static Document load(String text) {
 		Document document = null;
@@ -76,7 +101,7 @@ public class Common {
 	}
 
 	public static JieqiSystemUsers currentUser(HttpServletRequest request) {
-//		HttpSession session = request.getSession();
+		// HttpSession session = request.getSession();
 		// JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
 		JieqiSystemUsers user = new JieqiSystemUsers();
 		user.setUid(0);

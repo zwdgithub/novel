@@ -1,6 +1,7 @@
 package com.company.project.model;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Table(name = "jieqi_article_article")
 public class JieqiArticleArticle {
@@ -31,7 +32,7 @@ public class JieqiArticleArticle {
 
     private String agent;
 
-    private Short sortid;
+    private Integer sortid;
 
     private Short typeid;
 
@@ -290,14 +291,14 @@ public class JieqiArticleArticle {
     /**
      * @return sortid
      */
-    public Short getSortid() {
+    public Integer getSortid() {
         return sortid;
     }
 
     /**
      * @param sortid
      */
-    public void setSortid(Short sortid) {
+    public void setSortid(Integer sortid) {
         this.sortid = sortid;
     }
 
