@@ -48,7 +48,7 @@
 <script th:inline="javascript">
 /*<![CDATA[*/
     var message = [[${message}]];
-    var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', [[${article.articlename}]], [[${chapter.chapterName}]], [[${article.author}]]);
+    var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', '[(${article.articlename})]', '[(${chapter.chapterName})]', '[(${article.author})]');
 /*]]>*/
 </script>
 

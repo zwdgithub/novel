@@ -61,7 +61,7 @@
             <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">
-			<a th:href="|/${article.articleid/1000}_${article.articleid}/all.html|">完整目录</a><a th:href="|javascript:addBookMarkByManual(0,${article.articleid});|" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架</a></p>
+			<a th:href="|/${article.articleid/1000}_${article.articleid}/all.html|">完整目录</a><a th:href="|javascript:addBookMarkByManual(${article.articleid}, 0, '', '');|" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架</a></p>
     <!--<script>_17mb_top()</script> -->
         <p class="review" th:text="${article.intro}"></p>
     </div>
