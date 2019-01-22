@@ -16,4 +16,8 @@ public interface JieqiArticleArticleMapper extends Mapper<JieqiArticleArticle> {
 	public List<JieqiArticleArticle> topClassList(Integer sortid, Integer start, Integer limit, String orderColumn);
 	
 	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit);
+	
+	public void dayVisitIncr(Integer articleid);
+		
+	public List<JieqiArticleArticle> search(String keyword) ;
 }

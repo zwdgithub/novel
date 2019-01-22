@@ -19,25 +19,25 @@
     <meta property="og:novel:author" th:content="${article.author}"/>
     <meta property="og:novel:book_name" th:content="${article.articlename}"/>
     <meta property="og:novel:read_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
-    <meta property="og:url" id="metaurl" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/"/>
-    <meta property="og:novel:status" content="{?$fullflag?}"/>
-    <meta property="og:novel:update_time" content="{?$lastupdate|date_format:'Y-m-d H:i:s'?}"/>
-    <meta property="og:novel:latest_chapter_name" content="{?$chapter[0].chaptername?}"/>
-    <meta property="og:novel:latest_chapter_url" content="https://m.2hxs.com/{?$shortid?}/{?$articleid?}/{?$chapter[0].chapterid?}.html"/>
+    <meta property="og:url" id="metaurl" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
+    <meta property="og:novel:status" th:content="${article.fullflag == 0?'连载中':'已完结'}"/>
+    <meta property="og:novel:update_time" th:content="${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}"/>
+    <meta property="og:novel:latest_chapter_name" th:content="${article.lastchapter}"/>
+    <meta property="og:novel:latest_chapter_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/${article.lastchapterid}.html|"/>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/bookinfo.css" />
   	<script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
-  	<script type="application/ld+json">
+  	<script th:inline="javascript" type="application/ld+json" >
         {
             "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
-            "@id": "https://m.2hxs.com/{?$shortid?}_{?$articleid?}/",
+            "@id": "https://m.2hxs.com/[[${article.articleid/1000}]]_[[${article.articleid}]]/",
             "appid": "1578540365240191",
-            "title": "{?$articlename?}最新章节({?$author?})_{?$articlename?}全文阅读_{?$_17mb_sitename?}",
+            "title": "[(${article.articlename})]最新章节([(${article.author})])_[(${article.articlename})]全文阅读_爱好小说",
             "images": [
-                "{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg",
+                "[[${pcurl}]]/files/article/image/[[${article.articleid/1000}]]/[[${article.articleid}]]/[[${article.articleid}]]s.jpg",
             ],
-            "description": "{?$intro?}",
-            "pubDate": "{?$lastupdate|date_format:'Y-m-d'?}T{?$lastupdate|date_format:'H:i:s'?}"
+            "description": "[(${article.intro})]",
+            "pubDate": "[[${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}]]"
         }
     </script>
 </head>
@@ -46,22 +46,22 @@
     </div>
     <header class="channelHeader channelHeader2">
 <a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a>
-<span class="title">{?$articlename?}</span>
+<span class="title">[[${article.articlename}]]</span>
 <a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a>
 </header>
     <p class="synopsisAd" style="color: red;"></p>
     <div class="synopsisArea">
         <div class="synopsisArea_detail">
-            <img src="{?$_17mb_pcurl?}/files/article/image/{?$shortid?}/{?$articleid?}/{?$articleid?}s.jpg" />
-            <a href="/{?$shortid?}_{?$articleid?}/">
+            <img th:src="|${pcurl}/files/article/image/${article.articleid/1000}/${article.articleid}/${article.articleid}s.jpg|" />
+            <a th:href="|${article.articleid/1000}_${article.articleid}/|">
                 <p class="author" th:text="|作者：${article.author}|"></p>
             </a>
             <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
-            <p class="" th:text="|状态：${article.fullflag}|"></p>
+            <p class="" th:text="|状态：${article.fullflag == 0?'连载中':'已完结'}|"></p>
             <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">
-			<a href="/{?$shortid?}_{?$articleid?}/all.html">完整目录</a><a href="javascript:addBookMarkByManual(0,{?$articleid?});" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架{?$adFlags?}</a></p>
+			<a th:href="|/${article.articleid/1000}_${article.articleid}/all.html|">完整目录</a><a th:href="|javascript:addBookMarkByManual(0,${article.articleid});|" class="btn_toBookShelf">加入书架</a><a href="/mybook.php" class="btn_toMyBook">我的书架</a></p>
     <!--<script>_17mb_top()</script> -->
         <p class="review" th:text="${article.intro}"></p>
     </div>
@@ -70,7 +70,7 @@
 	<div class="directoryArea">
 		<p th:each="item:${chapterList}"><a th:each="entry: ${item}" th:href="'/' + ${article.articleid / 1000} + '_' + ${article.articleid} + '/' + ${entry.key} + '.html'" th:text="${entry.value}"></a></p>
 	</div>
- 	 <h2><a href="/{?$shortid?}_{?$articleid?}/all.html">查看完整目录</a></h2>
+ 	 <h2><a th:href="|/${article.articleid/1000}_${article.articleid}/all.html|">查看完整目录</a></h2>
     </div>
 	<form name="articlesearch" class="searchForm" method="post" action="">
 		<input type="text" id="remindContent"  placeholder="请输入要提醒的内容" value="" style="border: 1px #c0deea solid;
@@ -137,11 +137,8 @@ $(function(){
 	})
 })
     </script>
-<script>_17mb_bottom();_17mb_xuanfu();</script>
 <script>
 </script>
-<script src="/click.php?aid={?$articleid?}"></script>
-<script>cambrian.render('tail')</script>
 <script src="/js/wap.js"></script>
 </body>
 </html>

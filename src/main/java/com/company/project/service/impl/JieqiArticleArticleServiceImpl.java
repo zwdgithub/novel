@@ -61,7 +61,7 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		content = content.replaceAll("\\r\\n", "<br/><br/>    ");
 		content = content.replaceAll("<br />", "<br/>");
 		content = content.replaceAll(" ", "&nbsp;");
-		LinkedHashMap<String, String> chapters = this.chpaterList(articleId, chapterId, true);
+		LinkedHashMap<String, String> chapters = this.chpaterList(articleId, true);
 		Map<String, Object> chapter = new HashMap<>();
 		chapter.put("content", content);
 		chapter.put("chapterId", chapterId);
@@ -77,8 +77,7 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterList")
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Integer chpaterNum, Boolean start)
-			throws IOException {
+	public LinkedHashMap<String, String> chpaterList(Integer articleId, Boolean start) throws IOException {
 		String opfFile = Common.articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
 		return Common.parseChapterList(1000000, start, Common.opfDocumnet(content));
@@ -98,5 +97,15 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	@Override
 	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit) {
 		return jieqiArticleArticleMapper.finishClassList(sortid, start, limit);
+	}
+
+	@Override
+	public void dayVisitIncr(Integer articleid) {
+		jieqiArticleArticleMapper.dayVisitIncr(articleid);
+	}
+
+	@Override
+	public List<JieqiArticleArticle> search(String keyword) {
+		return jieqiArticleArticleMapper.search(keyword);
 	}
 }

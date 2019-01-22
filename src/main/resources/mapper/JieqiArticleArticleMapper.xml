@@ -94,4 +94,17 @@
 		ORDER BY lastupdate DESC
 		limit #{arg1}, #{arg2}
 	</select>
+	<select id="search" resultType="com.company.project.model.JieqiArticleArticle">
+		SELECT * FROM
+		jieqi_article_article
+		WHERE
+		articlename like concat('%',#{arg0},'%')
+		OR
+		author like concat('%',#{arg0},'%')
+		ORDER BY dayvisit DESC
+		limit 0, 30
+	</select>
+	<update id="dayVisitIncr">
+		UPDATE jieqi_article_article set dayvisit = dayvisit +1 where articleid = #{arg0}
+	</update>
 </mapper>

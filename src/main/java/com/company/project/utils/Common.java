@@ -37,6 +37,7 @@ public class Common {
 			project.conf.categorys[class7]=其他小说
 			project.conf.categorys[class8]=言情小说
 		 */
+		CATEGORYS.put(0, "分类");
 		CATEGORYS.put(1, "玄幻小说");
 		CATEGORYS.put(2, "仙侠小说");
 		CATEGORYS.put(3, "都市小说");

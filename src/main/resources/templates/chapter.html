@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>{?$chaptername?}_{?$articlename?}_{?$_17mb_sitename?}</title>
+    <title>[[${chapter.chapterName}]]-[[${article.articlename}]]-爱好小说</title>
     <meta name="robots" content="noindex,follow" />
-    <meta name="keywords" content="{?$chaptername?},{?$articlename?},{?$author?}" />
-    <meta name="description" content="{?$_17mb_sitename?}提供{?$articlename?} {?$chaptername?}最新章节免费阅读章节内容." />
+    <meta name="keywords" th:content="|${chapter.chapterName},${article.articlename},${article.author}|" />
+    <meta name="description" th:content="|爱好小说提供${article.articlename} ${chapter.chapterName}最新章节免费阅读章节内容.|" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,7 +20,7 @@
     </style>
     </head>
 <body id="read" class="read">
-<header id="top" class="channelHeader channelHeader2"><a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a><span class="title">{?$chaptername?}&nbsp;&nbsp;{?$articlename?}</span><a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a></header>
+<header id="top" class="channelHeader channelHeader2"><a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a><span class="title">[[${chapter.chapterName}]]&nbsp;&nbsp;[[${article.articlename}]]</span><a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a></header>
 <div class="bg"></div>
 <a name="pagetop"></a>
 <p class="Readpage" style="padding:2px;">
@@ -55,7 +55,7 @@
 <script type="text/javascript">
 </script>
 <script>_17mb_bottom();_17mb_xuanfu();</script>
-{?include file="foot.html"?}
+<footer th:include="foot  :: foot"></footer>
 </body>
 <script src="/js/wap.js"></script>
 </html>

@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>搜索小说_{?$_17mb_sitename?}</title>
+    <title>搜索小说_爱好小说</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -17,20 +17,23 @@
 <body>
     <strong></strong>
     <header class="channelHeader">
-<a class="iconback" href="/"><img src="images/header-back.gif" alt="返回"/></a>
+<a class="iconback" href="/"><img src="/images/header-back.gif" alt="返回"/></a>
 搜索小说
-<a class="iconhome" href="/"><img src="images/header-backhome.gif" alt="首页"/></a>
+<a class="iconhome" href="/"><img src="/images/header-backhome.gif" alt="首页"/></a>
 </header>
 <script>_17mb_top()</script>
     <div class="recommend mybook">
-    <div class="tips">{?$17mb_tips?}</div>
-	{?section name=i loop=$articlerows?}
-    <div class="hot_sale {?if $articlerows[i].d2 !=''?}hot_saleEm{?/if?}"><span class="num num{?$smarty.section.i.iteration?}">{?$smarty.section.i.iteration?}</span><a href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/"><p class="title">{?$articlerows[i].articlename?}</p><p class="author">{?$articlerows[i].sortname?} | 作者：{?$articlerows[i].author?}</p><p class="author">{?$articlerows[i].fullflag?} | 更新：{?$articlerows[i].lastchapter?}</p></a></div>
-	{?/section?}
+    <div class="tips" th:if="${#lists.isEmpty(result)}">未能找到"[[${keyword}]]"相关内容</div>
+	<div th:each="item, userStat:${result}" class="hot_sale">
+	<span th:class="|num num${userStat.index}|">[[${userStat.index+1}]]</span>
+	<a th:href="|/${item.articleid/1000}_${item.articleid}/|">
+		<p class="title">[[${item.articlename}]]</p>
+		<p class="author">[[${categorys[item.sortid]}]] | 作者：[[${item.author}]]</p>
+		<p class="author">[[${item.fullflag == 0 ? '连载中': '已完结'}]] | 更新：[[${item.lastchapter}]]</p>
+	</a>	
+	</div>
 </div>
     <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
     <script language="javascript" type="text/javascript" src="/js/common.js"></script>
-    <script>_17mb_bottom();_17mb_xuanfu();</script>
-{?include file="17mb/templates/foot.html"?}
 </body>
 </html>

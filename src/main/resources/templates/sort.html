@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>{?$sortname?}_{?$_17mb_sitename?}</title>
+    <title th:text="|${sortName}_爱好小说|"></title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -21,7 +21,15 @@
 </header>
 
     <nav class="sortChannel_nav">
-        <a class="on" href="/xclass/0/1.html">全部</a><a  href="/xclass/1/1.html">玄幻小说</a><a  href="/xclass/2/1.html">仙侠小说</a><a  href="/xclass/3/1.html">都市小说</a><a  href="/xclass/4/1.html">军史小说</a><a  href="/xclass/5/1.html">网游小说</a><a  href="/xclass/6/1.html">科幻小说</a><a  href="/xclass/7/1.html">其他小说</a><a  href="/xclass/8/1.html">言情小说</a>
+        <a th:class="${classNum ==0?'on':''}" href="/xclass/0/1.html">全部</a>
+        <a th:class="${classNum==1?'on':''}" href="/xclass/1/1.html">玄幻小说</a>
+        <a th:class="${classNum==2?'on':''}" href="/xclass/2/1.html">仙侠小说</a>
+        <a th:class="${classNum==3?'on':''}" href="/xclass/3/1.html">都市小说</a>
+        <a th:class="${classNum==4?'on':''}" href="/xclass/4/1.html">军史小说</a>
+        <a th:class="${classNum==5?'on':''}" href="/xclass/5/1.html">网游小说</a>
+        <a th:class="${classNum==6?'on':''}" href="/xclass/6/1.html">科幻小说</a>
+        <a th:class="${classNum==7?'on':''}" href="/xclass/7/1.html">其他小说</a>
+        <a th:class="${classNum==8?'on':''}" href="/xclass/8/1.html">言情小说</a>
 	</nav>
     <div class="recommend">
         <div id="main"> 
@@ -50,7 +58,5 @@
 	    $("img.lazy").lazyload();
     });
     </script>
-<script>_17mb_bottom();_17mb_xuanfu();</script>
-{?include file="foot.html"?}
 </body>
 </html>

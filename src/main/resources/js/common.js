@@ -63,20 +63,20 @@ $(function(){
 	})
 	
 	//搜索
-	var $searchForm_input = $('.searchForm_input'),
-		$searchForm_btn = $('.searchForm_btn');
-	
-	$searchForm_input.focus(function(){
-		if($(this).val() == '输入书名•作者'){
-			$(this).val("");
-		}
-	});
-	
-	$searchForm_input.blur(function(){
-		if($(this).val() == ""){
-			$(this).val('输入书名•作者');
-		}
-	});
+//	var $searchForm_input = $('.searchForm_input'),
+//		$searchForm_btn = $('.searchForm_btn');
+//	
+//	$searchForm_input.focus(function(){
+//		if($(this).val() == '输入书名•作者'){
+//			$(this).val("");
+//		}
+//	});
+//	
+//	$searchForm_input.blur(function(){
+//		if($(this).val() == ""){
+//			$(this).val('输入书名•作者');
+//		}
+//	});
 	
 	//阅读页功能开始--------------------------
 	var	$topMenu = $('.topMenu'),
