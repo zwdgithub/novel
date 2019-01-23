@@ -29,6 +29,9 @@
         字体：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="sizebg" onclick="nr_setbg('middle')" >中</a> <a id="fontsmall" class="sizebg" onclick="nr_setbg('small')">小</a>
 </p>
 <p class="Readpage">
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.pre == null? chapter.pre + '.html':''}|" id="pt_prev" class="Readpage_up">上一章</a>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/|" id="pt_mulu" class="Readpage_up">目录</a>
+<a href="" id="pt_next" class="Readpage_down js_page_down">下一章</a>
 
 </p>
 <script>_17mb_top()</script>

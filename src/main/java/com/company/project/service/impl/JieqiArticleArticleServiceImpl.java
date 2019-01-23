@@ -61,23 +61,26 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		content = content.replaceAll("\\r\\n", "<br/><br/>    ");
 		content = content.replaceAll("<br />", "<br/>");
 		content = content.replaceAll(" ", "&nbsp;");
-		LinkedHashMap<String, String> chapters = this.chpaterList(articleId, true);
+		LinkedHashMap<String, Map<String, String>> chapters = this.chpaterList(articleId, true);
 		Map<String, Object> chapter = new HashMap<>();
 		chapter.put("content", content);
 		chapter.put("chapterId", chapterId);
-		chapter.put("chapterName", chapters.get(Integer.toString(chapterId)));
+		String cid = Integer.toString(chapterId);
+		chapter.put("chapterName", chapters.get(cid).get(cid));
+		chapter.put("pre", chapters.get(cid).get("pre"));
+		chapter.put("next", chapters.get(cid).get("next"));
 		return chapter;
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterListTopN")
-	public LinkedHashMap<String, String> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException {
+	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException {
 		String opfFile = Common.articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
 		return Common.parseChapterList(chpaterNum, false, Common.opfDocumnet(content));
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterList")
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Boolean start) throws IOException {
+	public LinkedHashMap<String, Map<String, String>> chpaterList(Integer articleId, Boolean start) throws IOException {
 		String opfFile = Common.articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
 		return Common.parseChapterList(1000000, start, Common.opfDocumnet(content));

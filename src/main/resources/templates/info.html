@@ -68,7 +68,7 @@
     <div  class="recommend">
         <h2><a>最新章节 &nbsp;&nbsp;&nbsp;&nbsp;</a> &nbsp;&nbsp;&nbsp; <a href="#remind" style="color:#F00;text-shadow:none">更新报错</a></h2>
 	<div class="directoryArea">
-		<p th:each="item:${chapterList}"><a th:each="entry: ${item}" th:href="'/' + ${article.articleid / 1000} + '_' + ${article.articleid} + '/' + ${entry.key} + '.html'" th:text="${entry.value}"></a></p>
+		<p th:each="item:${chapterList}"><a th:each="entry: ${item}" th:href="'/' + ${article.articleid / 1000} + '_' + ${article.articleid} + '/' + ${entry.key} + '.html'" th:text="${entry.value[entry.key]}"></a></p>
 	</div>
  	 <h2><a th:href="|/${article.articleid/1000}_${article.articleid}/all.html|">查看完整目录</a></h2>
     </div>

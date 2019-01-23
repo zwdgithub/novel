@@ -25,9 +25,9 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 
 	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId) throws IOException;
 
-	public LinkedHashMap<String, String> chpaterList(Integer articleId, Boolean start) throws IOException;
+	public LinkedHashMap<String, Map<String, String>> chpaterList(Integer articleId, Boolean start) throws IOException;
 	
-	public LinkedHashMap<String, String> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException;
+	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException;
 
 	public JieqiArticleArticle info(Integer articleId);
 	
