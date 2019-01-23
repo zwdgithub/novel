@@ -29,21 +29,22 @@
         字体：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="sizebg" onclick="nr_setbg('middle')" >中</a> <a id="fontsmall" class="sizebg" onclick="nr_setbg('small')">小</a>
 </p>
 <p class="Readpage">
-<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.pre == null? chapter.pre + '.html':''}|" id="pt_prev" class="Readpage_up">上一章</a>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.pre != null? chapter.pre + '.html':''}|" id="pt_prev" class="Readpage_up">上一章</a>
 <a th:href="|/${article.articleid/1000}_${article.articleid}/|" id="pt_mulu" class="Readpage_up">目录</a>
-<a href="" id="pt_next" class="Readpage_down js_page_down">下一章</a>
-
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.next != null? chapter.next + '.html':''}|" id="pt_next" class="Readpage_down js_page_down">下一章</a>
 </p>
 <script>_17mb_top()</script>
-<div id="chaptercontent" class="Readarea ReadAjax_content" th:utext="${chapter.content}">
-
-</div>
+<div id="chaptercontent" class="Readarea ReadAjax_content">
+[(${chapter.content})]
 <p style="width:100%;text-alight:center;"><a th:href="|javascript:addBookMarkByManual(${article.articleid},${chapter.chapterId}, '${article.articlename}', '${chapter.chapterName}');|" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
+</div>
 <script language="javascript">getset()</script>
 <script language="javascript">getset1()</script>
 <p class="synopsisAd ReadAd ReadAd2"></p>
 <p class="Readpage">
-
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.pre != null? chapter.pre + '.html':''}|" id="pt_prev" class="Readpage_up">上一章</a>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/|" id="pt_mulu" class="Readpage_up">目录</a>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.next != null? chapter.next + '.html':''}|" id="pt_next" class="Readpage_down js_page_down">下一章</a>
 </p>
 <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
 <script language="javascript" type="text/javascript" src="/js/common.js"></script>

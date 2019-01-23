@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>会员登录-{?$_17mb_sitename?}</title>
+    <title>会员登录-爱好小说</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -19,13 +19,13 @@
 <div class="bg"></div>
 <header class="channelHeader channelHeader2">
 	<a href="javascript:history.go(-1);" class="iconback"><img src="/images/back.png" alt="返回"/></a>
-    <span class="title">{?$_17mb_sitename?}会员登录</span>
+    <span class="title">爱好小说会员登录</span>
     <a href="/" class="iconhome"><img src="/images/home.png" alt="首页"/></a>
 </header>
 
 <div class="login_box">
 	<form name="form_login" action="/users/login" method="post">
-		<div class="login_name" th:text="${msg}"></div>
+		<span th:text="${msg}" style="color:red"></span>
 		<div class="login_name"><span class="person_bg"></span>
 			<input type="text" class="name login_nm" name="account" value="用户名" />
 		</div>
@@ -58,6 +58,5 @@
 <script language="javascript" type="text/javascript" src="/js/zepto.cookie.min.js"></script>
 <script language="javascript" type="text/javascript" src="/js/login.js"></script>
  
-{?include file="17mb/templates/foot.html"?}
 </body>
 </html>

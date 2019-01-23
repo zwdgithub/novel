@@ -46,7 +46,6 @@ public class JieqiSystemUsersController {
 			model.addAttribute("user", user);
 			return "info";
 		}
-		model.addAttribute("msg", "用户名或密码错误");
 		return "login";
 	}
 
@@ -82,15 +81,15 @@ public class JieqiSystemUsersController {
 	@ResponseBody
 	public Result<Map<String, Object>> addBookMark(HttpServletRequest request,
 			@RequestBody JieqiArticleBookcase bookCase, Model model) {
-		HttpSession session = request.getSession();
-		// JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
-		// bookCase.setUserid(user.getUid());
-		// bookCase.setUsername(user.getUname());
-		bookCase.setUserid(0);
+		Map<String, Object> map = new HashMap<>();
+		JieqiSystemUsers user = Common.currentUser(request);
+		if (user == null) {
+			return ResultGenerator.genSuccessResult(map);
+		}
+		bookCase.setUserid(user.getUid());
 		bookCase.setJoindate(System.currentTimeMillis() / 1000);
 		bookCaseService.addBookCase(bookCase);
-
-		Map<String, Object> map = new HashMap<>();
+		
 		map.put("success", true);
 		return ResultGenerator.genSuccessResult(map);
 	}
@@ -98,6 +97,9 @@ public class JieqiSystemUsersController {
 	@GetMapping("/mybook")
 	public String mybook(HttpServletRequest request, Model model) {
 		JieqiSystemUsers user = Common.currentUser(request);
+		if (user == null) {
+			return "redirect:/users/login";
+		}
 		List<JieqiArticleBookcase> list = bookCaseService.userBookCase(user.getUid());
 		model.addAttribute("list", list);
 		return "mybook";
@@ -106,6 +108,9 @@ public class JieqiSystemUsersController {
 	@GetMapping("/del-bookcase")
 	public String delMybook(HttpServletRequest request, Model model) {
 		JieqiSystemUsers user = Common.currentUser(request);
+		if (user == null) {
+			return "redirect:/users/login";
+		}
 		String articleid = request.getParameter("articleid");
 		bookCaseService.delBookcase(user.getUid(), Integer.valueOf(articleid));
 		return "redirect:/users/mybook";

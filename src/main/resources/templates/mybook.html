@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>我的书架_{?$_17mb_sitename?}</title>
+    <title>我的书架-爱好小说</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -31,7 +31,7 @@ header a{margin:0;}
          <div class="tabArea tab-navarea">
           <div class="tab-nav tab-nav2 clearfix">
                     <h2 style="height:50px;width:10%">
-                        <a class="iconback" href="/"><img src="images/header-backhome.gif" alt="首页"/></a>
+                        <a class="iconback" href="/"><img src="/images/header-backhome.gif" alt="首页"/></a>
                     </h2>
                     <h2 style="width:90%">
                         <a style="height:50px;line-height:50px;">我的书架</a>
@@ -39,6 +39,7 @@ header a{margin:0;}
                 </div>
                  </div>
             </header>
+            <span th:if="${#lists.isEmpty(list)}">您的书架还没有添加小说</span>
         <div class="tabArea  list rankingList rankingList_3">
             <div class="slide-con slide-con2">
                 <div class="slide-item list1">

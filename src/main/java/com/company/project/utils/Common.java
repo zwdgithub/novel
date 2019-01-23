@@ -1,7 +1,6 @@
 package com.company.project.utils;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -29,14 +29,10 @@ public class Common {
 
 	static {
 		/**
-		 * project.conf.categorys[class1]=玄幻小说
-		 * project.conf.categorys[class2]=仙侠小说
-		 * project.conf.categorys[class3]=都市小说
-		 * project.conf.categorys[class4]=军史小说
-		 * project.conf.categorys[class5]=网游小说
-		 * project.conf.categorys[class6]=科幻小说
-		 * project.conf.categorys[class7]=其他小说
-		 * project.conf.categorys[class8]=言情小说
+		 * project.conf.categorys[class1]=玄幻小说 project.conf.categorys[class2]=仙侠小说
+		 * project.conf.categorys[class3]=都市小说 project.conf.categorys[class4]=军史小说
+		 * project.conf.categorys[class5]=网游小说 project.conf.categorys[class6]=科幻小说
+		 * project.conf.categorys[class7]=其他小说 project.conf.categorys[class8]=言情小说
 		 */
 		CATEGORYS.put(0, "分类");
 		CATEGORYS.put(1, "玄幻小说");
@@ -64,7 +60,8 @@ public class Common {
 		return Common.load(content);
 	}
 
-	public static LinkedHashMap<String, Map<String, String>> parseChapterList(Integer length, Boolean start, Document document) {
+	public static LinkedHashMap<String, Map<String, String>> parseChapterList(Integer length, Boolean start,
+			Document document) {
 		// Document document = opfDocumnet(content);
 		logger.info("parseChapterList >>>>>>>>>>>>>>>>>>>>>>>>>>> 执行");
 		LinkedHashMap<String, Map<String, String>> map = new LinkedHashMap<>();
@@ -111,11 +108,8 @@ public class Common {
 	}
 
 	public static JieqiSystemUsers currentUser(HttpServletRequest request) {
-		// HttpSession session = request.getSession();
-		// JieqiSystemUsers user = (JieqiSystemUsers)
-		// session.getAttribute("user");
-		JieqiSystemUsers user = new JieqiSystemUsers();
-		user.setUid(0);
+		HttpSession session = request.getSession();
+		JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
 		return user;
 	}
 }
