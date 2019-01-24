@@ -122,8 +122,9 @@ public class JieqiArticleArticleController {
 		model.addAttribute("pcurl", pcurl);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("classNum", classNum);
+		model.addAttribute("sortName", Common.CATEGORYS.get(classNum));
 		model.addAttribute("categorys", Common.CATEGORYS);
-		return "sort";
+		return "top";
 	}
 
 	@RequestMapping("/finish/{sortid}")
@@ -135,8 +136,9 @@ public class JieqiArticleArticleController {
 		model.addAttribute("pcurl", pcurl);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("classNum", classNum);
+		model.addAttribute("sortName", Common.CATEGORYS.get(classNum));
 		model.addAttribute("categorys", Common.CATEGORYS);
-		return "sort";
+		return "finish";
 	}
 
 	@PostMapping(value = "/remind")
@@ -155,7 +157,7 @@ public class JieqiArticleArticleController {
 
 	@RequestMapping("/search")
 	public String search(HttpServletRequest request, Model model) {
-		String keyword = request.getParameter("keyword");
+		String keyword = request.getParameter("keyword").trim();
 		List<JieqiArticleArticle> result = service.search(keyword);
 		model.addAttribute("categorys", Common.CATEGORYS);
 		model.addAttribute("result", result);

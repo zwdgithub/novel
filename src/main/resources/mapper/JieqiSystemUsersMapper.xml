@@ -50,4 +50,8 @@
   <select id="findByAccountAndPassword" resultType="com.company.project.model.JieqiSystemUsers">
 		SELECT * FROM jieqi_system_users WHERE uname = #{arg0} AND pass = #{arg1}
 	</select>
+	
+	<select id="findByAccount" resultType="com.company.project.model.JieqiSystemUsers">
+		SELECT * FROM jieqi_system_users WHERE uname = #{arg0}
+	</select>
 </mapper>

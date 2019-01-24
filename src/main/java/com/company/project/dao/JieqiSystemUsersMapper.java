@@ -6,5 +6,7 @@ import com.company.project.model.JieqiSystemUsers;
 public interface JieqiSystemUsersMapper extends Mapper<JieqiSystemUsers> {
 
 	JieqiSystemUsers findByAccountAndPassword(String account, String password);
+	
+	JieqiSystemUsers findByAccount(String account);
 
 }

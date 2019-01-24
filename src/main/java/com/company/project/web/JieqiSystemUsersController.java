@@ -89,7 +89,7 @@ public class JieqiSystemUsersController {
 		bookCase.setUserid(user.getUid());
 		bookCase.setJoindate(System.currentTimeMillis() / 1000);
 		bookCaseService.addBookCase(bookCase);
-		
+
 		map.put("success", true);
 		return ResultGenerator.genSuccessResult(map);
 	}
@@ -115,4 +115,54 @@ public class JieqiSystemUsersController {
 		bookCaseService.delBookcase(user.getUid(), Integer.valueOf(articleid));
 		return "redirect:/users/mybook";
 	}
+
+	@GetMapping("/register-page")
+	public String registerPage(HttpServletRequest request, Model model) {
+
+		return "register";
+	}
+
+	@PostMapping("/register")
+	public String register(HttpServletRequest request, Model model) {
+		String uname = request.getParameter("uname");
+		String upass = request.getParameter("upass");
+		JieqiSystemUsers temp = jieqiSystemUsersService.findByAccount(uname);
+		if (temp != null) {
+			model.addAttribute("msg", "用户名已存在");
+			return "register";
+		}
+		JieqiSystemUsers user = new JieqiSystemUsers();
+		user.setUname(uname);
+		user.setPass(upass);
+		user.setGroupid(3);
+		user.setEmail(user.getUname() + "@qq.com");
+		user.setSign("0");
+		user.setIntro("0");
+		user.setSetting("0");
+		user.setBadges("0");
+		user.setLastlogin(0);
+		user.setViewemail(false);
+		user.setNotifymode(false);
+		user.setIntro("0");
+		user.setAdminemail(false);
+		user.setMonthscore(0);
+		user.setWeekscore(0);
+		user.setDayscore(0);
+		user.setLastscore(0);
+		user.setExperience(0);
+		user.setScore(0);
+		user.setEgold(0);
+		user.setEsilver(0);
+		user.setCredit(0);
+		user.setGoodnum(0);
+		user.setBadnum(0);
+		user.setIsvip(false);
+		user.setOvertime(0);
+		user.setState(false);
+		user.setRegdate(System.currentTimeMillis() / 1000);
+		jieqiSystemUsersService.save(user);
+		request.getSession().setAttribute("user", user);
+		return "redirect:/users/mybook";
+	}
+
 }

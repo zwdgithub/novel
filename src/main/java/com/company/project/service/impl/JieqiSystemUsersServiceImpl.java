@@ -26,4 +26,9 @@ public class JieqiSystemUsersServiceImpl extends AbstractService<JieqiSystemUser
 		return user;
 	}
 
+	@Override
+	public JieqiSystemUsers findByAccount(String account) {
+		return jieqiSystemUsersMapper.findByAccount(account);
+	}
+
 }

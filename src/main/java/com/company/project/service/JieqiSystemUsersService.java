@@ -10,4 +10,6 @@ public interface JieqiSystemUsersService extends Service<JieqiSystemUsers> {
 
 	JieqiSystemUsers findByAccountAndPass(String account, String pass);
 
+	JieqiSystemUsers findByAccount(String account);
+
 }

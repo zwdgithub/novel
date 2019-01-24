@@ -38,7 +38,7 @@
                 <a href="/mybook.php">书架</a>
 	</nav>
     <form name="articlesearch" class="searchForm" method="post" action="/article/search">  
-        <input type="text" name="keyword" class="searchForm_input searchForm_input2" value="" />
+        <input type="text" name="keyword" id="keyword" class="searchForm_input searchForm_input2" value="" />
         <input type="hidden" name="t" value="1" />
         <input type="submit" class="searchForm_btn" value="搜索" onclick="window.location='/article/search?keyword='+encodeURI($('#keyword').val());return false;"/>
     </form>
@@ -155,7 +155,7 @@
 <script type="text/javascript" language="javascript">
     $(function(){$("img.lazy").lazyload();});
 </script>
-<footer th:include="foot  :: footNote"></footer>
+<div th:include="foot  :: footNote"></div>
 <footer th:include="foot  :: foot"></footer>
 <script src="/js/wap.js"></script>
 </body>

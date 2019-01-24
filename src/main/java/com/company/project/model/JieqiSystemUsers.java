@@ -15,9 +15,9 @@ public class JieqiSystemUsers {
 
     private String pass;
 
-    private Byte groupid;
+    private Integer groupid;
 
-    private Integer regdate;
+    private Long regdate;
 
     private String initial;
 
@@ -158,28 +158,28 @@ public class JieqiSystemUsers {
     /**
      * @return groupid
      */
-    public Byte getGroupid() {
+    public Integer getGroupid() {
         return groupid;
     }
 
     /**
      * @param groupid
      */
-    public void setGroupid(Byte groupid) {
+    public void setGroupid(Integer groupid) {
         this.groupid = groupid;
     }
 
     /**
      * @return regdate
      */
-    public Integer getRegdate() {
+    public Long getRegdate() {
         return regdate;
     }
 
     /**
      * @param regdate
      */
-    public void setRegdate(Integer regdate) {
+    public void setRegdate(Long regdate) {
         this.regdate = regdate;
     }
 

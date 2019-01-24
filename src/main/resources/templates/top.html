@@ -1,8 +1,8 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>  
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>{?$typename?}-爱好小说</title>
+    <title>[[${order=='week'?'周':(order=='month'?'月':(order=='all'?'总':''))}]]排行榜-爱好小说</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -21,12 +21,12 @@
                         <a href="javascript:history.go(-1);" class="iconback"><img alt="返回" src="/images/back.png"></a>
                     </h2>
                     <h2 style="width:24%">
-                        <a href="/ph/week{?$sortid?}.html"{?if $type == 'week'?} class="tab-nav-cur"{?/if?} >周榜</a>
+                        <a href="/ph/week.html"  th:class="${order=='week'?'tab-nav-cur':''}">周榜</a>
                     </h2>
                     <h2 style="width:24%">
-                        <a href="/ph/month{?$sortid?}.html"{?if $type == 'month'?} class="tab-nav-cur"{?/if?} class="" >月榜</a></h2>
+                        <a href="/ph/month.html" th:class="${order=='month'?'tab-nav-cur':''}">月榜</a></h2>
                     <h2 style="width:24%">
-                         <a href="/ph/all{?$sortid?}.html"{?if $type == 'all'?} class="tab-nav-cur"{?/if?} class="" >总榜</a>
+                         <a href="/ph/all.html" th:class="${order=='all'?'tab-nav-cur':''}">总榜</a>
                     </h2>
                     <h2 style="width:12%;text-align:right;">
                     	<a class="iconback" href="/"><img src="/images/home.png" alt="首页"/></a>
@@ -35,34 +35,33 @@
                  </div>
             </header>   
     <nav class="sortChannel_nav">
-         <a href="/ph/{?$type?}.html"{?if $sortid == ''?} class="on"{?/if?}>全部</a>
-        {?section name=i loop=$sort?}
-        	<a href="/ph/{?$type?}{?$sort[i].sortid?}.html"{?if $sort[i].sortid == $sortid?} class="on"{?/if?}>{?$sort[i].sortname?}</a>
-        {?/section?}           
+        <a th:class="${classNum ==0?'on':''}" th:href="|/ph/${order}.html|">全部</a>
+        <a th:class="${classNum==1?'on':''}" th:href="|/ph/${order}1.html|">玄幻小说</a>
+        <a th:class="${classNum==2?'on':''}" th:href="|/ph/${order}2.html|">仙侠小说</a>
+        <a th:class="${classNum==3?'on':''}" th:href="|/ph/${order}3.html|">都市小说</a>
+        <a th:class="${classNum==4?'on':''}" th:href="|/ph/${order}4.html|">军史小说</a>
+        <a th:class="${classNum==5?'on':''}" th:href="|/ph/${order}5.html|">网游小说</a>
+        <a th:class="${classNum==6?'on':''}" th:href="|/ph/${order}6.html|">科幻小说</a>
+        <a th:class="${classNum==7?'on':''}" th:href="|/ph/${order}7.html|">其他小说</a>
+        <a th:class="${classNum==8?'on':''}" th:href="|/ph/${order}8.html|">言情小说</a>         
 </nav>
     <div class="recommend">
         <div id="main">        
-{?section name=i loop=$articlerows?}
-                    <div class="hot_sale">
-                        <a href="/{?$articlerows[i].shortid?}_{?$articlerows[i].articleid?}/">
-                            <img class="lazy" data-original="{?$_17mb_pcurl?}/files/article/image/{?$articlerows[i].shortid?}/{?$articlerows[i].articleid?}/{?$articlerows[i].articleid?}s.jpg" src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'">
-                            <p class="title">
-                                {?$articlerows[i].articlename?}
-                            </p>
-                            <p class="author">
-                                作者：{?$articlerows[i].author?}</p>
-                        </a>
-                        <p class="review">
-                            <span class="longview"></span>简介：{?$articlerows[i].intro?}</p>
-                    </div>
-{?/section?}                
-
-                
+ 			<div class="hot_sale" th:each="item:${list}">
+	        <a th:href="|/${item.articleid/1000}_${item.articleid}/|">
+	                            <img class="lazy"  th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|"
+	                                src="/images/defaultimg.png" onerror="this.src='/images/nopic.gif'"></img>
+	                            <p class="title" th:text="${item.articlename}"></p>
+	                            <p class="author" th:text="|作者：${item.author}|"></p>
+	                        </a>
+	                        <p class="review" th:utext="|简介：${item.intro}|"></p>
+       	 </div>               
         </div>
-        
         <p class="page">
-        	{?$jumppage?}
-        </p><br />
+        <a th:if="${pageNo>1}" th:href="|/ph/${order}${sortid==0?'':sortid}_${pageNo-1}.html|">上页</a>
+		<a id="nextPage" th:href="|/ph/${order}${sortid==0?'':sortid}_${pageNo+1}.html|">下页</a>
+        </p>
+        <br />
     </div>
     <script language="javascript" type="text/javascript" src="/js/zepto.min.js"></script>
     <script language="javascript" type="text/javascript" src="/js/sort.js"></script>
@@ -74,6 +73,7 @@
     });
     </script>
 <script>_17mb_bottom();_17mb_xuanfu();</script>
-{?include file="17mb/templates/foot.html"?}
+<div th:include="foot  :: footNote"></div>
+<footer th:include="foot  :: foot"></footer>
 </body>
 </html>
