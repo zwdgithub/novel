@@ -81,7 +81,15 @@
 		<if test="arg0 != 0">
 		 WHERE sortid = #{arg0}
 		</if>
-		ORDER BY #{arg3} DESC
+		<if test="arg3 eq 'weekvisit'">
+		 ORDER BY 'weekvisit' DESC
+		</if>
+		<if test="arg3 eq 'monthvisit'">
+		 ORDER BY 'monthvisit' DESC
+		</if>
+		<if test="arg3 eq 'allvisit'">
+		 ORDER BY 'allvisit' DESC
+		</if>
 		limit #{arg1}, #{arg2}
 	</select>
 	<select id="finishClassList" resultType="com.company.project.model.JieqiArticleArticle">
