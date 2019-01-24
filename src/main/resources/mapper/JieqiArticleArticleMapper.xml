@@ -82,13 +82,13 @@
 		 WHERE sortid = #{arg0}
 		</if>
 		<if test="arg3 eq 'weekvisit'">
-		 ORDER BY 'weekvisit' DESC
+		 ORDER BY weekvisit DESC
 		</if>
 		<if test="arg3 eq 'monthvisit'">
-		 ORDER BY 'monthvisit' DESC
+		 ORDER BY monthvisit DESC
 		</if>
 		<if test="arg3 eq 'allvisit'">
-		 ORDER BY 'allvisit' DESC
+		 ORDER BY allvisit DESC
 		</if>
 		limit #{arg1}, #{arg2}
 	</select>
