@@ -2,10 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>天下第九(鹅是老五)-爱好小说手机站</title>
-    <meta name="generator" content="爱好小说-手机站" />
+    <title>天下第九最新章节(鹅是老五)-天下第九全文阅读-爱好小说手机站</title>
     <meta id="ctl00_metaKeywords" name="keywords" content="天下第九,天下第九鹅是老五"/>
-    <meta id="ctl00_metaDescription" name="description" content="天下第九，天下第九小说阅读。仙侠小说天下第九由作家鹅是老五创作，爱好小说提供天下第九首发最新章节及章节列表，天下第九最新更新尽在爱好小说" />
+    <meta id="ctl00_metaDescription" name="description" content="天下第九最新章节由网友提供，《天下第九》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的玄幻小说，爱好小说免费提供天下第九最新清爽干净的文字章节在线阅读。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -25,7 +24,7 @@
 <header class="Index_Header">
 <span style="color:#000;font-size: 21px; float: left;margin-left: 25px;">爱好小说</span>
 <a href="/users/login" id="login" class="login" th:if="${session.user == null}">登录</a>
-<span id="username" class="username" th:if="${session.user != null}"><a href="/user.php"><b th:text="${session.user.uname}"></b><img src="/images/icon-login-uname.gif" /></a></span>
+<span id="username" class="username" th:if="${session.user != null}"><a href="/mybook.php"><b th:text="${session.user.uname}"></b><img src="/images/icon-login-uname.gif" /></a></span>
 </header>
 <div style="width: 100%;">
 </div>
@@ -58,7 +57,7 @@
 	                   <img class="lazy" style="width:89px;height:119px;" th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|" onerror="this.src='images/nopic.gif'" />
 	                   <p class="title" th:text="${item.articlename}"></p>
 	                   <p class="author" th:text="|作者：${item.author}|"></p>
-	                   <p class="review" th:text="|简介：${#strings.substring(item.intro, 0, 70)}...|"></p>
+	                   <p class="review" th:text="|简介：${#strings.abbreviate(item.intro, 70)}|"></p>
                     </a>
                     </div>
                 </div>

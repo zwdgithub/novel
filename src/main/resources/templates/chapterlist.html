@@ -20,7 +20,7 @@
 <script>_17mb_top()</script>
 <p><a href="#bottom" style="color:Red;">↓直达页面底部</a></p>
 <p th:each="item:${chapterList}">
-	<a th:each="entry:${item}" th:href="|/${article.articleid/1000}_${article.articleid}/${entry.key}.html|" >[[${entry.value}]]</a>
+	<a th:each="entry:${item}" th:href="|/${article.articleid/1000}_${article.articleid}/${entry.key}.html|" >[[${entry.value[entry.key]}]]</a>
 </p>
 </div>
 <p class="Readpage" id="bottom"></p><p class="note"></p>

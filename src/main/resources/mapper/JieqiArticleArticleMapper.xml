@@ -57,13 +57,13 @@
 
 	<select id="topList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE articleid IN (35073)
+		jieqi_article_article WHERE articleid IN (30042, 37629, 37819, 42003)
 	</select>
 
 
 	<select id="categoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE sortid = #{0} ORDER BY allvisit DESC limit 5
+		jieqi_article_article WHERE sortid = #{0} ORDER BY weekvisit DESC limit 5
 	</select>
 	
 	<select id="classList" resultType="com.company.project.model.JieqiArticleArticle">
@@ -99,7 +99,7 @@
 		<if test="arg0 != 0">
 		 AND sortid = #{arg0}
 		</if>
-		ORDER BY lastupdate DESC
+		ORDER BY allvisit DESC
 		limit #{arg1}, #{arg2}
 	</select>
 	<select id="search" resultType="com.company.project.model.JieqiArticleArticle">

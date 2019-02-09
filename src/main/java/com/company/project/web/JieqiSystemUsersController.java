@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -133,7 +134,7 @@ public class JieqiSystemUsersController {
 		}
 		JieqiSystemUsers user = new JieqiSystemUsers();
 		user.setUname(uname);
-		user.setPass(upass);
+		user.setPass(DigestUtils.md5Hex(upass));
 		user.setGroupid(3);
 		user.setEmail(user.getUname() + "@qq.com");
 		user.setSign("0");
@@ -161,7 +162,8 @@ public class JieqiSystemUsersController {
 		user.setState(false);
 		user.setRegdate(System.currentTimeMillis() / 1000);
 		jieqiSystemUsersService.save(user);
-		request.getSession().setAttribute("user", user);
+		JieqiSystemUsers u = jieqiSystemUsersService.findByAccount(uname);
+		request.getSession().setAttribute("user", u);
 		return "redirect:/users/mybook";
 	}
 

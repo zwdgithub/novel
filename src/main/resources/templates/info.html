@@ -57,7 +57,7 @@
                 <p class="author" th:text="|作者：${article.author}|"></p>
             </a>
             <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
-            <p class="" th:text="|状态：${article.fullflag == 0?'连载中':'已完结'}|"></p>
+            <p class="" th:text="|状态：${article.fullflag?'连载中':'已完结'}|"></p>
             <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">
@@ -136,9 +136,9 @@ $(function(){
              }
 	})
 })
-    </script>
-<script>
+(function(){var bp=document.createElement("script");var curProtocol=window.location.protocol.split(":")[0];if(curProtocol==="https"){bp.src="https://zz.bdstatic.com/linksubmit/push.js"}else{bp.src="http://push.zhanzhang.baidu.com/push.js"}var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp,s)})();
 </script>
+<footer th:include="foot  :: foot"></footer>
 <script src="/js/wap.js"></script>
 </body>
 </html>
