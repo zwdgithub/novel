@@ -52,7 +52,8 @@ function addBookMarkByManual(bookid, chapterid, articlename, chaptername) {
 				if (data.data.success) {
 					alert('添加成功');
 				} else {
-					alert("将小说添加到书架失败！请尝试登录！");
+					alert("请先登录您的帐号");
+					window.location.href='https://m.2hxs.com/login.php'
 				}
 			}
 		});

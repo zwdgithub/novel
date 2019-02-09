@@ -147,7 +147,6 @@ function showbook(){
 			}
 			bookhtml+='<div class="hot_sale'+' '+c+'"><span class="num num'+k+'">'+k+'</span>';
             bookhtml+='<a href="/'+shortid+'_'+articleid+'/"><p class="title">'+articlename+'</p>';
-            bookhtml+='<p class="author">作者：<span id="'+articleid+'newcase_author">'+author+'</span></p>';
             bookhtml+='<p class="author">上次阅读：<a style="color: Red;" href="/'+shortid+'_'+articleid+'/'+lastchapterid+'.html" target="_blank">'+lastchapter+'</a></p>';
             bookhtml+='<p class="author"><a href="javascript:removebook('+articleid+')"><font color="#ff0000">从书架删除</font></a></p>';
             bookhtml+='</div>';

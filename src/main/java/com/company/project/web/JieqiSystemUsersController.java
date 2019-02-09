@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -51,12 +53,20 @@ public class JieqiSystemUsersController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpServletRequest request, Model model, @RequestParam String account,
-			@RequestParam String password) {
+	public String login(HttpServletRequest request, HttpServletResponse response, Model model,
+			@RequestParam String account, @RequestParam String password) {
 		HttpSession session = request.getSession();
 		JieqiSystemUsers user = jieqiSystemUsersService.findByAccountAndPass(account, password);
 		if (user != null) {
 			session.setAttribute("user", user);
+			Cookie cookie = new Cookie("_17mb_username", account);// 创建新cookie
+			Cookie cookie2 = new Cookie("_17mb_userpass", password);// 创建新cookie
+			cookie.setMaxAge(60 * 60 * 24 * 30);// 设置存在时间为5分钟
+			cookie2.setMaxAge(60 * 60 * 24 * 30);// 设置存在时间为5分钟
+			cookie.setPath("/");// 设置作用域
+			cookie2.setPath("/");// 设置作用域
+			response.addCookie(cookie);// 将cookie添加到response的cookie数组中返回给客户端
+			response.addCookie(cookie2);
 			return "user";
 		}
 		model.addAttribute("msg", "用户名或密码错误");

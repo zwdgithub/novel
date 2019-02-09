@@ -20,26 +20,13 @@
     <meta property="og:novel:book_name" th:content="${article.articlename}"/>
     <meta property="og:novel:read_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
     <meta property="og:url" id="metaurl" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
-    <meta property="og:novel:status" th:content="${article.fullflag == 0?'连载中':'已完结'}"/>
+    <meta property="og:novel:status" th:content="${article.fullflag?'已完结':'连载中'}"/>
     <meta property="og:novel:update_time" th:content="${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}"/>
     <meta property="og:novel:latest_chapter_name" th:content="${article.lastchapter}"/>
     <meta property="og:novel:latest_chapter_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/${article.lastchapterid}.html|"/>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/bookinfo.css" />
   	<script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>
-  	<script th:inline="javascript" type="application/ld+json" >
-        {
-            "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",
-            "@id": "https://m.2hxs.com/[[${article.articleid/1000}]]_[[${article.articleid}]]/",
-            "appid": "1578540365240191",
-            "title": "[(${article.articlename})]最新章节([(${article.author})])_[(${article.articlename})]全文阅读_爱好小说",
-            "images": [
-                "[[${pcurl}]]/files/article/image/[[${article.articleid/1000}]]/[[${article.articleid}]]/[[${article.articleid}]]s.jpg",
-            ],
-            "description": "[(${article.intro})]",
-            "pubDate": "[[${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}]]"
-        }
-    </script>
 </head>
 <body>
     <div class="bg">
@@ -57,7 +44,7 @@
                 <p class="author" th:text="|作者：${article.author}|"></p>
             </a>
             <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
-            <p class="" th:text="|状态：${article.fullflag?'连载中':'已完结'}|"></p>
+            <p class="" th:text="|状态：${article.fullflag?'已完结':'连载中'}|"></p>
             <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">
@@ -136,9 +123,11 @@ $(function(){
              }
 	})
 })
-(function(){var bp=document.createElement("script");var curProtocol=window.location.protocol.split(":")[0];if(curProtocol==="https"){bp.src="https://zz.bdstatic.com/linksubmit/push.js"}else{bp.src="http://push.zhanzhang.baidu.com/push.js"}var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp,s)})();
 </script>
 <footer th:include="foot  :: foot"></footer>
 <script src="/js/wap.js"></script>
+<script type="text/javascript">
+(function(){var bp=document.createElement("script");var curProtocol=window.location.protocol.split(":")[0];if(curProtocol==="https"){bp.src="https://zz.bdstatic.com/linksubmit/push.js"}else{bp.src="http://push.zhanzhang.baidu.com/push.js"}var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(bp,s)})();
+</script>
 </body>
 </html>
