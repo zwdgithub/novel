@@ -63,7 +63,7 @@
 
 	<select id="categoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE sortid = #{0} ORDER BY weekvisit DESC limit 5
+		jieqi_article_article WHERE sortid = #{0} ORDER BY weekvisit, dayvisit, monthvisit DESC limit 5
 	</select>
 	
 	<select id="classList" resultType="com.company.project.model.JieqiArticleArticle">
@@ -113,6 +113,6 @@
 		limit 0, 30
 	</select>
 	<update id="dayVisitIncr">
-		UPDATE jieqi_article_article set dayvisit = dayvisit +1 where articleid = #{arg0}
+		UPDATE jieqi_article_article set dayvisit = dayvisit +1, weekvisit=weekvisit+1, monthvisit=monthvisit+1, allvisit=allvisit+1 where articleid = #{arg0}
 	</update>
 </mapper>

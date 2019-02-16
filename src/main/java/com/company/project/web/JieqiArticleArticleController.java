@@ -110,10 +110,13 @@ public class JieqiArticleArticleController {
 		switch (order) {
 		case "week":
 			order = "weekvisit";
+			break;
 		case "month":
 			order = "monthvisit";
+			break;
 		case "all":
 			order = "allvisit";
+			break;
 		default:
 			order = "weekvisit";
 		}
