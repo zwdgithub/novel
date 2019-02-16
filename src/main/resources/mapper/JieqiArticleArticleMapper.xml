@@ -63,7 +63,7 @@
 
 	<select id="categoryTopList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE sortid = #{0} ORDER BY weekvisit, dayvisit, monthvisit DESC limit 5
+		jieqi_article_article WHERE sortid = #{0} ORDER BY weekvisit DESC, dayvisit DESC, monthvisit DESC limit 5
 	</select>
 	
 	<select id="classList" resultType="com.company.project.model.JieqiArticleArticle">
