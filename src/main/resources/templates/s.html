@@ -29,7 +29,7 @@
 	<a th:href="|/${item.articleid/1000}_${item.articleid}/|">
 		<p class="title">[[${item.articlename}]]</p>
 		<p class="author">[[${categorys[item.sortid]}]] | 作者：[[${item.author}]]</p>
-		<p class="author">[[${item.fullflag == 0 ? '连载中': '已完结'}]] | 更新：[[${item.lastchapter}]]</p>
+		<p class="author">[[${item.fullflag?'已完结':'连载中'}]] | 更新：[[${item.lastchapter}]]</p>
 	</a>	
 	</div>
 </div>
