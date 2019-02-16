@@ -40,7 +40,7 @@
     <div class="synopsisArea">
         <div class="synopsisArea_detail">
             <img th:src="|${pcurl}/files/article/image/${article.articleid/1000}/${article.articleid}/${article.articleid}s.jpg|" />
-            <a th:href="|${article.articleid/1000}_${article.articleid}/|">
+            <a href="javascript:void(0);" th:onclick="|window.location='/article/search?keyword='+encodeURI('${article.author}');|">
                 <p class="author" th:text="|作者：${article.author}|"></p>
             </a>
             <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
