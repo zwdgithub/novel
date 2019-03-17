@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title>[[${chapter.chapterName}]]-[[${article.articlename}]]-爱好小说</title>
+    <title>[[${chapter.chapterName}]]-[[${article.articlename}]]-[[${hostName}]]</title>
     <meta name="robots" content="noindex,follow" />
     <meta name="keywords" th:content="|${chapter.chapterName},${article.articlename},${article.author}|" />
-    <meta name="description" th:content="|爱好小说提供${article.articlename} ${chapter.chapterName}最新章节免费阅读章节内容.|" />
+    <meta name="description" th:content="|${hostName}提供${article.articlename} ${chapter.chapterName}最新章节免费阅读章节内容.|" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />

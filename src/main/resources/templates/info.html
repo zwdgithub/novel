@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml;charset=utf-8" />
-    <title th:text="|${article.articlename}最新章节(${article.author})-${article.articlename}全文阅读-爱好小说|"></title>
+    <title th:text="|${article.articlename}最新章节(${article.author})-${article.articlename}全文阅读-${hostName}|"></title>
     <meta id="ctl00_metaKeywords" name="keywords" th:content="|${article.articlename},${article.articlename}最新章节|"/>
-    <meta id="ctl00_metaDescription" name="description" th:content="|${article.articlename}最新章节由网友提供，《${article.articlename}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的${categorys[article.sortid]}，爱好小说免费提供${article.articlename}最新清爽干净的文字章节在线阅读。|" />
+    <meta id="ctl00_metaDescription" name="description" th:content="|${article.articlename}最新章节由网友提供，《${article.articlename}》情节跌宕起伏、扣人心弦，是一本情节与文笔俱佳的${categorys[article.sortid]}，${hostName}免费提供${article.articlename}最新清爽干净的文字章节在线阅读。|" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -18,12 +18,12 @@
     <meta property="og:novel:category" th:content="${categorys[article.sortid]}"/>
     <meta property="og:novel:author" th:content="${article.author}"/>
     <meta property="og:novel:book_name" th:content="${article.articlename}"/>
-    <meta property="og:novel:read_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
-    <meta property="og:url" id="metaurl" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/|"/>
+    <meta property="og:novel:read_url" th:content="|https://m.${host}/${article.articleid/1000}_${article.articleid}/|"/>
+    <meta property="og:url" id="metaurl" th:content="|https://m.${host}/${article.articleid/1000}_${article.articleid}/|"/>
     <meta property="og:novel:status" th:content="${article.fullflag?'已完结':'连载中'}"/>
     <meta property="og:novel:update_time" th:content="${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}"/>
     <meta property="og:novel:latest_chapter_name" th:content="${article.lastchapter}"/>
-    <meta property="og:novel:latest_chapter_url" th:content="|https://m.2hxs.com/${article.articleid/1000}_${article.articleid}/${article.lastchapterid}.html|"/>
+    <meta property="og:novel:latest_chapter_url" th:content="|https://m.${host}/${article.articleid/1000}_${article.articleid}/${article.lastchapterid}.html|"/>
     <link rel="stylesheet" href="/css/reset.css" />
     <link rel="stylesheet" href="/css/bookinfo.css" />
   	<script src="//msite.baidu.com/sdk/c.js?appid=1578540365240191"></script>

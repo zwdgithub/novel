@@ -53,7 +53,7 @@ function addBookMarkByManual(bookid, chapterid, articlename, chaptername) {
 					alert('添加成功');
 				} else {
 					alert("请先登录您的帐号");
-					window.location.href='https://m.2hxs.com/login.php'
+					window.location.href='/login.php'
 				}
 			}
 		});

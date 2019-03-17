@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>提示信息-www.2hxs.com</title>
+<title>提示信息-www.[[${hostName}]]</title>
 <style type="text/css">
 body {background: #f9fee8;margin: 0; padding: 20px; text-align:center; font-family:Arial, Helvetica, sans-serif; font-size:14px; color:#666666;}
 .error_page {width: 600px; padding: 50px; margin: auto;}
@@ -23,7 +23,7 @@ a:hover {color: #f30; text-decoration:underline;}#tt{color:#f30}
    <p><b id="tt">5</b>秒后跳转到首页。</p>
 </div>
 <div class="copyright">
-<p><a href="https://www.2hxs.com/">www.2hxs.com</a></p>
+<p><a th:href="|https://www.${host}.com/|">www.[[${hostName}]].com</a></p>
 </div>
 <script type="text/javascript">
 tt=5;
