@@ -13,7 +13,7 @@ function _17mb_xuanfu(){
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?0e2d5d99fa8c69ead181364a1a569912";
+  hm.src = "https://hm.baidu.com/hm.js?a3608abe7de7b8e1fb6404ce5a9a3133";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
