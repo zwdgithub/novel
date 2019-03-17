@@ -23,6 +23,7 @@ import com.company.project.configurer.Config;
 import com.company.project.core.Result;
 import com.company.project.core.ResultGenerator;
 import com.company.project.model.JieqiArticleArticle;
+import com.company.project.service.AdService;
 import com.company.project.service.JieqiArticleArticleService;
 import com.company.project.service.JieqiArticleChapterService;
 import com.company.project.utils.Common;
@@ -39,6 +40,8 @@ public class JieqiArticleArticleController {
 	@Resource
 	private JieqiArticleChapterService chapterService;
 	@Resource
+	private AdService adservice;
+	@Resource
 	private Config config;
 	@Value("${project.pcurl}")
 	private String pcurl;
@@ -47,7 +50,7 @@ public class JieqiArticleArticleController {
 	public String list(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		session.setAttribute("user", session.getAttribute("user"));
-		Map<Integer, List<JieqiArticleArticle>> categorys = service.CategoryTopList();
+		Map<Integer, List<JieqiArticleArticle>> categorys = Common.INDEX_PAGE_TOP_ARTICLE;
 		List<JieqiArticleArticle> top = service.TopList();
 		model.addAttribute("top", top);
 		model.addAttribute("pcurl", pcurl);
@@ -85,6 +88,8 @@ public class JieqiArticleArticleController {
 		Map<String, Object> chapter = service.chapterContent(articleid, chapterid);
 		model.addAttribute("chapter", chapter);
 		model.addAttribute("article", article);
+		model.addAttribute("ad1", Common.ADMaps.get(1));
+		model.addAttribute("ad2", Common.ADMaps.get(2));
 		return "chapter";
 	}
 
@@ -166,5 +171,12 @@ public class JieqiArticleArticleController {
 		model.addAttribute("result", result);
 		model.addAttribute("keyword", keyword);
 		return "s";
+	}
+
+	@RequestMapping("/refreshAdCode")
+	@ResponseBody
+	public String refreshAdCode(HttpServletRequest request, Model model) {
+		adservice.loadAdCode();
+		return "success";
 	}
 }

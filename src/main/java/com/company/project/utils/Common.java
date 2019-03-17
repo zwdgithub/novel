@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.company.project.configurer.WebMvcConfigurer;
+import com.company.project.model.JieqiArticleArticle;
 import com.company.project.model.JieqiSystemUsers;
 
 @Component
@@ -27,6 +28,10 @@ public class Common {
 
 	public static Map<Integer, String> CATEGORYS = new HashMap<>();
 
+	public static Map<Integer, String> ADMaps = new HashMap<>();
+	
+	public static Map<Integer, List<JieqiArticleArticle>> INDEX_PAGE_TOP_ARTICLE = new HashMap<>();
+	
 	static {
 		/**
 		 * project.conf.categorys[class1]=玄幻小说 project.conf.categorys[class2]=仙侠小说
@@ -43,6 +48,7 @@ public class Common {
 		CATEGORYS.put(6, "科幻小说");
 		CATEGORYS.put(7, "其他小说");
 		CATEGORYS.put(8, "言情小说");
+		
 	}
 
 	public static Document load(String text) {

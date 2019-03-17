@@ -58,7 +58,7 @@ public class IndexController {
 				}
 			}
 		}
-		Map<Integer, List<JieqiArticleArticle>> categorys = service.CategoryTopList();
+		Map<Integer, List<JieqiArticleArticle>> categorys = Common.INDEX_PAGE_TOP_ARTICLE;
 		List<JieqiArticleArticle> top = service.TopList();
 		model.addAttribute("top", top);
 		model.addAttribute("pcurl", pcurl);

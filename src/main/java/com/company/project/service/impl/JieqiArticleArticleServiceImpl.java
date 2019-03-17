@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.io.FileUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,9 @@ import com.company.project.utils.Common;
 @Transactional
 public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticleArticle>
 		implements JieqiArticleArticleService {
+
+	private final Logger logger = LoggerFactory.getLogger(AdServiceImpl.class);
+
 	@Resource
 	private JieqiArticleArticleMapper jieqiArticleArticleMapper;
 
@@ -73,7 +78,8 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	}
 
 	@Cacheable(key = "#articleId", value = "chpaterListTopN")
-	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException {
+	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum)
+			throws IOException {
 		String opfFile = Common.articleOpfFileFullPath(articleId);
 		String content = FileUtils.readFileToString(new File(opfFile), "GBK");
 		return Common.parseChapterList(chpaterNum, false, Common.opfDocumnet(content));
@@ -109,6 +115,7 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 
 	@Override
 	public List<JieqiArticleArticle> search(String keyword) {
+		logger.info(String.format("搜索小说: %s", keyword));
 		return jieqiArticleArticleMapper.search(keyword);
 	}
 }
