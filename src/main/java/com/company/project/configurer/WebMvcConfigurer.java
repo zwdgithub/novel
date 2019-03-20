@@ -15,6 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -202,14 +203,44 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
 	}
 
 	@Bean
-	public BaseInfoInterceptor baseInfoInterceptor(){
-	    return new BaseInfoInterceptor();
+	public BaseInfoInterceptor baseInfoInterceptor() {
+		return new BaseInfoInterceptor();
 	}
-	
+
+	@Bean
+	public DispatcherServletCustom dispatcherServletCustom() {
+		return new DispatcherServletCustom();
+	}
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(baseInfoInterceptor()).addPathPatterns("/**");
 		super.addInterceptors(registry);
+	}
+
+
+	// @Bean
+	// public ViewResolver viewResolver(SpringTemplateEngine templateEngine) {
+	// ThymeleafViewResolver viewResolver = new ThymeleafViewResolverPlus();
+	// viewResolver.setTemplateEngine(templateEngine);
+	// return viewResolver;
+	// }
+
+	// @Bean
+	// public ViewResolver thymeleafViewResolver(SpringTemplateEngine
+	// templateEngine) {
+	// ThymeleafViewResolver viewResolver = new ThymeleafViewResolverPlus();
+	// viewResolver.setTemplateEngine(templateEngine);
+	// viewResolver.setCharacterEncoding("UTF-8");
+	// return viewResolver;
+	// }
+
+	@Bean
+	public ServletRegistrationBean addServlet() {
+		ServletRegistrationBean bean = new ServletRegistrationBean(dispatcherServletCustom());
+		bean.setName("dispatcherServlet");
+		bean.addUrlMappings("/");
+		return bean;
 	}
 
 }
