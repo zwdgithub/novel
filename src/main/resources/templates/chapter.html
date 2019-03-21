@@ -33,7 +33,6 @@
 <a th:href="|/${article.articleid/1000}_${article.articleid}/|" id="pt_mulu" class="Readpage_up">目录</a>
 <a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.next != null? chapter.next + '.html':''}|" id="pt_next" class="Readpage_down js_page_down">下一章</a>
 </p>
-<script>_17mb_top()</script>
 <div id="chaptercontent" class="Readarea ReadAjax_content">
 [(${chapter.content})]
 <p style="width:100%;text-alight:center;"><a th:href="|javascript:addBookMarkByManual(${article.articleid},${chapter.chapterId}, '${article.articlename}', '${chapter.chapterName}');|" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
@@ -54,11 +53,7 @@
     var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', '[(${article.articlename})]', '[(${chapter.chapterName})]', '[(${article.author})]');
 /*]]>*/
 </script>
-
-<script th:inline="javascript">
-	eval([[${ad1}]])
-	eval([[${ad2}]])	
-</script>
+<script src="/js/ad.js"></script>
 <footer th:include="foot  :: foot"></footer>
 </body>
 <script src="/js/wap.js"></script>
