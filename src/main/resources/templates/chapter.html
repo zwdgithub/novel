@@ -53,7 +53,7 @@
     var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', '[(${article.articlename})]', '[(${chapter.chapterName})]', '[(${article.author})]');
 /*]]>*/
 </script>
-<script th:inline="javascript" th:utext="${ad1}${ad2}"></script>
+<script th:inline="javascript" th:utext="|${ad1}${ad2}|"></script>
 <footer th:include="foot  :: foot"></footer>
 </body>
 <script src="/js/wap.js"></script>
