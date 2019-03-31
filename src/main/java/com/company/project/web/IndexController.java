@@ -58,11 +58,11 @@ public class IndexController {
 				}
 			}
 		}
-		Map<Integer, List<JieqiArticleArticle>> categorys = Common.INDEX_PAGE_TOP_ARTICLE;
-		List<JieqiArticleArticle> top = service.TopList();
-		model.addAttribute("top", top);
+//		Map<Integer, List<JieqiArticleArticle>> categorys = Common.INDEX_PAGE_TOP_ARTICLE;
+		// List<JieqiArticleArticle> top = service.TopList();
+		model.addAttribute("top", Common.TOP_ARTICLE);
 		model.addAttribute("pcurl", pcurl);
-		model.addAttribute("categorys", categorys);
+		model.addAttribute("categorys", Common.INDEX_PAGE_TOP_ARTICLE);
 		return "index";
 	}
 }

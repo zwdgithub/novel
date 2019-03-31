@@ -57,7 +57,7 @@
 
 	<select id="topList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE articleid IN (30042, 37629, 37819, 42003, 37857)
+		jieqi_article_article WHERE articleid IN (30042, 37629, 37819, 42003, 37857) ORDER BY goodnum desc
 	</select>
 
 

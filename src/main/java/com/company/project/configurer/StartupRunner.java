@@ -21,6 +21,8 @@ public class StartupRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		service.loadAdCode();
 		Common.INDEX_PAGE_TOP_ARTICLE = articleService.CategoryTopList();
+		Common.TOP_ARTICLE = articleService.TopList();
+
 	}
 
 }

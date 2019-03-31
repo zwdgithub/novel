@@ -11,8 +11,11 @@ public class DispatcherServletCustom extends DispatcherServlet {
 
 	@Override
 	protected void render(ModelAndView mv, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		String serverName = request.getServerName();
-//		String viewName = mv.getViewName();
+		String serverName = request.getServerName();
+		String viewName = mv.getViewName();
+		if (!serverName.startsWith("m.")) {
+			mv.setViewName("pc/" + viewName);
+		}
 		super.render(mv, request, response);
 	}
 
