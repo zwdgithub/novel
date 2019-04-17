@@ -18,21 +18,36 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 	public Map<Integer, List<JieqiArticleArticle>> CategoryTopList();
 
 	public List<JieqiArticleArticle> classList(Integer sortid, Integer start, Integer limit);
-	
+
 	public List<JieqiArticleArticle> topClassList(Integer sortid, Integer start, Integer limit, String order);
-	
+
 	public List<JieqiArticleArticle> finishClassList(Integer sortid, Integer start, Integer limit);
 
-	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId) throws IOException;
+	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId, Integer index) throws IOException;
 
 	public LinkedHashMap<String, Map<String, String>> chpaterList(Integer articleId, Boolean start) throws IOException;
-	
-	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum) throws IOException;
+
+	public LinkedHashMap<String, Map<String, String>> chpaterListTopN(Integer articleId, Integer chpaterNum)
+			throws IOException;
 
 	public JieqiArticleArticle info(Integer articleId);
-	
+
 	public void dayVisitIncr(Integer articleid);
-	
+
 	public List<JieqiArticleArticle> search(String keyword);
+
+	public List<JieqiArticleArticle> TopListPut();
+
+	public Map<Integer, List<JieqiArticleArticle>> CategoryTopListPut();
+
+	public Map<String, Object> chapterContentPut(Integer articleId, Integer chapterId) throws IOException;
+
+	public LinkedHashMap<String, Map<String, String>> chpaterListTopNPut(Integer articleId, Integer chpaterNum)
+			throws IOException;
+
+	public LinkedHashMap<String, Map<String, String>> chpaterListPut(Integer articleId, Boolean start)
+			throws IOException;
+
+	public JieqiArticleArticle infoPut(Integer articleId);
 
 }

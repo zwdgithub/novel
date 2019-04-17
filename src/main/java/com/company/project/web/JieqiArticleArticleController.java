@@ -81,11 +81,11 @@ public class JieqiArticleArticleController {
 		return "chapterlist";
 	}
 
-	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}")
+	@RequestMapping("/chapter/{shortid}_{articleid}/{chapterid}/{index}")
 	public String chapterContent(HttpServletRequest request, Model model, @PathVariable("articleid") Integer articleid,
-			@PathVariable("chapterid") Integer chapterid) throws IOException {
+			@PathVariable("chapterid") Integer chapterid, @PathVariable("index") Integer index) throws IOException {
 		JieqiArticleArticle article = service.info(articleid);
-		Map<String, Object> chapter = service.chapterContent(articleid, chapterid);
+		Map<String, Object> chapter = service.chapterContent(articleid, chapterid, index);
 		model.addAttribute("chapter", chapter);
 		model.addAttribute("article", article);
 		model.addAttribute("ad1", Common.ADMaps.get(1));
@@ -177,6 +177,14 @@ public class JieqiArticleArticleController {
 	@ResponseBody
 	public String refreshAdCode(HttpServletRequest request, Model model) {
 		adservice.loadAdCode();
+		return "success";
+	}
+
+	@RequestMapping("/refreshArticleCache/{articleId}")
+	public String refreshArticleCache(@PathVariable Integer articleId, Model model) throws IOException {
+		service.chpaterListPut(articleId, true);
+		service.chpaterListTopNPut(articleId, 20);
+		service.infoPut(articleId);
 		return "success";
 	}
 }

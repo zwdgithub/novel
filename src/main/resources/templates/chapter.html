@@ -35,6 +35,7 @@
 </p>
 <div id="chaptercontent" class="Readarea ReadAjax_content">
 [(${chapter.content})]
+<p style="width:100%;text-alight:center;color: red; font-size:14" th:text="${chapter.hasNextPage}"><p>
 <p style="width:100%;text-alight:center;"><a th:href="|javascript:addBookMarkByManual(${article.articleid},${chapter.chapterId}, '${article.articlename}', '${chapter.chapterName}');|" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
 </div>
 <script language="javascript">getset()</script>
