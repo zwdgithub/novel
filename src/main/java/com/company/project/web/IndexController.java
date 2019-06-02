@@ -54,6 +54,7 @@ public class IndexController {
 					JieqiSystemUsers u = jieqiSystemUsersService.findByAccountAndPass(uname, upass);
 					if (u != null) {
 						session.setAttribute("user", u);
+						session.setAttribute("userName", u.getUname());
 					}
 				}
 			}

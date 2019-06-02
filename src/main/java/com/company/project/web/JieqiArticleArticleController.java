@@ -67,7 +67,8 @@ public class JieqiArticleArticleController {
 		model.addAttribute("article", article);
 		model.addAttribute("pcurl", pcurl);
 		model.addAttribute("categorys", Common.CATEGORYS);
-		new Thread(() -> service.dayVisitIncr(articleid)).start();
+		Common.visit(articleid);
+//		new Thread(() -> service.dayVisitIncr(articleid)).start();
 		return "info";
 	}
 
@@ -90,6 +91,13 @@ public class JieqiArticleArticleController {
 		model.addAttribute("article", article);
 		model.addAttribute("ad1", Common.ADMaps.get(1));
 		model.addAttribute("ad2", Common.ADMaps.get(2));
+		HttpSession session = request.getSession();
+		Integer n = (Integer) session.getAttribute("n");
+		System.out.println(n);
+		session.setAttribute("n", n + 1);
+		if (n != 0 && n % 5 != 0) {
+			model.addAttribute("c", "");
+		}
 		return "chapter";
 	}
 
@@ -186,5 +194,11 @@ public class JieqiArticleArticleController {
 		service.chpaterListTopNPut(articleId, 20);
 		service.infoPut(articleId);
 		return "success";
+	}
+
+	@RequestMapping("/test")
+	public String tt(Model model) throws IOException {
+		service.initSearchMap();
+		return "index";
 	}
 }

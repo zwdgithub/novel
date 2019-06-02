@@ -2,6 +2,7 @@ package com.company.project.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -13,12 +14,14 @@ import javax.annotation.Resource;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import com.company.project.core.AbstractService;
 import com.company.project.dao.JieqiArticleArticleMapper;
@@ -102,6 +105,7 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 	public Map<String, Object> chapterContent(Integer articleId, Integer chapterId, Integer index) throws IOException {
 		String txtFile = Common.articleTxtFileFullPath(articleId, chapterId);
 		String content = FileUtils.readFileToString(new File(txtFile), "GBK");
+		content = content.trim();
 		content = content.replaceAll("\\r\\n\\r\\n", "<br/><br/>");
 		content = content.replaceAll("\\r\\n", "<br/><br/>    ");
 		content = content.replaceAll("<br />", "<br/>");
@@ -129,12 +133,15 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 			chapter.put("next", chapters.get(cid).get("next"));
 			if (content.length() > 500) {
 				chapter.put("pre", String.valueOf(chapterId));
-			}else {
+			} else {
 				chapter.put("pre", chapters.get(cid).get("pre"));
 			}
 		}
 		chapter.put("hasNextPage", hasNextPage);
 		content = String.join("<br/>", copyOfRange);
+		// if (index == 0) {
+		// content = "&nbsp;&nbsp;&nbsp;&nbsp;一秒记住：m.ihxs.la 爱好小说 <br>" + content;
+		// }
 		chapter.put("content", content);
 		return chapter;
 	}
@@ -204,6 +211,55 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 
 	@Scheduled(cron = "0/20 * * * * ?")
 	public void Events() {
-		findById(42003);
+		Common.TOP_ARTICLE = TopList();
 	}
+
+	@Scheduled(cron = "0 0 3 * * ?")
+	public void updateVisit() {
+		for (Map.Entry<Integer, Integer> entry : Common.VISIT.entrySet()) {
+			if (entry.getValue() > 0) {
+				jieqiArticleArticleMapper.updateVisit(entry.getKey(), entry.getValue());
+				Common.VISIT.put(entry.getKey(), 0);
+			}
+		}
+	}
+
+	public void initSearchMap() {
+		List<JieqiArticleArticle> list = findAll();
+		Map<String, List<JieqiArticleArticle>> m = new HashMap<>();
+		for (JieqiArticleArticle item : list) {
+			buildKey(item.getArticlename(), m, item);
+		}
+
+		for (Map.Entry<String, List<JieqiArticleArticle>> item : m.entrySet()) {
+			System.out.println(item.getKey());
+		}
+	}
+
+	// def build_key(l):
+	// for i, a in enumerate(list(l)):
+	// ll = list(l[i + 1:])
+	// m.append(a)
+	// for j, b in enumerate(ll):
+	// m.append(a + "".join(ll[0:len(ll) - j]))
+
+	public void buildKey(String l, Map<String, List<JieqiArticleArticle>> m, JieqiArticleArticle item) {
+		for (int i = 0; i < l.length(); i++) {
+			String ll = l.substring(i + 1);
+			String c = l.substring(i, i + 1);
+			List<JieqiArticleArticle> list = m.get(c);
+			if (CollectionUtils.isEmpty(list)) {
+				list = new ArrayList<>();
+			}
+			list.add(item);
+			for (int j = 0; j < ll.length(); j++) {
+				List<JieqiArticleArticle> list2 = m.get(c + ll.substring(0, ll.length() - j));
+				if (CollectionUtils.isEmpty(list2)) {
+					list2 = new ArrayList<>();
+				}
+				list2.add(item);
+			}
+		}
+	}
+
 }

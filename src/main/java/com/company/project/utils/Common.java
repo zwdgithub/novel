@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,8 +33,12 @@ public class Common {
 	public static Map<Integer, String> ADMaps = new HashMap<>();
 
 	public static Map<Integer, List<JieqiArticleArticle>> INDEX_PAGE_TOP_ARTICLE = new HashMap<>();
-	
+
 	public static List<JieqiArticleArticle> TOP_ARTICLE = new ArrayList<JieqiArticleArticle>();
+
+	public static final String CLEAR_AD = ";eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);return p}('3(0(){$(\\'a\\').4(0(){f=$(2).5(\\'6\\');7(8(f)==\\'9\\'&&f.b(\\'c\\')>-1){$(2).d()}})},e)',16,16,'function||this|setTimeout|each|attr|style|if|typeof|string||indexOf|pos|remove|15000|'.split('|'),0,{}));";
+
+	public static Map<Integer, Integer> VISIT = new ConcurrentHashMap<>();
 
 	static {
 		/**
@@ -120,5 +125,14 @@ public class Common {
 		HttpSession session = request.getSession();
 		JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
 		return user;
+	}
+
+	public static void visit(Integer id) {
+		Integer n = VISIT.get(id);
+		if (n == null) {
+			VISIT.put(id, 1);
+		} else {
+			VISIT.put(id, VISIT.get(id) + 1);
+		}
 	}
 }

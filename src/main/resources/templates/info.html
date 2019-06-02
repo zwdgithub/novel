@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-Control" content="no-transform " />
     <meta property="og:type" content="novel"/>
     <meta property="og:title" th:content="${article.articlename}"/>
-    <meta property="og:description" th:content="${article.intro}"/>
+    <meta property="og:description" th:content="|${article.intro} |"/>
     <meta property="og:image" th:content="|${pcurl}/files/article/image/${article.articleid/1000}/${article.articleid}/${article.articleid}s.jpg|"/>
     <meta property="og:novel:category" th:content="${categorys[article.sortid]}"/>
     <meta property="og:novel:author" th:content="${article.author}"/>

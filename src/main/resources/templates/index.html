@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="shenma-site-verification" content="abffcdf27a3d7b33a47314dcb1cebc56_1537110023" /> 
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/index.css?s=201905601">
     <style type="text/css">
     .bannerLink .ajax_html, .list .ajax_html{height:auto; overflow:hidden; line-height:normal;}
 	.ajax_html{text-align:center; width:320px; margin:0 auto;}
@@ -22,8 +22,7 @@
 <body>
 <header class="Index_Header">
 <span style="color:#000;font-size: 21px; float: left;margin-left: 25px;">[[${hostName}]]</span>
-<a href="/users/login" id="login" class="login" th:if="${session.user == null}">登录</a>
-<span id="username" class="username" th:if="${session.user != null}"><a href="/mybook.php"><b th:text="${session.user.uname}"></b><img src="/images/icon-login-uname.gif" /></a></span>
+<a href="/users/login" id="login" class="login">用户</a>
 </header>
 <div style="width: 100%;">
 </div>
@@ -51,12 +50,12 @@
         <div class="slide">
             <div class="slide-con4 div">
                 <div class="slide-item index_hot1">
-                    <div class="hot_sale" th:each="item:${top}">
+                    <div class="hot_sale" th:each="item:${top}" style="height:90px;padding:7px 10px 0 90px">
                     <a th:href="|/${item.articleid/1000}_${item.articleid}/|">
-	                   <img class="lazy" style="width:89px;height:119px;" th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|" onerror="this.src='images/nopic.gif'" />
-	                   <p class="title" th:text="${item.articlename}"></p>
-	                   <p class="author" th:text="|作者：${item.author}|"></p>
-	                   <p class="review" th:text="|简介：${#strings.abbreviate(item.intro, 70)}|"></p>
+	                   <img class="lazy" style="width:60px;height:72px;" th:src="|${pcurl}/files/article/image/${item.articleid/1000}/${item.articleid}/${item.articleid}s.jpg|" onerror="this.src='images/nopic.gif'" />
+	                   <p class="title" th:text="|${item.articlename} / ${item.author}|"></p>
+	                   <p class="newchapter" style="overflow:none" th:utext="|${#dates.format(new java.util.Date(new java.lang.Long(item.lastupdate + '000')), 'MM-dd')}：<a style='color: #375868' href='/${item.articleid/1000}_${item.articleid}/${item.lastchapterid}.html'>${item.lastchapter}</a>|"></p>
+	                   <p class="review" style="overflow:hidden, width:50px" th:text="|简介：${#strings.abbreviate(item.intro, 70)}|"></p>
                     </a>
                     </div>
                 </div>

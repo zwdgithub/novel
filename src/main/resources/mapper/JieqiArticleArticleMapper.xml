@@ -57,7 +57,7 @@
 
 	<select id="topList" resultType="com.company.project.model.JieqiArticleArticle">
 		SELECT * FROM
-		jieqi_article_article WHERE articleid IN (30042, 37629, 37819, 42003, 37857) ORDER BY goodnum desc
+		jieqi_article_article WHERE articleid IN (30042, 37629, 40184, 40338, 49705) ORDER BY goodnum desc
 	</select>
 
 
@@ -114,5 +114,9 @@
 	</select>
 	<update id="dayVisitIncr">
 		UPDATE jieqi_article_article set dayvisit = dayvisit +1, weekvisit=weekvisit+1, monthvisit=monthvisit+1, allvisit=allvisit+1 where articleid = #{arg0}
+	</update>
+	
+	<update id="updateVisit">
+		UPDATE jieqi_article_article set dayvisit = dayvisit +#{arg1}, weekvisit=weekvisit+#{arg1}, monthvisit=monthvisit+#{arg1}, allvisit=allvisit+#{arg1} where articleid = #{arg0}
 	</update>
 </mapper>

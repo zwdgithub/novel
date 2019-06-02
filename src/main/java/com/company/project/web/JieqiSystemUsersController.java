@@ -47,7 +47,7 @@ public class JieqiSystemUsersController {
 		if (obj != null) {
 			JieqiSystemUsers user = (JieqiSystemUsers) session.getAttribute("user");
 			model.addAttribute("user", user);
-			return "info";
+			return "user";
 		}
 		return "login";
 	}
@@ -59,6 +59,7 @@ public class JieqiSystemUsersController {
 		JieqiSystemUsers user = jieqiSystemUsersService.findByAccountAndPass(account, password);
 		if (user != null) {
 			session.setAttribute("user", user);
+			session.setAttribute("userName", user.getUname());
 			Cookie cookie = new Cookie("_17mb_username", account);// 创建新cookie
 			Cookie cookie2 = new Cookie("_17mb_userpass", password);// 创建新cookie
 			cookie.setMaxAge(60 * 60 * 24 * 30);// 设置存在时间为5分钟

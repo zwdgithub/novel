@@ -50,4 +50,6 @@ public interface JieqiArticleArticleService extends Service<JieqiArticleArticle>
 
 	public JieqiArticleArticle infoPut(Integer articleId);
 
+	public void initSearchMap();
+
 }

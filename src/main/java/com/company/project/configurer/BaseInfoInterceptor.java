@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 @Component
-@PropertySource(value = "classpath:application.properties", encoding="utf-8")
+@PropertySource(value = "classpath:application.properties", encoding = "utf-8")
 
 public class BaseInfoInterceptor implements HandlerInterceptor {
 
@@ -24,6 +24,9 @@ public class BaseInfoInterceptor implements HandlerInterceptor {
 			throws Exception {
 		request.setAttribute("host", host);
 		request.setAttribute("hostName", hostName);
+		if (request.getSession().getAttribute("n") == null) {
+			request.getSession().setAttribute("n", 0);
+		}
 		return true;
 	}
 
