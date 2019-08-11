@@ -31,7 +31,7 @@ public class HttpUtils {
 
 	public static void pushMessage(String message) throws UnsupportedEncodingException {
 		LOGGER.info("文章异常提醒："+ message);
-		String url = "https://sc.ftqq.com/SCU13868Te3a23c4efa4dc26084d9efa9ab100e7559e088f342df1.send?text=";
+		String url = "http://wx.54868.net/push?key=785704b6974c6df7386e78fc6d9b4c52b0095c40&title=异常提醒&msg=";
 		get(url + URLEncoder.encode(message, "utf-8"), 5000);
 	}
 }
