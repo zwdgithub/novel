@@ -44,6 +44,7 @@
             </a>
             <p class="sort" th:text="|类别：${categorys[article.sortid]}|"></p>
             <p class="" th:text="|状态：${article.fullflag?'已完结':'连载中'}|"></p>
+            <p class="">最新章节：<a th:text="${article.lastchapter}" th:href="|/${article.articleid/1000}_${article.articleid}/${article.lastchapterid}.html|"></a></p>
             <p class="" th:text="|更新：${#dates.format(new java.util.Date(new java.lang.Long(article.lastupdate + '000')), 'yyyy-MM-dd HH:mm:ss')}|"></p>
         </div>
         <p class="btn">

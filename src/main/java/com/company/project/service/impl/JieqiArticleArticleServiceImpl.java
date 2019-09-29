@@ -209,12 +209,17 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		return jieqiArticleArticleMapper.search(keyword);
 	}
 
-	@Scheduled(cron = "0/20 * * * * ?")
+	@Scheduled(cron = "*/20 * * * * ?")
 	public void Events() {
 		Common.TOP_ARTICLE = TopList();
 	}
 
-	@Scheduled(cron = "0 0 3 * * ?")
+	@Scheduled(cron = "1 1 */1 * * ?")
+	public void UpdateTopList() {
+		Common.INDEX_PAGE_TOP_ARTICLE = CategoryTopList();
+	}
+
+	@Scheduled(cron = "0 5 */1 * * ?")
 	public void updateVisit() {
 		for (Map.Entry<Integer, Integer> entry : Common.VISIT.entrySet()) {
 			if (entry.getValue() > 0) {
