@@ -3,22 +3,22 @@ package com.conpany.project;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Base64.Encoder;
 
 import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.Node;
 import org.junit.Test;
 
-import com.company.project.service.impl.JieqiArticleArticleServiceImpl;
 import com.company.project.utils.Common;
 
-public class TestCase  {
+public class TestCase {
 
 	@Test
 	public void test() throws IOException {
@@ -109,10 +109,17 @@ public class TestCase  {
 	 * @param lon
 	 *            百度坐标经度
 	 * @return 返回结果：纬度,经度
+	 * @throws IOException
 	 */
 	@Test
-	public void map_bd2tx() {
-		System.out.println("\r\n\n\r是进是奇才枯井 顶替\n\r".trim());
+	public void map_bd2tx() throws IOException {
+		Encoder encoder = Base64.getEncoder();
+		System.out.println(encoder.encodeToString("我我多".getBytes()));
+		String[] s = { "1", "2", "3", "4", "5", "6"};
+
+		System.out.println(Arrays.toString(Arrays.copyOfRange(s, 0, s.length / 2)));
+		System.out.println(Arrays.toString(Arrays.copyOfRange(s, s.length / 2 , s.length)));
+
 	}
 
 }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/css/read.css?version=20180812" />
     <script language="javascript" type="text/javascript" src="/js/read.js?version=20180812"></script>
     <script language="javascript" type="text/javascript" src="/js/yuedu.js?version=20180812"></script> 
+    <script language="javascript" type="text/javascript"></script> 
     <style>
 	.topMenuFree a{width:42%;}
 	.topMenuFree  .fontsize{width:16%;}
@@ -34,8 +35,13 @@
 <a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.next != null? chapter.next + '.html':''}|" id="pt_next" class="Readpage_down js_page_down">下一章</a>
 </p>
 <div id="chaptercontent" class="Readarea ReadAjax_content">
-[(${chapter.content})]
-<p style="width:100%;text-alight:center;color: red; font-size:14" th:text="${chapter.hasNextPage}"><p>
+[(${chapter.content1})]<br/><br/>
+<div>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.pre != null? chapter.pre + '.html':''}|" class="a">上一章</a>
+<a th:href="|/${article.articleid/1000}_${article.articleid}/${chapter.next != null? chapter.next + '.html':''}|" class="a">下一章</a>
+</div>
+<div th:id="${chapter.chapterId}"></div>
+<p id="hasNext" style="width:100%;text-alight:center;color: red; font-size:14" >[(${chapter.hasNextPage})]<p>
 <p style="width:100%;text-alight:center;"><a th:href="|javascript:addBookMarkByManual(${article.articleid},${chapter.chapterId}, '${article.articlename}', '${chapter.chapterName}');|" style="text-align:center;color:red;">『加入书签，方便阅读』</a></p>
 </div>
 <script language="javascript">getset()</script>
@@ -51,6 +57,8 @@
 <script language="javascript" type="text/javascript" src="/js/index.js"></script>
 <script th:inline="javascript">
 /*<![CDATA[*/
+	document.getElementById([[${chapter.chapterId}]]+"").innerHTML = [[${chapter.content2}]];
+	$(".a").remove();
     var lastread=new LastRead();lastread.set('[[${article.articleid}]]', '[[${chapter.chapterId}]]', '[(${article.articlename})]', '[(${chapter.chapterName})]', '[(${article.author})]');
 /*]]>*/
 </script>

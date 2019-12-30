@@ -1,8 +1,9 @@
-﻿.synopsisAd{font-size:14px; line-height:30px; padding:0 10px; font-weight:bold;}
+.synopsisAd{font-size:14px; line-height:30px; padding:0 10px; font-weight:bold;}
 .synopsisArea {font-size:14px; overflow:auto;}
 .synopsisArea .title{line-height:40px; text-align:center; background:#d4eaf2; height:40px; color:#375868; font-size:16px;}
 .synopsisArea_detail{position:relative; line-height:28px; padding:6px 0 6px 120px; height:145px;}
 .synopsisArea_detail img{position:absolute; left:10px; top:15px; border:1px #b4dae8 solid; width:90px; height:120px;}
+.synopsisArea_detail p{white-space: nowrap;}
 
 .synopsisArea .review{padding:10px; line-height:23px;}
 .synopsisArea .updateChapter, .synopsisArea .updateDate{padding:0 10px; line-height:35px; background:#f6fcff;}

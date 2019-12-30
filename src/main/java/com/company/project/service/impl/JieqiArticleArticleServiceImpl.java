@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -14,7 +16,6 @@ import javax.annotation.Resource;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -106,12 +107,12 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		String txtFile = Common.articleTxtFileFullPath(articleId, chapterId);
 		String content = FileUtils.readFileToString(new File(txtFile), "GBK");
 		content = content.trim();
-		content = content.replaceAll("\\r\\n\\r\\n", "<br/><br/>");
-		content = content.replaceAll("\\r\\n", "<br/><br/>    ");
-		content = content.replaceAll("<br />", "<br/>");
-		content = content.replaceAll("<p>", "<br/>");
-		content = content.replaceAll("</p>", "<br/>");
-		content = content.replaceAll(" ", "&nbsp;");
+		content = content.replaceAll("[　| ]", "");
+		content = content.replaceAll("[\\r\\n]{1,}|<p>|</p>|<P>|</P>|<br />", "<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;");
+		// content = content.replaceAll("<br />", "<br/>");
+		// content = content.replaceAll("<p>", "<br/>");
+		// content = content.replaceAll("</p>", "<br/>");
+		// content = content.replaceAll("<br/>", "<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;");
 		String[] split = content.split("<br/>");
 		Integer n = split.length / 2;
 		String[] copyOfRange;
@@ -122,12 +123,12 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		String cid = Integer.toString(chapterId);
 		chapter.put("chapterName", chapters.get(cid).get(cid));
 		chapter.put("pre", chapters.get(cid).get("pre"));
-		String hasNextPage = "";
+		String hasNextPage = "<span class='a'>转码失败,请退出畅读看完整内容<br></span>";
 		if (index == 0 && content.length() > 500) {
 			copyOfRange = Arrays.copyOfRange(split, n * index, n * (index + 1));
 			chapter.put("next", String.valueOf(chapterId) + "_1");
 			chapter.put("pre", chapters.get(cid).get("pre"));
-			hasNextPage = "(1/2)本章未完，请继续阅读";
+			hasNextPage += "(1/2)本章未完，请继续阅读";
 		} else {
 			copyOfRange = Arrays.copyOfRange(split, n * index, split.length);
 			chapter.put("next", chapters.get(cid).get("next"));
@@ -139,9 +140,23 @@ public class JieqiArticleArticleServiceImpl extends AbstractService<JieqiArticle
 		}
 		chapter.put("hasNextPage", hasNextPage);
 		content = String.join("<br/>", copyOfRange);
+		String content1 = "";
+		String content2 = "";
+		if (copyOfRange.length > 3){
+			content1 = String.join("<br/>",
+					Arrays.copyOfRange(copyOfRange, 0, copyOfRange.length / 2));
+			content2 = String.join("<br/>",
+					Arrays.copyOfRange(copyOfRange, copyOfRange.length / 2, copyOfRange.length));
+		} else {
+			content1 = String.join("<br/>", copyOfRange);
+		}
+
 		// if (index == 0) {
 		// content = "&nbsp;&nbsp;&nbsp;&nbsp;一秒记住：m.ihxs.la 爱好小说 <br>" + content;
 		// }
+		Encoder encoder = Base64.getEncoder();
+		chapter.put("content1", content1);
+		chapter.put("content2", content2);
 		chapter.put("content", content);
 		return chapter;
 	}
